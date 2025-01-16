@@ -31,7 +31,7 @@
 
 ## Overall Schematic 
 ### V2.00
-<img src="img/WSC_overall_schematic.png">
+<img src="WSC_overall_schematic.png">
 
 ## Verification Method
 ### 개별 명령어 입력
