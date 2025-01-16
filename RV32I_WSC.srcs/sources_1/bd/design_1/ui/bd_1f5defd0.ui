@@ -1,0 +1,77 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.643464",
+   "Default View_TopLeft":"878,-398",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.7.1 2023-07-26 3bc4126617 VDI=43 GEI=38 GUI=JA:21.0 threadsafe
+#  -string -flagsOSRD
+preplace inst Instruction_Fetch_0 -pg 1 -lvl 1 -x 190 -y 130 -defaultsOSRD
+preplace inst reg_IFID_0 -pg 1 -lvl 2 -x 570 -y 110 -defaultsOSRD
+preplace inst Instruction_Decode_0 -pg 1 -lvl 3 -x 970 -y 290 -defaultsOSRD
+preplace inst reg_IDEX_0 -pg 1 -lvl 4 -x 1450 -y 260 -defaultsOSRD
+preplace inst Execution_0 -pg 1 -lvl 5 -x 1870 -y 300 -defaultsOSRD
+preplace inst reg_EXMEM_0 -pg 1 -lvl 6 -x 2320 -y 210 -defaultsOSRD
+preplace inst Memory_0 -pg 1 -lvl 7 -x 2760 -y 220 -defaultsOSRD
+preplace inst reg_MEMWB_0 -pg 1 -lvl 8 -x 3170 -y 220 -defaultsOSRD
+preplace inst Write_back_0 -pg 1 -lvl 9 -x 3560 -y 200 -defaultsOSRD
+preplace netloc Instruction_Fetch_0_program_counter 1 1 1 N 120
+preplace netloc Instruction_Fetch_0_instruction 1 1 1 N 140
+preplace netloc reg_IFID_0_instruction 1 2 1 770 120n
+preplace netloc Net1 1 1 7 370 20 NJ 20 1240 30 NJ 30 2150 30 N 30 2970
+preplace netloc reg_IFID_0_program_counter 1 2 2 N 100 1230J
+preplace netloc Instruction_Decode_0_read_data1 1 3 1 N 320
+preplace netloc Instruction_Decode_0_read_data2 1 3 1 N 340
+preplace netloc Instruction_Decode_0_imm_gen 1 3 1 N 360
+preplace netloc Instruction_Decode_0_funct3 1 3 1 N 380
+preplace netloc Instruction_Decode_0_instruction30 1 3 1 N 400
+preplace netloc Instruction_Decode_0_write_register_out 1 3 1 N 420
+preplace netloc Instruction_Decode_0_pc_vs_rs1_con 1 3 1 1150 140n
+preplace netloc Instruction_Decode_0_alusrc 1 3 1 1160 160n
+preplace netloc Instruction_Decode_0_aluop 1 3 1 1170 180n
+preplace netloc Instruction_Decode_0_branch 1 3 1 1180 200n
+preplace netloc Instruction_Decode_0_memwrite 1 3 1 1190 220n
+preplace netloc Instruction_Decode_0_memread 1 3 1 1200 240n
+preplace netloc Instruction_Decode_0_memtoreg 1 3 1 1210 260n
+preplace netloc Instruction_Decode_0_regwrite_out 1 3 1 1220 280n
+preplace netloc reg_IDEX_0_program_counter 1 4 1 N 280
+preplace netloc reg_IDEX_0_read_data1 1 4 1 N 300
+preplace netloc reg_IDEX_0_read_data2 1 4 2 1700 160 2050
+preplace netloc reg_IDEX_0_imm_gen 1 4 1 N 340
+preplace netloc reg_IDEX_0_funct3 1 4 1 N 360
+preplace netloc reg_IDEX_0_instruction30 1 4 1 N 380
+preplace netloc reg_IDEX_0_pc_vs_rs1_con 1 4 1 N 220
+preplace netloc reg_IDEX_0_alusrc 1 4 1 N 240
+preplace netloc reg_IDEX_0_aluop 1 4 1 N 260
+preplace netloc reg_IDEX_0_write_register 1 4 2 1650J 450 2100
+preplace netloc Execution_0_alu_result 1 5 1 2090 280n
+preplace netloc Execution_0_branch_ctrl 1 5 1 2040 260n
+preplace netloc Execution_0_next_pc_cal 1 5 1 2060 240n
+preplace netloc reg_IDEX_0_branch 1 4 2 NJ 120 2090
+preplace netloc reg_IDEX_0_memwrite 1 4 2 NJ 140 2080
+preplace netloc reg_IDEX_0_memread 1 4 2 1660J 150 2060
+preplace netloc reg_IDEX_0_memtoreg 1 4 2 1650J 130 2070
+preplace netloc reg_IDEX_0_regwrite 1 4 2 1660J 440 2070
+preplace netloc reg_EXMEM_0_memwrite 1 6 1 2520 180n
+preplace netloc reg_EXMEM_0_memread 1 6 1 2500 200n
+preplace netloc reg_EXMEM_0_branch_ctrl 1 6 1 N 240
+preplace netloc reg_EXMEM_0_alu_result 1 6 2 2590 340 2960
+preplace netloc reg_EXMEM_0_read_data2 1 6 1 N 280
+preplace netloc reg_EXMEM_0_branch 1 6 1 2530 160n
+preplace netloc Net 1 0 8 20 40 360 10 780 40 1250 40 NJ 40 2140 40 2580 350 2950
+preplace netloc reg_EXMEM_0_next_pc_cal 1 0 7 10 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 2490
+preplace netloc Memory_0_pcrsrc 1 0 8 20 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 2930
+preplace netloc reg_EXMEM_0_memtoreg 1 6 2 2510J 100 2960
+preplace netloc reg_EXMEM_0_regwrite 1 6 2 2510J 360 2970
+preplace netloc Memory_0_read_mem_data 1 7 1 2940 230n
+preplace netloc reg_EXMEM_0_write_register 1 6 2 2500J 370 2980
+preplace netloc reg_MEMWB_0_memtoreg 1 8 1 N 180
+preplace netloc reg_MEMWB_0_read_mem_data 1 8 1 3380 200n
+preplace netloc reg_MEMWB_0_alu_result 1 8 1 3390 220n
+preplace netloc reg_MEMWB_0_write_register 1 2 7 770 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 3360
+preplace netloc reg_MEMWB_0_regwrite 1 2 7 780 510 NJ 510 NJ 510 NJ 510 NJ 510 NJ 510 3370
+preplace netloc Write_back_0_write_data 1 2 8 790 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 3730
+levelinfo -pg 1 -20 190 570 970 1450 1870 2320 2760 3170 3560 3750
+pagesize -pg 1 -db -bbox -sgen -20 -330 3750 580
+"
+}
+

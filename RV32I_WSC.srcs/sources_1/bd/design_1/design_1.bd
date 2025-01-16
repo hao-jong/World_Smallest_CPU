@@ -1,0 +1,1039 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7z007sclg400-1",
+      "gen_directory": "../../../../RV32I_WSC.gen/sources_1/bd/design_1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2024.1"
+    },
+    "design_tree": {
+      "Instruction_Fetch_0": "",
+      "reg_IFID_0": "",
+      "Instruction_Decode_0": "",
+      "reg_IDEX_0": "",
+      "Execution_0": "",
+      "reg_EXMEM_0": "",
+      "Memory_0": "",
+      "reg_MEMWB_0": "",
+      "Write_back_0": ""
+    },
+    "components": {
+      "Instruction_Fetch_0": {
+        "vlnv": "xilinx.com:module_ref:Instruction_Fetch:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_Instruction_Fetch_0_0",
+        "xci_path": "ip\\design_1_Instruction_Fetch_0_0\\design_1_Instruction_Fetch_0_0.xci",
+        "inst_hier_path": "Instruction_Fetch_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Instruction_Fetch",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "addr_cal": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "pcsrc": {
+            "direction": "I"
+          },
+          "program_counter": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "instruction": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "reg_IFID_0": {
+        "vlnv": "xilinx.com:module_ref:reg_IFID:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_reg_IFID_0_0",
+        "xci_path": "ip\\design_1_reg_IFID_0_0\\design_1_reg_IFID_0_0.xci",
+        "inst_hier_path": "reg_IFID_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "reg_IFID",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "program_counter_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "instruction_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "program_counter": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "instruction": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "Instruction_Decode_0": {
+        "vlnv": "xilinx.com:module_ref:Instruction_Decode:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_Instruction_Decode_0_0",
+        "xci_path": "ip\\design_1_Instruction_Decode_0_0\\design_1_Instruction_Decode_0_0.xci",
+        "inst_hier_path": "Instruction_Decode_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Instruction_Decode",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "instruction": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "write_register": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "write_data_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "regwrite": {
+            "direction": "I"
+          },
+          "pc_vs_rs1_con": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "alusrc": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "aluop": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "branch": {
+            "direction": "O"
+          },
+          "memwrite": {
+            "direction": "O"
+          },
+          "memread": {
+            "direction": "O"
+          },
+          "memtoreg": {
+            "direction": "O"
+          },
+          "regwrite_out": {
+            "direction": "O"
+          },
+          "read_data1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data2": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "imm_gen": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "funct3": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
+          "instruction30": {
+            "direction": "O"
+          },
+          "write_register_out": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          }
+        }
+      },
+      "reg_IDEX_0": {
+        "vlnv": "xilinx.com:module_ref:reg_IDEX:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_reg_IDEX_0_0",
+        "xci_path": "ip\\design_1_reg_IDEX_0_0\\design_1_reg_IDEX_0_0.xci",
+        "inst_hier_path": "reg_IDEX_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "reg_IDEX",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "pc_vs_rs1_con_in": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "alusrc_in": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "aluop_in": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "branch_in": {
+            "direction": "I"
+          },
+          "memwrite_in": {
+            "direction": "I"
+          },
+          "memread_in": {
+            "direction": "I"
+          },
+          "memtoreg_in": {
+            "direction": "I"
+          },
+          "regwrite_in": {
+            "direction": "I"
+          },
+          "program_counter_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data1_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data2_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "imm_gen_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "funct3_in": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "instruction30_in": {
+            "direction": "I"
+          },
+          "write_register_in": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "branch": {
+            "direction": "O"
+          },
+          "memwrite": {
+            "direction": "O"
+          },
+          "memread": {
+            "direction": "O"
+          },
+          "memtoreg": {
+            "direction": "O"
+          },
+          "regwrite": {
+            "direction": "O"
+          },
+          "pc_vs_rs1_con": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "alusrc": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "aluop": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "program_counter": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data2": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "imm_gen": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "funct3": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
+          "instruction30": {
+            "direction": "O"
+          },
+          "write_register": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          }
+        }
+      },
+      "Execution_0": {
+        "vlnv": "xilinx.com:module_ref:Execution:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_Execution_0_0",
+        "xci_path": "ip\\design_1_Execution_0_0\\design_1_Execution_0_0.xci",
+        "inst_hier_path": "Execution_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Execution",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "pc_vs_rs1_con": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "alusrc": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "aluop": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "program_counter": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "imm_gen": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "funct3": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "instruction30": {
+            "direction": "I"
+          },
+          "next_pc_cal": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "branch_ctrl": {
+            "direction": "O"
+          },
+          "alu_result": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "reg_EXMEM_0": {
+        "vlnv": "xilinx.com:module_ref:reg_EXMEM:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_reg_EXMEM_0_0",
+        "xci_path": "ip\\design_1_reg_EXMEM_0_0\\design_1_reg_EXMEM_0_0.xci",
+        "inst_hier_path": "reg_EXMEM_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "reg_EXMEM",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "branch_in": {
+            "direction": "I"
+          },
+          "memwrite_in": {
+            "direction": "I"
+          },
+          "memread_in": {
+            "direction": "I"
+          },
+          "memtoreg_in": {
+            "direction": "I"
+          },
+          "regwrite_in": {
+            "direction": "I"
+          },
+          "next_pc_cal_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "branch_ctrl_in": {
+            "direction": "I"
+          },
+          "alu_result_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data2_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "write_register_in": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "memtoreg": {
+            "direction": "O"
+          },
+          "regwrite": {
+            "direction": "O"
+          },
+          "branch": {
+            "direction": "O"
+          },
+          "memwrite": {
+            "direction": "O"
+          },
+          "memread": {
+            "direction": "O"
+          },
+          "next_pc_cal": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "branch_ctrl": {
+            "direction": "O"
+          },
+          "alu_result": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data2": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "write_register": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          }
+        }
+      },
+      "Memory_0": {
+        "vlnv": "xilinx.com:module_ref:Memory:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_Memory_0_0",
+        "xci_path": "ip\\design_1_Memory_0_0\\design_1_Memory_0_0.xci",
+        "inst_hier_path": "Memory_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Memory",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "branch": {
+            "direction": "I"
+          },
+          "memwrite": {
+            "direction": "I"
+          },
+          "memread": {
+            "direction": "I"
+          },
+          "branch_ctrl": {
+            "direction": "I"
+          },
+          "alu_result": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "read_data2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "pcrsrc": {
+            "direction": "O"
+          },
+          "read_mem_data": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "reg_MEMWB_0": {
+        "vlnv": "xilinx.com:module_ref:reg_MEMWB:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_reg_MEMWB_0_0",
+        "xci_path": "ip\\design_1_reg_MEMWB_0_0\\design_1_reg_MEMWB_0_0.xci",
+        "inst_hier_path": "reg_MEMWB_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "reg_MEMWB",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "memtoreg_in": {
+            "direction": "I"
+          },
+          "regwrite_in": {
+            "direction": "I"
+          },
+          "read_mem_data_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "alu_result_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "write_register_in": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "memtoreg": {
+            "direction": "O"
+          },
+          "regwrite": {
+            "direction": "O"
+          },
+          "read_mem_data": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "alu_result": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "write_register": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          }
+        }
+      },
+      "Write_back_0": {
+        "vlnv": "xilinx.com:module_ref:Write_back:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_Write_back_0_0",
+        "xci_path": "ip\\design_1_Write_back_0_0\\design_1_Write_back_0_0.xci",
+        "inst_hier_path": "Write_back_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Write_back",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "memtoreg": {
+            "direction": "I"
+          },
+          "read_mem_data": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "alu_result": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "write_data": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      }
+    },
+    "nets": {
+      "Execution_0_alu_result": {
+        "ports": [
+          "Execution_0/alu_result",
+          "reg_EXMEM_0/alu_result_in"
+        ]
+      },
+      "Execution_0_branch_ctrl": {
+        "ports": [
+          "Execution_0/branch_ctrl",
+          "reg_EXMEM_0/branch_ctrl_in"
+        ]
+      },
+      "Execution_0_next_pc_cal": {
+        "ports": [
+          "Execution_0/next_pc_cal",
+          "reg_EXMEM_0/next_pc_cal_in"
+        ]
+      },
+      "Instruction_Decode_0_aluop": {
+        "ports": [
+          "Instruction_Decode_0/aluop",
+          "reg_IDEX_0/aluop_in"
+        ]
+      },
+      "Instruction_Decode_0_alusrc": {
+        "ports": [
+          "Instruction_Decode_0/alusrc",
+          "reg_IDEX_0/alusrc_in"
+        ]
+      },
+      "Instruction_Decode_0_branch": {
+        "ports": [
+          "Instruction_Decode_0/branch",
+          "reg_IDEX_0/branch_in"
+        ]
+      },
+      "Instruction_Decode_0_funct3": {
+        "ports": [
+          "Instruction_Decode_0/funct3",
+          "reg_IDEX_0/funct3_in"
+        ]
+      },
+      "Instruction_Decode_0_imm_gen": {
+        "ports": [
+          "Instruction_Decode_0/imm_gen",
+          "reg_IDEX_0/imm_gen_in"
+        ]
+      },
+      "Instruction_Decode_0_instruction30": {
+        "ports": [
+          "Instruction_Decode_0/instruction30",
+          "reg_IDEX_0/instruction30_in"
+        ]
+      },
+      "Instruction_Decode_0_memread": {
+        "ports": [
+          "Instruction_Decode_0/memread",
+          "reg_IDEX_0/memread_in"
+        ]
+      },
+      "Instruction_Decode_0_memtoreg": {
+        "ports": [
+          "Instruction_Decode_0/memtoreg",
+          "reg_IDEX_0/memtoreg_in"
+        ]
+      },
+      "Instruction_Decode_0_memwrite": {
+        "ports": [
+          "Instruction_Decode_0/memwrite",
+          "reg_IDEX_0/memwrite_in"
+        ]
+      },
+      "Instruction_Decode_0_pc_vs_rs1_con": {
+        "ports": [
+          "Instruction_Decode_0/pc_vs_rs1_con",
+          "reg_IDEX_0/pc_vs_rs1_con_in"
+        ]
+      },
+      "Instruction_Decode_0_read_data1": {
+        "ports": [
+          "Instruction_Decode_0/read_data1",
+          "reg_IDEX_0/read_data1_in"
+        ]
+      },
+      "Instruction_Decode_0_read_data2": {
+        "ports": [
+          "Instruction_Decode_0/read_data2",
+          "reg_IDEX_0/read_data2_in"
+        ]
+      },
+      "Instruction_Decode_0_regwrite_out": {
+        "ports": [
+          "Instruction_Decode_0/regwrite_out",
+          "reg_IDEX_0/regwrite_in"
+        ]
+      },
+      "Instruction_Decode_0_write_register_out": {
+        "ports": [
+          "Instruction_Decode_0/write_register_out",
+          "reg_IDEX_0/write_register_in"
+        ]
+      },
+      "Instruction_Fetch_0_instruction": {
+        "ports": [
+          "Instruction_Fetch_0/instruction",
+          "reg_IFID_0/instruction_in"
+        ]
+      },
+      "Instruction_Fetch_0_program_counter": {
+        "ports": [
+          "Instruction_Fetch_0/program_counter",
+          "reg_IFID_0/program_counter_in"
+        ]
+      },
+      "Memory_0_pcrsrc": {
+        "ports": [
+          "Memory_0/pcrsrc",
+          "Instruction_Fetch_0/pcsrc"
+        ]
+      },
+      "Memory_0_read_mem_data": {
+        "ports": [
+          "Memory_0/read_mem_data",
+          "reg_MEMWB_0/read_mem_data_in"
+        ]
+      },
+      "Net": {
+        "ports": [
+          "reg_IFID_0/clk",
+          "Instruction_Fetch_0/clk",
+          "Instruction_Decode_0/clk",
+          "reg_IDEX_0/clk",
+          "reg_EXMEM_0/clk",
+          "Memory_0/clk",
+          "reg_MEMWB_0/clk"
+        ]
+      },
+      "Net1": {
+        "ports": [
+          "reg_IFID_0/rst",
+          "reg_IDEX_0/rst",
+          "reg_EXMEM_0/rst",
+          "reg_MEMWB_0/rst"
+        ]
+      },
+      "Write_back_0_write_data": {
+        "ports": [
+          "Write_back_0/write_data",
+          "Instruction_Decode_0/write_data_in"
+        ]
+      },
+      "reg_EXMEM_0_alu_result": {
+        "ports": [
+          "reg_EXMEM_0/alu_result",
+          "Memory_0/alu_result",
+          "reg_MEMWB_0/alu_result_in"
+        ]
+      },
+      "reg_EXMEM_0_branch": {
+        "ports": [
+          "reg_EXMEM_0/branch",
+          "Memory_0/branch"
+        ]
+      },
+      "reg_EXMEM_0_branch_ctrl": {
+        "ports": [
+          "reg_EXMEM_0/branch_ctrl",
+          "Memory_0/branch_ctrl"
+        ]
+      },
+      "reg_EXMEM_0_memread": {
+        "ports": [
+          "reg_EXMEM_0/memread",
+          "Memory_0/memread"
+        ]
+      },
+      "reg_EXMEM_0_memtoreg": {
+        "ports": [
+          "reg_EXMEM_0/memtoreg",
+          "reg_MEMWB_0/memtoreg_in"
+        ]
+      },
+      "reg_EXMEM_0_memwrite": {
+        "ports": [
+          "reg_EXMEM_0/memwrite",
+          "Memory_0/memwrite"
+        ]
+      },
+      "reg_EXMEM_0_next_pc_cal": {
+        "ports": [
+          "reg_EXMEM_0/next_pc_cal",
+          "Instruction_Fetch_0/addr_cal"
+        ]
+      },
+      "reg_EXMEM_0_read_data2": {
+        "ports": [
+          "reg_EXMEM_0/read_data2",
+          "Memory_0/read_data2"
+        ]
+      },
+      "reg_EXMEM_0_regwrite": {
+        "ports": [
+          "reg_EXMEM_0/regwrite",
+          "reg_MEMWB_0/regwrite_in"
+        ]
+      },
+      "reg_EXMEM_0_write_register": {
+        "ports": [
+          "reg_EXMEM_0/write_register",
+          "reg_MEMWB_0/write_register_in"
+        ]
+      },
+      "reg_IDEX_0_aluop": {
+        "ports": [
+          "reg_IDEX_0/aluop",
+          "Execution_0/aluop"
+        ]
+      },
+      "reg_IDEX_0_alusrc": {
+        "ports": [
+          "reg_IDEX_0/alusrc",
+          "Execution_0/alusrc"
+        ]
+      },
+      "reg_IDEX_0_branch": {
+        "ports": [
+          "reg_IDEX_0/branch",
+          "reg_EXMEM_0/branch_in"
+        ]
+      },
+      "reg_IDEX_0_funct3": {
+        "ports": [
+          "reg_IDEX_0/funct3",
+          "Execution_0/funct3"
+        ]
+      },
+      "reg_IDEX_0_imm_gen": {
+        "ports": [
+          "reg_IDEX_0/imm_gen",
+          "Execution_0/imm_gen"
+        ]
+      },
+      "reg_IDEX_0_instruction30": {
+        "ports": [
+          "reg_IDEX_0/instruction30",
+          "Execution_0/instruction30"
+        ]
+      },
+      "reg_IDEX_0_memread": {
+        "ports": [
+          "reg_IDEX_0/memread",
+          "reg_EXMEM_0/memread_in"
+        ]
+      },
+      "reg_IDEX_0_memtoreg": {
+        "ports": [
+          "reg_IDEX_0/memtoreg",
+          "reg_EXMEM_0/memtoreg_in"
+        ]
+      },
+      "reg_IDEX_0_memwrite": {
+        "ports": [
+          "reg_IDEX_0/memwrite",
+          "reg_EXMEM_0/memwrite_in"
+        ]
+      },
+      "reg_IDEX_0_pc_vs_rs1_con": {
+        "ports": [
+          "reg_IDEX_0/pc_vs_rs1_con",
+          "Execution_0/pc_vs_rs1_con"
+        ]
+      },
+      "reg_IDEX_0_program_counter": {
+        "ports": [
+          "reg_IDEX_0/program_counter",
+          "Execution_0/program_counter"
+        ]
+      },
+      "reg_IDEX_0_read_data1": {
+        "ports": [
+          "reg_IDEX_0/read_data1",
+          "Execution_0/read_data1"
+        ]
+      },
+      "reg_IDEX_0_read_data2": {
+        "ports": [
+          "reg_IDEX_0/read_data2",
+          "Execution_0/read_data2",
+          "reg_EXMEM_0/read_data2_in"
+        ]
+      },
+      "reg_IDEX_0_regwrite": {
+        "ports": [
+          "reg_IDEX_0/regwrite",
+          "reg_EXMEM_0/regwrite_in"
+        ]
+      },
+      "reg_IDEX_0_write_register": {
+        "ports": [
+          "reg_IDEX_0/write_register",
+          "reg_EXMEM_0/write_register_in"
+        ]
+      },
+      "reg_IFID_0_instruction": {
+        "ports": [
+          "reg_IFID_0/instruction",
+          "Instruction_Decode_0/instruction"
+        ]
+      },
+      "reg_IFID_0_program_counter": {
+        "ports": [
+          "reg_IFID_0/program_counter",
+          "reg_IDEX_0/program_counter_in"
+        ]
+      },
+      "reg_MEMWB_0_alu_result": {
+        "ports": [
+          "reg_MEMWB_0/alu_result",
+          "Write_back_0/alu_result"
+        ]
+      },
+      "reg_MEMWB_0_memtoreg": {
+        "ports": [
+          "reg_MEMWB_0/memtoreg",
+          "Write_back_0/memtoreg"
+        ]
+      },
+      "reg_MEMWB_0_read_mem_data": {
+        "ports": [
+          "reg_MEMWB_0/read_mem_data",
+          "Write_back_0/read_mem_data"
+        ]
+      },
+      "reg_MEMWB_0_regwrite": {
+        "ports": [
+          "reg_MEMWB_0/regwrite",
+          "Instruction_Decode_0/regwrite"
+        ]
+      },
+      "reg_MEMWB_0_write_register": {
+        "ports": [
+          "reg_MEMWB_0/write_register",
+          "Instruction_Decode_0/write_register"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,289 @@
+
+*** Running vivado
+    with args -log RV32I_WSC_Instruction_Fetch_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source RV32I_WSC_Instruction_Fetch_0_0.tcl
+
+
+
+****** Vivado v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Wed Jan 15 19:42:48 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source RV32I_WSC_Instruction_Fetch_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
+Command: synth_design -top RV32I_WSC_Instruction_Fetch_0_0 -part xc7z007sclg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 7060
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 988.656 ; gain = 450.012
+---------------------------------------------------------------------------------
+INFO: [Synth 8-11241] undeclared symbol 'mem_address', assumed default net type 'wire' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/Instruction_Memory.v:30]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_WSC_Instruction_Fetch_0_0' [c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Instruction_Fetch_0_0/synth/RV32I_WSC_Instruction_Fetch_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'Instruction_Fetch' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/Instruction_Fetch.v:23]
+INFO: [Synth 8-6157] synthesizing module 'Instruction_Memory' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/Instruction_Memory.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Instruction_Memory' (0#1) [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/Instruction_Memory.v:23]
+WARNING: [Synth 8-6090] variable 'program_counter' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/Instruction_Fetch.v:45]
+INFO: [Synth 8-6155] done synthesizing module 'Instruction_Fetch' (0#1) [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/Instruction_Fetch.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_WSC_Instruction_Fetch_0_0' (0#1) [c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Instruction_Fetch_0_0/synth/RV32I_WSC_Instruction_Fetch_0_0.v:53]
+WARNING: [Synth 8-7129] Port instruction[31] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[30] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[29] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[28] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[27] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[26] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[25] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[24] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[23] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[22] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[21] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[20] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[19] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[18] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[17] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[16] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[15] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[14] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[13] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[12] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[11] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[10] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[9] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[8] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[7] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[6] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[5] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[4] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[3] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[2] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[1] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[0] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[31] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[30] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[29] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[28] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[27] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[26] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[25] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[24] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[23] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[22] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[21] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[20] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[19] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[18] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[17] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[16] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[15] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[14] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[13] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[12] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[11] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[10] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[9] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[8] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[7] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[6] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[5] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[4] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[3] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[2] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[1] in module Instruction_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[0] in module Instruction_Memory is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1097.602 ; gain = 558.957
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 1097.602 ; gain = 558.957
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z007sclg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 1097.602 ; gain = 558.957
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z007sclg400-1
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 1097.602 ; gain = 558.957
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+INFO: [Device 21-9227] Part: xc7z007sclg400-1 does not have CEAM library.
+Part Resources:
+DSPs: 66 (col length:40)
+BRAMs: 100 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port instruction[31] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[30] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[29] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[28] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[27] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[26] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[25] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[24] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[23] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[22] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[21] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[20] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[19] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[18] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[17] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[16] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[15] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[14] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[13] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[12] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[11] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[10] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[9] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[8] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[7] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[6] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[5] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[4] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[3] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[2] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[1] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instruction[0] in module RV32I_WSC_Instruction_Fetch_0_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |     8|
+|2     |LUT3   |    33|
+|3     |FDRE   |    32|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------+------------------+------+
+|      |Instance |Module            |Cells |
++------+---------+------------------+------+
+|1     |top      |                  |    73|
+|2     |  inst   |Instruction_Fetch |    73|
++------+---------+------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1271.949 ; gain = 733.305
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 98 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1271.949 ; gain = 733.305
+Synthesis Optimization Complete : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1271.949 ; gain = 733.305
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1280.922 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1379.156 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: ca2bb3ac
+INFO: [Common 17-83] Releasing license: Synthesis
+24 Infos, 98 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 1379.156 ; gain = 844.520
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1660.207 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/FPGA_project/RV32I_WSC/RV32I_WSC.runs/RV32I_WSC_Instruction_Fetch_0_0_synth_1/RV32I_WSC_Instruction_Fetch_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file RV32I_WSC_Instruction_Fetch_0_0_utilization_synth.rpt -pb RV32I_WSC_Instruction_Fetch_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Jan 15 19:43:10 2025...
