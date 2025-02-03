@@ -32,7 +32,7 @@
 
 ## Overall Schematic 
 ### V2.10
-<img src="WSC_overall_schematic.png">
+<img src="WSC_schematic.png">
 
 ## Verification Method
 ### 개별 명령어 입력
