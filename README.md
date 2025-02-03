@@ -31,7 +31,7 @@
 |  |  |  |  |  |  |  |  |  |  |  |
 
 ## Overall Schematic 
-### V2.00
+### V2.10
 <img src="WSC_overall_schematic.png">
 
 ## Verification Method
