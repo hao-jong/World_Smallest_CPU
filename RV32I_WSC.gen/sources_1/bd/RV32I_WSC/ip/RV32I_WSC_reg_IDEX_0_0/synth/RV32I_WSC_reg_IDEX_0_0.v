@@ -66,7 +66,10 @@ module RV32I_WSC_reg_IDEX_0_0 (
   memread_in,
   memtoreg_in,
   regwrite_in,
+  IDEX_update_disable,
   program_counter_in,
+  read_register1_in,
+  read_register2_in,
   read_data1_in,
   read_data2_in,
   imm_gen_in,
@@ -82,6 +85,8 @@ module RV32I_WSC_reg_IDEX_0_0 (
   alusrc,
   aluop,
   program_counter,
+  read_register1,
+  read_register2,
   read_data1,
   read_data2,
   imm_gen,
@@ -98,13 +103,16 @@ input wire clk;
 input wire rst;
 input wire [1 : 0] pc_vs_rs1_con_in;
 input wire [1 : 0] alusrc_in;
-input wire [1 : 0] aluop_in;
+input wire [2 : 0] aluop_in;
 input wire branch_in;
 input wire memwrite_in;
 input wire memread_in;
 input wire memtoreg_in;
 input wire regwrite_in;
+input wire IDEX_update_disable;
 input wire [31 : 0] program_counter_in;
+input wire [4 : 0] read_register1_in;
+input wire [4 : 0] read_register2_in;
 input wire [31 : 0] read_data1_in;
 input wire [31 : 0] read_data2_in;
 input wire [31 : 0] imm_gen_in;
@@ -118,8 +126,10 @@ output wire memtoreg;
 output wire regwrite;
 output wire [1 : 0] pc_vs_rs1_con;
 output wire [1 : 0] alusrc;
-output wire [1 : 0] aluop;
+output wire [2 : 0] aluop;
 output wire [31 : 0] program_counter;
+output wire [4 : 0] read_register1;
+output wire [4 : 0] read_register2;
 output wire [31 : 0] read_data1;
 output wire [31 : 0] read_data2;
 output wire [31 : 0] imm_gen;
@@ -138,7 +148,10 @@ output wire [4 : 0] write_register;
     .memread_in(memread_in),
     .memtoreg_in(memtoreg_in),
     .regwrite_in(regwrite_in),
+    .IDEX_update_disable(IDEX_update_disable),
     .program_counter_in(program_counter_in),
+    .read_register1_in(read_register1_in),
+    .read_register2_in(read_register2_in),
     .read_data1_in(read_data1_in),
     .read_data2_in(read_data2_in),
     .imm_gen_in(imm_gen_in),
@@ -154,6 +167,8 @@ output wire [4 : 0] write_register;
     .alusrc(alusrc),
     .aluop(aluop),
     .program_counter(program_counter),
+    .read_register1(read_register1),
+    .read_register2(read_register2),
     .read_data1(read_data1),
     .read_data2(read_data2),
     .imm_gen(imm_gen),

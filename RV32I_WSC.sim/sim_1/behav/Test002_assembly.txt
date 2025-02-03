@@ -1,0 +1,21 @@
+.global _boot
+.text
+
+_boot:
+    addi x1, x0, 516
+    addi x2, x0, 1997
+
+    la x3, variable   
+    sw x1, 0(x3)      
+
+    la x4, variable2 
+    sw x2, 0(x4)      
+
+    lw x5, 0(x3)
+    lw x6, 0(x4)
+
+.data
+variable:
+	.word 0x00000200
+variable2:
+	.word 0x00000204

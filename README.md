@@ -1,3 +1,4 @@
+
 # RISC-V CPU Project (A.K.A WSC)
 
 ## Goal
@@ -13,8 +14,8 @@
  IF,ID,EXE,MEM,WB
 
 ### Pipeline harzard handling
-- Data Hazard : Forwarding & stalling (Not yet updated)
-- Control Hazard : Branch not taken (Not yet updated)
+- Data Hazard : Forwarding & stalling
+- Control Hazard : Branch not taken
 
 
 ### 지원 명령어
@@ -36,9 +37,11 @@
 ## Verification Method
 ### 개별 명령어 입력
 - ADD,SUB, .... 명령어를 intruction  memory에 넣은 후 VIvado Simulation을 통해 확인
-- Pipeline register 값 확인
+	 test001.txt : add sub 등 
+	 test002.txt : save load 등 
 ### 정렬 알고리즘 수행
 - bubble sort , merge sort를 수행하고 결과 확인
+	(On progress)
 ## Current Version
 ### V 1.00 (2024-11-14)
 	- 프로젝트 생성 
@@ -48,6 +51,14 @@
 	- IF/ID/EXE/MEM/WB 모듈 설계 완료
 	- 컨트롤러 설계완료
 	- 검증 x 
+### V 2.10 (2025-2-03)
+	- hazard 처리 모듈 설계
+	- arithmatic 명령어 verified & load save 명령어 verified 
+	- conditional & unconditional jump 검증 예정
 ## Reference
 
 > Sarah Harris, David Harris - Digital Design and Computer Architecture,  RISC-V Edition_ RISC-V Edition (2021, Morgan Kaufmann)
+
+> RISC-V online assembler  (https://riscvasm.lucasteske.dev/#)
+
+

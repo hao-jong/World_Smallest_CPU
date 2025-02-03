@@ -60,6 +60,7 @@ module RV32I_WSC_Instruction_Fetch_0_0 (
   rst,
   addr_cal,
   pcsrc,
+  pc_update_disable,
   program_counter,
   instruction
 );
@@ -72,6 +73,7 @@ input wire clk;
 input wire rst;
 input wire [31 : 0] addr_cal;
 input wire pcsrc;
+input wire pc_update_disable;
 output wire [31 : 0] program_counter;
 output wire [31 : 0] instruction;
 
@@ -80,6 +82,7 @@ output wire [31 : 0] instruction;
     .rst(rst),
     .addr_cal(addr_cal),
     .pcsrc(pcsrc),
+    .pc_update_disable(pc_update_disable),
     .program_counter(program_counter),
     .instruction(instruction)
   );

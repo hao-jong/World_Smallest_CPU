@@ -30,13 +30,14 @@ input memread,
 output reg [31:0] read_mem_data
     );
 reg [31:0] data_memory [1023:0];
+wire [9:0] data_memory_address;
 assign data_memory_address = address[9:0];
 always@(*)
     begin
         if (memread == 1)
             read_mem_data <= data_memory[data_memory_address];  
     end    
-always@(negedge clk)
+always@(posedge clk)
     begin          
         if(memwrite == 1)
             data_memory[data_memory_address] <= write_data;

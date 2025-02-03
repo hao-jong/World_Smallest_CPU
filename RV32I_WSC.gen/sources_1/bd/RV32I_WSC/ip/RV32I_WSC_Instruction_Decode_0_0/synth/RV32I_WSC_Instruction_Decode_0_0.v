@@ -69,6 +69,8 @@ module RV32I_WSC_Instruction_Decode_0_0 (
   memread,
   memtoreg,
   regwrite_out,
+  read_register1,
+  read_register2,
   read_data1,
   read_data2,
   imm_gen,
@@ -86,12 +88,14 @@ input wire [31 : 0] write_data_in;
 input wire regwrite;
 output wire [1 : 0] pc_vs_rs1_con;
 output wire [1 : 0] alusrc;
-output wire [1 : 0] aluop;
+output wire [2 : 0] aluop;
 output wire branch;
 output wire memwrite;
 output wire memread;
 output wire memtoreg;
 output wire regwrite_out;
+output wire [4 : 0] read_register1;
+output wire [4 : 0] read_register2;
 output wire [31 : 0] read_data1;
 output wire [31 : 0] read_data2;
 output wire [31 : 0] imm_gen;
@@ -113,6 +117,8 @@ output wire [4 : 0] write_register_out;
     .memread(memread),
     .memtoreg(memtoreg),
     .regwrite_out(regwrite_out),
+    .read_register1(read_register1),
+    .read_register2(read_register2),
     .read_data1(read_data1),
     .read_data2(read_data2),
     .imm_gen(imm_gen),

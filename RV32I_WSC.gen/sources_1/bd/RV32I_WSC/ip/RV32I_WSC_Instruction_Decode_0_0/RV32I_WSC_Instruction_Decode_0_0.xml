@@ -106,7 +106,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f02d8110</spirit:value>
+            <spirit:value>9:226a6817</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -118,7 +118,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:335be6d5</spirit:value>
+            <spirit:value>9:5f9b9665</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -132,11 +132,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jan 15 10:43:35 UTC 2025</spirit:value>
+            <spirit:value>Mon Feb 03 06:26:45 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:335be6d5</spirit:value>
+            <spirit:value>9:5f9b9665</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -147,7 +147,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:335be6d5</spirit:value>
+            <spirit:value>9:5f9b9665</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -163,11 +163,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jan 15 10:41:42 UTC 2025</spirit:value>
+            <spirit:value>Mon Feb 03 06:26:17 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f02d8110</spirit:value>
+            <spirit:value>9:226a6817</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -183,11 +183,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jan 15 10:41:42 UTC 2025</spirit:value>
+            <spirit:value>Mon Feb 03 06:26:17 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:335be6d5</spirit:value>
+            <spirit:value>9:5f9b9665</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -309,7 +309,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">1</spirit:left>
+            <spirit:left spirit:format="long">2</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -380,6 +380,40 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>read_register1</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">4</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>read_register2</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">4</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>

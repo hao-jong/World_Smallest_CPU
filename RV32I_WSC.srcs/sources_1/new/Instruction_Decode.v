@@ -31,13 +31,15 @@ input regwrite,
 
 output [1:0] pc_vs_rs1_con,
 output [1:0] alusrc,
-output [1:0] aluop,
+output [2:0] aluop,
 output branch,
 output memwrite,
 output memread,
 output memtoreg,
 output regwrite_out,
 
+output [4:0] read_register1,
+output [4:0] read_register2,
 output [31:0] read_data1,
 output [31:0] read_data2,
 
@@ -54,7 +56,8 @@ wire [3:0] IDEX_alu_control_in  = {instruction[30],instruction[14:12]};
 assign funct3 = instruction[14:12];
 assign instruction30 = instruction[30];
 assign write_register_out = instruction[11:7];
-
+assign read_register1 = instruction[19:15];
+assign read_register2 = instruction[24:20];
 
 Register_File Register_File_0 (.clk(clk),.read_register1(instruction[19:15]),.read_register2(instruction[24:20]),.write_register(write_register),.write_data(write_data_in),.read_data1(read_data1),.read_data2(read_data2),.regwrite(regwrite));
 Controller Controller_0(.opcode(instruction[6:0]),.alusrc(alusrc),.pc_vs_rs1_con(pc_vs_rs1_con),.aluop(aluop),.branch(branch),.memwrite(memwrite),.memread(memread),.memtoreg(memtoreg),.regwrite(regwrite_out));

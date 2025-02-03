@@ -19,7 +19,9 @@
       "reg_EXMEM_0": "",
       "Memory_0": "",
       "reg_MEMWB_0": "",
-      "Write_back_0": ""
+      "Write_back_0": "",
+      "Hazard_Processing_0": "",
+      "Fowarding_Unit_0": ""
     },
     "ports": {
       "clk": {
@@ -62,6 +64,9 @@
             "right": "0"
           },
           "pcsrc": {
+            "direction": "I"
+          },
+          "pc_update_disable": {
             "direction": "I"
           },
           "program_counter": {
@@ -122,7 +127,7 @@
           },
           "aluop": {
             "direction": "O",
-            "left": "1",
+            "left": "2",
             "right": "0"
           },
           "branch": {
@@ -139,6 +144,16 @@
           },
           "regwrite_out": {
             "direction": "O"
+          },
+          "read_register1": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "read_register2": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
           },
           "read_data1": {
             "direction": "O",
@@ -194,6 +209,9 @@
           },
           "rst": {
             "type": "rst",
+            "direction": "I"
+          },
+          "IFID_update_disable": {
             "direction": "I"
           },
           "program_counter_in": {
@@ -256,7 +274,7 @@
           },
           "aluop_in": {
             "direction": "I",
-            "left": "1",
+            "left": "2",
             "right": "0"
           },
           "branch_in": {
@@ -274,9 +292,22 @@
           "regwrite_in": {
             "direction": "I"
           },
+          "IDEX_update_disable": {
+            "direction": "I"
+          },
           "program_counter_in": {
             "direction": "I",
             "left": "31",
+            "right": "0"
+          },
+          "read_register1_in": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "read_register2_in": {
+            "direction": "I",
+            "left": "4",
             "right": "0"
           },
           "read_data1_in": {
@@ -334,12 +365,22 @@
           },
           "aluop": {
             "direction": "O",
-            "left": "1",
+            "left": "2",
             "right": "0"
           },
           "program_counter": {
             "direction": "O",
             "left": "31",
+            "right": "0"
+          },
+          "read_register1": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "read_register2": {
+            "direction": "O",
+            "left": "4",
             "right": "0"
           },
           "read_data1": {
@@ -396,6 +437,22 @@
           },
           "aluop": {
             "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "load_use_hzd1_ctrl": {
+            "direction": "I"
+          },
+          "load_use_hzd2_ctrl": {
+            "direction": "I"
+          },
+          "forwA_ctrl": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "forwB_ctrl": {
+            "direction": "I",
             "left": "1",
             "right": "0"
           },
@@ -426,6 +483,16 @@
           },
           "instruction30": {
             "direction": "I"
+          },
+          "ALU_backward": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "memtoreg_backward": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
           },
           "next_pc_cal": {
             "direction": "O",
@@ -695,6 +762,104 @@
             "right": "0"
           }
         }
+      },
+      "Hazard_Processing_0": {
+        "vlnv": "xilinx.com:module_ref:Hazard_Processing:1.0",
+        "ip_revision": "1",
+        "xci_name": "RV32I_WSC_Hazard_Processing_0_1",
+        "xci_path": "ip\\RV32I_WSC_Hazard_Processing_0_1\\RV32I_WSC_Hazard_Processing_0_1.xci",
+        "inst_hier_path": "Hazard_Processing_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Hazard_Processing",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "pcsrc": {
+            "direction": "I"
+          },
+          "instruction": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "flush": {
+            "direction": "O"
+          },
+          "reg_update_disable": {
+            "direction": "O"
+          },
+          "load_use_hzd0": {
+            "direction": "O"
+          },
+          "load_use_hzd1": {
+            "direction": "O"
+          }
+        }
+      },
+      "Fowarding_Unit_0": {
+        "vlnv": "xilinx.com:module_ref:Fowarding_Unit:1.0",
+        "ip_revision": "1",
+        "xci_name": "RV32I_WSC_Fowarding_Unit_0_0",
+        "xci_path": "ip\\RV32I_WSC_Fowarding_Unit_0_0\\RV32I_WSC_Fowarding_Unit_0_0.xci",
+        "inst_hier_path": "Fowarding_Unit_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Fowarding_Unit",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "EXMEM_write_register": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "EXMEM_regwrite": {
+            "direction": "I"
+          },
+          "MEMWB_write_register": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "MEMWB_regwrite": {
+            "direction": "I"
+          },
+          "IDEX_read_register1": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "IDEX_read_register2": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "forw1_vs_ldhzd": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "forw2_vs_ldhzd": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          }
+        }
       }
     },
     "nets": {
@@ -714,6 +879,45 @@
         "ports": [
           "Execution_0/next_pc_cal",
           "reg_EXMEM_0/next_pc_cal_in"
+        ]
+      },
+      "Fowarding_Unit_0_forw1_vs_ldhzd": {
+        "ports": [
+          "Fowarding_Unit_0/forw1_vs_ldhzd",
+          "Execution_0/forwA_ctrl"
+        ]
+      },
+      "Fowarding_Unit_0_forw2_vs_ldhzd": {
+        "ports": [
+          "Fowarding_Unit_0/forw2_vs_ldhzd",
+          "Execution_0/forwB_ctrl"
+        ]
+      },
+      "Hazard_Processing_0_flush": {
+        "ports": [
+          "Hazard_Processing_0/flush",
+          "reg_IFID_0/rst",
+          "reg_IDEX_0/rst"
+        ]
+      },
+      "Hazard_Processing_0_load_use_hzd0": {
+        "ports": [
+          "Hazard_Processing_0/load_use_hzd0",
+          "Execution_0/load_use_hzd1_ctrl"
+        ]
+      },
+      "Hazard_Processing_0_load_use_hzd1": {
+        "ports": [
+          "Hazard_Processing_0/load_use_hzd1",
+          "Execution_0/load_use_hzd2_ctrl"
+        ]
+      },
+      "Hazard_Processing_0_reg_update_disable": {
+        "ports": [
+          "Hazard_Processing_0/reg_update_disable",
+          "reg_IFID_0/IFID_update_disable",
+          "Instruction_Fetch_0/pc_update_disable",
+          "reg_IDEX_0/IDEX_update_disable"
         ]
       },
       "Instruction_Decode_0_aluop": {
@@ -788,6 +992,18 @@
           "reg_IDEX_0/read_data2_in"
         ]
       },
+      "Instruction_Decode_0_read_register1": {
+        "ports": [
+          "Instruction_Decode_0/read_register1",
+          "reg_IDEX_0/read_register1_in"
+        ]
+      },
+      "Instruction_Decode_0_read_register2": {
+        "ports": [
+          "Instruction_Decode_0/read_register2",
+          "reg_IDEX_0/read_register2_in"
+        ]
+      },
       "Instruction_Decode_0_regwrite_out": {
         "ports": [
           "Instruction_Decode_0/regwrite_out",
@@ -815,6 +1031,7 @@
       "Memory_0_pcrsrc": {
         "ports": [
           "Memory_0/pcrsrc",
+          "Hazard_Processing_0/pcsrc",
           "Instruction_Fetch_0/pcsrc"
         ]
       },
@@ -827,28 +1044,20 @@
       "Net": {
         "ports": [
           "clk",
-          "Instruction_Fetch_0/clk",
-          "reg_IFID_0/clk",
-          "Instruction_Decode_0/clk",
-          "reg_IDEX_0/clk",
-          "reg_EXMEM_0/clk",
           "Memory_0/clk",
-          "reg_MEMWB_0/clk"
-        ]
-      },
-      "Net1": {
-        "ports": [
-          "rst",
-          "Instruction_Fetch_0/rst",
-          "reg_IFID_0/rst",
-          "reg_IDEX_0/rst",
-          "reg_EXMEM_0/rst",
-          "reg_MEMWB_0/rst"
+          "reg_EXMEM_0/clk",
+          "reg_MEMWB_0/clk",
+          "reg_IFID_0/clk",
+          "Hazard_Processing_0/clk",
+          "Instruction_Fetch_0/clk",
+          "Instruction_Decode_0/clk",
+          "reg_IDEX_0/clk"
         ]
       },
       "Write_back_0_write_data": {
         "ports": [
           "Write_back_0/write_data",
+          "Execution_0/memtoreg_backward",
           "Instruction_Decode_0/write_data_in"
         ]
       },
@@ -856,7 +1065,8 @@
         "ports": [
           "reg_EXMEM_0/alu_result",
           "Memory_0/alu_result",
-          "reg_MEMWB_0/alu_result_in"
+          "reg_MEMWB_0/alu_result_in",
+          "Execution_0/ALU_backward"
         ]
       },
       "reg_EXMEM_0_branch": {
@@ -904,13 +1114,15 @@
       "reg_EXMEM_0_regwrite": {
         "ports": [
           "reg_EXMEM_0/regwrite",
-          "reg_MEMWB_0/regwrite_in"
+          "reg_MEMWB_0/regwrite_in",
+          "Fowarding_Unit_0/EXMEM_regwrite"
         ]
       },
       "reg_EXMEM_0_write_register": {
         "ports": [
           "reg_EXMEM_0/write_register",
-          "reg_MEMWB_0/write_register_in"
+          "reg_MEMWB_0/write_register_in",
+          "Fowarding_Unit_0/EXMEM_write_register"
         ]
       },
       "reg_IDEX_0_aluop": {
@@ -988,8 +1200,20 @@
       "reg_IDEX_0_read_data2": {
         "ports": [
           "reg_IDEX_0/read_data2",
-          "Execution_0/read_data2",
-          "reg_EXMEM_0/read_data2_in"
+          "reg_EXMEM_0/read_data2_in",
+          "Execution_0/read_data2"
+        ]
+      },
+      "reg_IDEX_0_read_register1": {
+        "ports": [
+          "reg_IDEX_0/read_register1",
+          "Fowarding_Unit_0/IDEX_read_register1"
+        ]
+      },
+      "reg_IDEX_0_read_register2": {
+        "ports": [
+          "reg_IDEX_0/read_register2",
+          "Fowarding_Unit_0/IDEX_read_register2"
         ]
       },
       "reg_IDEX_0_regwrite": {
@@ -1007,6 +1231,7 @@
       "reg_IFID_0_instruction": {
         "ports": [
           "reg_IFID_0/instruction",
+          "Hazard_Processing_0/instruction",
           "Instruction_Decode_0/instruction"
         ]
       },
@@ -1037,13 +1262,24 @@
       "reg_MEMWB_0_regwrite": {
         "ports": [
           "reg_MEMWB_0/regwrite",
+          "Fowarding_Unit_0/MEMWB_regwrite",
           "Instruction_Decode_0/regwrite"
         ]
       },
       "reg_MEMWB_0_write_register": {
         "ports": [
           "reg_MEMWB_0/write_register",
+          "Fowarding_Unit_0/MEMWB_write_register",
           "Instruction_Decode_0/write_register"
+        ]
+      },
+      "rst_1": {
+        "ports": [
+          "rst",
+          "reg_EXMEM_0/rst",
+          "reg_MEMWB_0/rst",
+          "Instruction_Fetch_0/rst",
+          "Hazard_Processing_0/rst"
         ]
       }
     }

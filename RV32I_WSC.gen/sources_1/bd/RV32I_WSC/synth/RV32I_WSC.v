@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-//Date        : Wed Jan 15 19:41:42 2025
+//Date        : Mon Feb  3 15:26:17 2025
 //Host        : COMSYS01 running 64-bit major release  (build 9200)
 //Command     : generate_target RV32I_WSC.bd
 //Design      : RV32I_WSC
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "RV32I_WSC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RV32I_WSC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=9,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=9,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "RV32I_WSC.hwdef" *) 
+(* CORE_GENERATION_INFO = "RV32I_WSC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RV32I_WSC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=11,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "RV32I_WSC.hwdef" *) 
 module RV32I_WSC
    (clk,
     rst);
@@ -20,7 +20,13 @@ module RV32I_WSC
   wire [31:0]Execution_0_alu_result;
   wire Execution_0_branch_ctrl;
   wire [31:0]Execution_0_next_pc_cal;
-  wire [1:0]Instruction_Decode_0_aluop;
+  wire [1:0]Fowarding_Unit_0_forw1_vs_ldhzd;
+  wire [1:0]Fowarding_Unit_0_forw2_vs_ldhzd;
+  wire Hazard_Processing_0_flush;
+  wire Hazard_Processing_0_load_use_hzd0;
+  wire Hazard_Processing_0_load_use_hzd1;
+  wire Hazard_Processing_0_reg_update_disable;
+  wire [2:0]Instruction_Decode_0_aluop;
   wire [1:0]Instruction_Decode_0_alusrc;
   wire Instruction_Decode_0_branch;
   wire [2:0]Instruction_Decode_0_funct3;
@@ -32,6 +38,8 @@ module RV32I_WSC
   wire [1:0]Instruction_Decode_0_pc_vs_rs1_con;
   wire [31:0]Instruction_Decode_0_read_data1;
   wire [31:0]Instruction_Decode_0_read_data2;
+  wire [4:0]Instruction_Decode_0_read_register1;
+  wire [4:0]Instruction_Decode_0_read_register2;
   wire Instruction_Decode_0_regwrite_out;
   wire [4:0]Instruction_Decode_0_write_register_out;
   wire [31:0]Instruction_Fetch_0_instruction;
@@ -39,7 +47,6 @@ module RV32I_WSC
   wire Memory_0_pcrsrc;
   wire [31:0]Memory_0_read_mem_data;
   wire Net;
-  wire Net1;
   wire [31:0]Write_back_0_write_data;
   wire [31:0]reg_EXMEM_0_alu_result;
   wire reg_EXMEM_0_branch;
@@ -51,7 +58,7 @@ module RV32I_WSC
   wire [31:0]reg_EXMEM_0_read_data2;
   wire reg_EXMEM_0_regwrite;
   wire [4:0]reg_EXMEM_0_write_register;
-  wire [1:0]reg_IDEX_0_aluop;
+  wire [2:0]reg_IDEX_0_aluop;
   wire [1:0]reg_IDEX_0_alusrc;
   wire reg_IDEX_0_branch;
   wire [2:0]reg_IDEX_0_funct3;
@@ -64,6 +71,8 @@ module RV32I_WSC
   wire [31:0]reg_IDEX_0_program_counter;
   wire [31:0]reg_IDEX_0_read_data1;
   wire [31:0]reg_IDEX_0_read_data2;
+  wire [4:0]reg_IDEX_0_read_register1;
+  wire [4:0]reg_IDEX_0_read_register2;
   wire reg_IDEX_0_regwrite;
   wire [4:0]reg_IDEX_0_write_register;
   wire [31:0]reg_IFID_0_instruction;
@@ -73,22 +82,47 @@ module RV32I_WSC
   wire [31:0]reg_MEMWB_0_read_mem_data;
   wire reg_MEMWB_0_regwrite;
   wire [4:0]reg_MEMWB_0_write_register;
+  wire rst_1;
 
   assign Net = clk;
-  assign Net1 = rst;
+  assign rst_1 = rst;
   RV32I_WSC_Execution_0_0 Execution_0
-       (.alu_result(Execution_0_alu_result),
+       (.ALU_backward(reg_EXMEM_0_alu_result),
+        .alu_result(Execution_0_alu_result),
         .aluop(reg_IDEX_0_aluop),
         .alusrc(reg_IDEX_0_alusrc),
         .branch_ctrl(Execution_0_branch_ctrl),
+        .forwA_ctrl(Fowarding_Unit_0_forw1_vs_ldhzd),
+        .forwB_ctrl(Fowarding_Unit_0_forw2_vs_ldhzd),
         .funct3(reg_IDEX_0_funct3),
         .imm_gen(reg_IDEX_0_imm_gen),
         .instruction30(reg_IDEX_0_instruction30),
+        .load_use_hzd1_ctrl(Hazard_Processing_0_load_use_hzd0),
+        .load_use_hzd2_ctrl(Hazard_Processing_0_load_use_hzd1),
+        .memtoreg_backward(Write_back_0_write_data),
         .next_pc_cal(Execution_0_next_pc_cal),
         .pc_vs_rs1_con(reg_IDEX_0_pc_vs_rs1_con),
         .program_counter(reg_IDEX_0_program_counter),
         .read_data1(reg_IDEX_0_read_data1),
         .read_data2(reg_IDEX_0_read_data2));
+  RV32I_WSC_Fowarding_Unit_0_0 Fowarding_Unit_0
+       (.EXMEM_regwrite(reg_EXMEM_0_regwrite),
+        .EXMEM_write_register(reg_EXMEM_0_write_register),
+        .IDEX_read_register1(reg_IDEX_0_read_register1),
+        .IDEX_read_register2(reg_IDEX_0_read_register2),
+        .MEMWB_regwrite(reg_MEMWB_0_regwrite),
+        .MEMWB_write_register(reg_MEMWB_0_write_register),
+        .forw1_vs_ldhzd(Fowarding_Unit_0_forw1_vs_ldhzd),
+        .forw2_vs_ldhzd(Fowarding_Unit_0_forw2_vs_ldhzd));
+  RV32I_WSC_Hazard_Processing_0_1 Hazard_Processing_0
+       (.clk(Net),
+        .flush(Hazard_Processing_0_flush),
+        .instruction(reg_IFID_0_instruction),
+        .load_use_hzd0(Hazard_Processing_0_load_use_hzd0),
+        .load_use_hzd1(Hazard_Processing_0_load_use_hzd1),
+        .pcsrc(Memory_0_pcrsrc),
+        .reg_update_disable(Hazard_Processing_0_reg_update_disable),
+        .rst(rst_1));
   RV32I_WSC_Instruction_Decode_0_0 Instruction_Decode_0
        (.aluop(Instruction_Decode_0_aluop),
         .alusrc(Instruction_Decode_0_alusrc),
@@ -104,6 +138,8 @@ module RV32I_WSC
         .pc_vs_rs1_con(Instruction_Decode_0_pc_vs_rs1_con),
         .read_data1(Instruction_Decode_0_read_data1),
         .read_data2(Instruction_Decode_0_read_data2),
+        .read_register1(Instruction_Decode_0_read_register1),
+        .read_register2(Instruction_Decode_0_read_register2),
         .regwrite(reg_MEMWB_0_regwrite),
         .regwrite_out(Instruction_Decode_0_regwrite_out),
         .write_data_in(Write_back_0_write_data),
@@ -113,9 +149,10 @@ module RV32I_WSC
        (.addr_cal(reg_EXMEM_0_next_pc_cal),
         .clk(Net),
         .instruction(Instruction_Fetch_0_instruction),
+        .pc_update_disable(Hazard_Processing_0_reg_update_disable),
         .pcsrc(Memory_0_pcrsrc),
         .program_counter(Instruction_Fetch_0_program_counter),
-        .rst(Net1));
+        .rst(rst_1));
   RV32I_WSC_Memory_0_0 Memory_0
        (.alu_result(reg_EXMEM_0_alu_result),
         .branch(reg_EXMEM_0_branch),
@@ -151,11 +188,12 @@ module RV32I_WSC
         .read_data2_in(reg_IDEX_0_read_data2),
         .regwrite(reg_EXMEM_0_regwrite),
         .regwrite_in(reg_IDEX_0_regwrite),
-        .rst(Net1),
+        .rst(rst_1),
         .write_register(reg_EXMEM_0_write_register),
         .write_register_in(reg_IDEX_0_write_register));
   RV32I_WSC_reg_IDEX_0_0 reg_IDEX_0
-       (.aluop(reg_IDEX_0_aluop),
+       (.IDEX_update_disable(Hazard_Processing_0_reg_update_disable),
+        .aluop(reg_IDEX_0_aluop),
         .aluop_in(Instruction_Decode_0_aluop),
         .alusrc(reg_IDEX_0_alusrc),
         .alusrc_in(Instruction_Decode_0_alusrc),
@@ -182,18 +220,23 @@ module RV32I_WSC
         .read_data1_in(Instruction_Decode_0_read_data1),
         .read_data2(reg_IDEX_0_read_data2),
         .read_data2_in(Instruction_Decode_0_read_data2),
+        .read_register1(reg_IDEX_0_read_register1),
+        .read_register1_in(Instruction_Decode_0_read_register1),
+        .read_register2(reg_IDEX_0_read_register2),
+        .read_register2_in(Instruction_Decode_0_read_register2),
         .regwrite(reg_IDEX_0_regwrite),
         .regwrite_in(Instruction_Decode_0_regwrite_out),
-        .rst(Net1),
+        .rst(Hazard_Processing_0_flush),
         .write_register(reg_IDEX_0_write_register),
         .write_register_in(Instruction_Decode_0_write_register_out));
   RV32I_WSC_reg_IFID_0_0 reg_IFID_0
-       (.clk(Net),
+       (.IFID_update_disable(Hazard_Processing_0_reg_update_disable),
+        .clk(Net),
         .instruction(reg_IFID_0_instruction),
         .instruction_in(Instruction_Fetch_0_instruction),
         .program_counter(reg_IFID_0_program_counter),
         .program_counter_in(Instruction_Fetch_0_program_counter),
-        .rst(Net1));
+        .rst(Hazard_Processing_0_flush));
   RV32I_WSC_reg_MEMWB_0_1 reg_MEMWB_0
        (.alu_result(reg_MEMWB_0_alu_result),
         .alu_result_in(reg_EXMEM_0_alu_result),
@@ -204,7 +247,7 @@ module RV32I_WSC
         .read_mem_data_in(Memory_0_read_mem_data),
         .regwrite(reg_MEMWB_0_regwrite),
         .regwrite_in(reg_EXMEM_0_regwrite),
-        .rst(Net1),
+        .rst(rst_1),
         .write_register(reg_MEMWB_0_write_register),
         .write_register_in(reg_EXMEM_0_write_register));
 endmodule

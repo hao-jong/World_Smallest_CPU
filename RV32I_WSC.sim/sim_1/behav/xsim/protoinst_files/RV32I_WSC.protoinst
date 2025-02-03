@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"RV32I_WSC": {
+			"proto_instances": {
+			}
+		}
+	}
+}

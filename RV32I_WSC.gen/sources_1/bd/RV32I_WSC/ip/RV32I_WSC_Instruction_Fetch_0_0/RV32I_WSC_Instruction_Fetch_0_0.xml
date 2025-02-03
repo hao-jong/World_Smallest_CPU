@@ -137,7 +137,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1b7211bc</spirit:value>
+            <spirit:value>9:7cb17590</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -149,7 +149,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:35cecc9a</spirit:value>
+            <spirit:value>9:47fad19b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -163,11 +163,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jan 15 10:43:10 UTC 2025</spirit:value>
+            <spirit:value>Mon Feb 03 06:10:19 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:35cecc9a</spirit:value>
+            <spirit:value>9:47fad19b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -178,7 +178,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:35cecc9a</spirit:value>
+            <spirit:value>9:47fad19b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -194,11 +194,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jan 15 10:41:42 UTC 2025</spirit:value>
+            <spirit:value>Mon Feb 03 05:24:07 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1b7211bc</spirit:value>
+            <spirit:value>9:7cb17590</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -214,11 +214,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jan 15 10:41:42 UTC 2025</spirit:value>
+            <spirit:value>Mon Feb 03 05:24:07 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:35cecc9a</spirit:value>
+            <spirit:value>9:47fad19b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -269,6 +269,19 @@
       </spirit:port>
       <spirit:port>
         <spirit:name>pcsrc</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>pc_update_disable</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>

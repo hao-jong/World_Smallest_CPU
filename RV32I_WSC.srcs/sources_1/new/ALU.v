@@ -23,7 +23,7 @@
 module ALU(
 input [31:0] alu_in_a,
 input [31:0] alu_in_b,
-input [3:0] alu_control,
+input [4:0] alu_control,
 output reg branch_ctrl,
 output reg [31:0] alu_result
     );
@@ -37,82 +37,135 @@ output reg [31:0] alu_result
 always @(*)
     begin
         case(alu_control)
-        4'b0000 : 
+        
+        //reg_arithmatic//
+        5'b00000 : 
             begin 
                 alu_result <=  s_alu_in_a + s_alu_in_b;//add
                 branch_ctrl <= 1'b1;
             end 
-        4'b0001 : 
+        5'b00001 : 
             begin
                 alu_result <=  s_alu_in_a - s_alu_in_b; //sub
                 branch_ctrl <= 1'b0;
             end
-        4'b0010 :
+        5'b00010 :
             begin 
                 alu_result <=  alu_in_a << alu_in_b; //sll
                 branch_ctrl <= 1'b0;
             end
-        4'b0011 : 
+        5'b00011 : 
             begin
-                alu_result <=  ((s_alu_in_a) < (s_alu_in_b)) ? 1'b1 : 1'b0; //slt
+                alu_result <=  ((s_alu_in_a) < (s_alu_in_b)) ? 32'b1 : 32'b0; //slt
                 branch_ctrl <= 1'b0;
             end
-        4'b0100 : 
+        5'b00100 : 
             begin
-                alu_result <=  (alu_in_a) < (alu_in_b) ? 1'b1 : 1'b0; //sltu
+                alu_result <=  (alu_in_a) < (alu_in_b) ? 32'b1 : 32'b0; //sltu
                 branch_ctrl <= 1'b0;
             end
-        4'b0101 : 
+        5'b00101 : 
             begin
                 alu_result <= alu_in_a ^ alu_in_b; //xor
                 branch_ctrl <= 1'b0;
             end
-        4'b0110 : 
+        5'b00110 : 
             begin
                 alu_result <=  alu_in_a >> alu_in_b; //srl
                 branch_ctrl <= 1'b0;
             end
-        4'b0111 : 
+        5'b00111 : 
             begin
                 alu_result <=  s_alu_in_a >>> alu_in_b; //sra
                 branch_ctrl <= 1'b0;
             end
-        4'b1000 : 
+        5'b01000 : 
             begin
                 alu_result <=  alu_in_a | alu_in_b; //or
                 branch_ctrl <= 1'b0;
             end
-        4'b1001 : 
+        5'b01001 : 
             begin
                 alu_result <=  alu_in_a & alu_in_b; //and
                 branch_ctrl <= 1'b0;
             end
-        4'b1010 : 
+       
+       //imm_arithmatic//
+        5'b10000 : 
+            begin 
+                alu_result <=  s_alu_in_a + s_alu_in_b;//addi
+                branch_ctrl <= 1'b1;
+            end 
+        5'b10001 : 
+            begin
+                alu_result <=  ((s_alu_in_a) < (s_alu_in_b)) ? 32'b1 : 32'b0; //slti
+                branch_ctrl <= 1'b0;
+            end
+        5'b10010 :
+            begin 
+                alu_result <=  (alu_in_a) < (alu_in_b) ? 32'b1 : 32'b0; //sltiu
+                branch_ctrl <= 1'b0;
+            end
+        5'b10011 : 
+            begin
+                alu_result <= alu_in_a ^ alu_in_b; //xori
+                branch_ctrl <= 1'b0;
+            end
+        5'b10100 : 
+            begin
+                alu_result <=  alu_in_a | alu_in_b; //ori
+                branch_ctrl <= 1'b0;
+            end
+        5'b10101 : 
+            begin
+                alu_result <=  alu_in_a & alu_in_b; //andi
+                branch_ctrl <= 1'b0;
+            end
+        5'b10110 : 
+            begin
+                alu_result <=  alu_in_a << alu_in_b; //slli
+                branch_ctrl <= 1'b0;
+            end
+        5'b10111 : 
+            begin
+                alu_result <=  alu_in_a >> alu_in_b; //srli
+                branch_ctrl <= 1'b0;
+            end
+        5'b01000 : 
+            begin
+                alu_result <=  s_alu_in_a >>> alu_in_b; //srai
+                branch_ctrl <= 1'b0;
+            end
+
+       
+       
+       
+        5'b01010 : 
             begin
                 alu_result <=  32'b0;
                 branch_ctrl <= ((alu_in_a) == (alu_in_b)) ? 1'b1 : 1'b0;  //beq
             end
-        4'b1011 : 
+        5'b01011 : 
             begin
                 alu_result <=  32'b0;
                 branch_ctrl <= ((alu_in_a) != (alu_in_b)) ? 1'b1 : 1'b0;  //bne
             end
-        4'b1100 : 
+        5'b01100 : 
             begin
                 alu_result <=  32'b0;
                 branch_ctrl <= ((s_alu_in_a) < (s_alu_in_b)) ? 1'b1 : 1'b0;   //blt
             end
-        4'b1101 : 
+        5'b01101 : 
             begin
                 alu_result <=  32'b0;
                 branch_ctrl <= ((s_alu_in_a) >= (s_alu_in_b)) ? 1'b1 : 1'b0;  //bge
             end
-        4'b1110 : 
+        5'b01110 : 
             begin
                 alu_result <=  32'b0;
                 branch_ctrl <= ((alu_in_a) < (alu_in_b)) ? 1'b1 : 1'b0;   //bltu
             end
-        4'b1111 : 
+        5'b01111 : 
             begin
                 alu_result <=  32'b0;
                 branch_ctrl <= ((alu_in_a) >= (alu_in_b)) ? 1'b1 : 1'b0;  //bgeu

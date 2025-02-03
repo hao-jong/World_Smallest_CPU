@@ -56,12 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "RV32I_WSC_reg_MEMWB_0_1_synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache C:/Users/user/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-18064-COMSYS01/incrSyn
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/mref
@@ -81,7 +76,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/MEMWB_reg.v
-read_ip -quiet c:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_reg_MEMWB_0_1/RV32I_WSC_reg_MEMWB_0_1.xci
+read_ip -quiet C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_reg_MEMWB_0_1/RV32I_WSC_reg_MEMWB_0_1.xci
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

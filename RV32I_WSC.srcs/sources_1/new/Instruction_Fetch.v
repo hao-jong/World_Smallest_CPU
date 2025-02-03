@@ -26,6 +26,7 @@ input rst,
 
 input [31:0] addr_cal,
 input pcsrc,
+input pc_update_disable,
 
 output reg [31:0] program_counter,
 output [31:0] instruction
@@ -42,7 +43,14 @@ always @ (posedge clk)
             begin
                 program_counter <= 32'b0;
             end
-        program_counter = pcsrc ? addr_cal : addplus4;
+       else if(!pc_update_disable)     
+            begin
+                program_counter <= pcsrc ? addr_cal : addplus4;
+            end
+       else //(pc_updata_disable)
+            begin
+                program_counter <= program_counter;
+            end
     end
 
 endmodule
