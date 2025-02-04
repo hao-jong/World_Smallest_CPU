@@ -57,6 +57,7 @@
 module RV32I_WSC_reg_IFID_0_0 (
   clk,
   rst,
+  flush,
   IFID_update_disable,
   program_counter_in,
   instruction_in,
@@ -70,6 +71,7 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
+input wire flush;
 input wire IFID_update_disable;
 input wire [31 : 0] program_counter_in;
 input wire [31 : 0] instruction_in;
@@ -79,6 +81,7 @@ output wire [31 : 0] instruction;
   reg_IFID inst (
     .clk(clk),
     .rst(rst),
+    .flush(flush),
     .IFID_update_disable(IFID_update_disable),
     .program_counter_in(program_counter_in),
     .instruction_in(instruction_in),

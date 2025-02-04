@@ -27,8 +27,9 @@ module alu_control (
   output reg [4:0] alu_control
 );
 
-  always @(*) begin
-    case ({aluop, funct3, instruction30})
+always @(*) 
+begin
+    casex ({aluop, funct3, instruction30})
      
       //reg_arithmatic//
       {3'b000, 3'b000, 1'b0}: alu_control = 5'b00000; // ADD // +
@@ -65,16 +66,16 @@ module alu_control (
       {3'b100, 3'b111, 1'bx}: alu_control = 5'b01111; //bgeu // unsigned (rs1>=rs2) ? 1 : 0
       
       //jalr//
-      {3'b110, 3'bxxx, 1'bx}: alu_control = 5'b10000; // jalr (addi)
+      {3'b110, 3'bxxx, 1'bx}: alu_control = 5'b11111; // jalr (add & branch_ctrl = 1 )
       
       //jal//
-      {3'b111, 3'b000, 1'bx}: alu_control = 5'b10000; // jal (addi)
+      {3'b111, 3'b000, 1'bx}: alu_control = 5'b11111; // jal (add & branch_ctrl = 1 )
       
      
       
-
+    
       default: alu_control = 5'b00000; // undefined
     endcase
-  end
+end
 
 endmodule

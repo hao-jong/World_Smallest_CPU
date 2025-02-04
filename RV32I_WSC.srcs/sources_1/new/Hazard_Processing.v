@@ -169,7 +169,7 @@ end
 
      
 //branch prediction (branch not taken)//
-always @ (posedge clk)
+always @ (*)
 begin
     if(pcsrc)
     begin

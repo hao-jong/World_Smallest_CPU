@@ -42,7 +42,7 @@ always @(*)
         5'b00000 : 
             begin 
                 alu_result <=  s_alu_in_a + s_alu_in_b;//add
-                branch_ctrl <= 1'b1;
+                branch_ctrl <= 1'b0;
             end 
         5'b00001 : 
             begin
@@ -94,7 +94,7 @@ always @(*)
         5'b10000 : 
             begin 
                 alu_result <=  s_alu_in_a + s_alu_in_b;//addi
-                branch_ctrl <= 1'b1;
+                branch_ctrl <= 1'b0;
             end 
         5'b10001 : 
             begin
@@ -136,10 +136,7 @@ always @(*)
                 alu_result <=  s_alu_in_a >>> alu_in_b; //srai
                 branch_ctrl <= 1'b0;
             end
-
-       
-       
-       
+        //branch ctrl//
         5'b01010 : 
             begin
                 alu_result <=  32'b0;
@@ -170,6 +167,13 @@ always @(*)
                 alu_result <=  32'b0;
                 branch_ctrl <= ((alu_in_a) >= (alu_in_b)) ? 1'b1 : 1'b0;  //bgeu
             end
+            
+        //jalr, jal//
+        5'b11111 : 
+            begin
+                alu_result <=  s_alu_in_a + s_alu_in_b; // jump
+                branch_ctrl <= 1; // unconditinal jump
+            end   
         
         default :
             begin

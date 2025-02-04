@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Mon Feb  3 15:10:19 2025
+// Date        : Tue Feb  4 18:41:02 2025
 // Host        : COMSYS01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Hazard_Processing_0_1/RV32I_WSC_Hazard_Processing_0_1_sim_netlist.v
@@ -35,7 +35,6 @@ module RV32I_WSC_Hazard_Processing_0_1
   output load_use_hzd1;
 
   wire clk;
-  wire flush;
   wire [31:0]instruction;
   wire load_use_hzd0;
   wire load_use_hzd1;
@@ -43,35 +42,30 @@ module RV32I_WSC_Hazard_Processing_0_1
   wire reg_update_disable;
   wire rst;
 
+  assign flush = pcsrc;
   RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing inst
        (.clk(clk),
-        .flush(flush),
         .instruction({instruction[24:15],instruction[11:0]}),
         .load_use_hzd0(load_use_hzd0),
         .load_use_hzd1(load_use_hzd1),
-        .pcsrc(pcsrc),
         .reg_update_disable(reg_update_disable),
         .rst(rst));
 endmodule
 
 (* ORIG_REF_NAME = "Hazard_Processing" *) 
 module RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing
-   (flush,
-    reg_update_disable,
+   (reg_update_disable,
     load_use_hzd1,
     load_use_hzd0,
     instruction,
     rst,
-    clk,
-    pcsrc);
-  output flush;
+    clk);
   output reg_update_disable;
   output load_use_hzd1;
   output load_use_hzd0;
   input [21:0]instruction;
   input rst;
   input clk;
-  input pcsrc;
 
   wire \FSM_sequential_state[0]_i_1_n_0 ;
   wire \FSM_sequential_state[0]_i_2_n_0 ;
@@ -88,7 +82,6 @@ module RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing
   wire \FSM_sequential_state[2]_i_8_n_0 ;
   wire \FSM_sequential_state[2]_i_9_n_0 ;
   wire clk;
-  wire flush;
   wire [21:0]instruction;
   wire [4:0]load_rd;
   wire \load_rd[4]_i_1_n_0 ;
@@ -96,7 +89,6 @@ module RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing
   wire \load_rd[4]_i_3_n_0 ;
   wire load_use_hzd0;
   wire load_use_hzd1;
-  wire pcsrc;
   wire reg_update_disable;
   wire rst;
   wire [2:0]state;
@@ -250,12 +242,6 @@ module RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing
         .CE(1'b1),
         .D(\FSM_sequential_state[2]_i_1_n_0 ),
         .Q(state[2]),
-        .R(1'b0));
-  FDRE flush_reg
-       (.C(clk),
-        .CE(1'b1),
-        .D(pcsrc),
-        .Q(flush),
         .R(1'b0));
   LUT4 #(
     .INIT(16'h0056)) 

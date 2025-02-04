@@ -58,6 +58,7 @@ module RV32I_WSC_Execution_0_0 (
   pc_vs_rs1_con,
   alusrc,
   aluop,
+  jalr_mux,
   load_use_hzd1_ctrl,
   load_use_hzd2_ctrl,
   forwA_ctrl,
@@ -78,6 +79,7 @@ module RV32I_WSC_Execution_0_0 (
 input wire [1 : 0] pc_vs_rs1_con;
 input wire [1 : 0] alusrc;
 input wire [2 : 0] aluop;
+input wire jalr_mux;
 input wire load_use_hzd1_ctrl;
 input wire load_use_hzd2_ctrl;
 input wire [1 : 0] forwA_ctrl;
@@ -98,6 +100,7 @@ output wire [31 : 0] alu_result;
     .pc_vs_rs1_con(pc_vs_rs1_con),
     .alusrc(alusrc),
     .aluop(aluop),
+    .jalr_mux(jalr_mux),
     .load_use_hzd1_ctrl(load_use_hzd1_ctrl),
     .load_use_hzd2_ctrl(load_use_hzd2_ctrl),
     .forwA_ctrl(forwA_ctrl),

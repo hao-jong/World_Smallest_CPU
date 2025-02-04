@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Feb  3 15:26:17 2025" VIVADOVERSION="2024.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Feb  4 20:39:13 2025" VIVADOVERSION="2024.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z007s" NAME="RV32I_WSC" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -9,19 +9,21 @@
         <CONNECTION INSTANCE="Memory_0" PORT="clk"/>
         <CONNECTION INSTANCE="reg_EXMEM_0" PORT="clk"/>
         <CONNECTION INSTANCE="reg_MEMWB_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Instruction_Fetch_0" PORT="clk"/>
         <CONNECTION INSTANCE="reg_IFID_0" PORT="clk"/>
         <CONNECTION INSTANCE="Hazard_Processing_0" PORT="clk"/>
-        <CONNECTION INSTANCE="Instruction_Fetch_0" PORT="clk"/>
         <CONNECTION INSTANCE="Instruction_Decode_0" PORT="clk"/>
         <CONNECTION INSTANCE="reg_IDEX_0" PORT="clk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="External_Ports_rst">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="reg_EXMEM_0" PORT="rst"/>
-        <CONNECTION INSTANCE="reg_MEMWB_0" PORT="rst"/>
         <CONNECTION INSTANCE="Instruction_Fetch_0" PORT="rst"/>
+        <CONNECTION INSTANCE="reg_MEMWB_0" PORT="rst"/>
+        <CONNECTION INSTANCE="reg_EXMEM_0" PORT="rst"/>
+        <CONNECTION INSTANCE="reg_IFID_0" PORT="rst"/>
         <CONNECTION INSTANCE="Hazard_Processing_0" PORT="rst"/>
+        <CONNECTION INSTANCE="reg_IDEX_0" PORT="rst"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -84,6 +86,11 @@
         <PORT DIR="I" NAME="instruction30" SIGIS="undef" SIGNAME="reg_IDEX_0_instruction30">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_IDEX_0" PORT="instruction30"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="jalr_mux" SIGIS="undef" SIGNAME="reg_IDEX_0_jalr_mux">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="reg_IDEX_0" PORT="jalr_mux"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="load_use_hzd1_ctrl" SIGIS="undef" SIGNAME="Hazard_Processing_0_load_use_hzd0">
@@ -193,8 +200,8 @@
         </PORT>
         <PORT DIR="O" NAME="flush" SIGIS="undef" SIGNAME="Hazard_Processing_0_flush">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="reg_IFID_0" PORT="rst"/>
-            <CONNECTION INSTANCE="reg_IDEX_0" PORT="rst"/>
+            <CONNECTION INSTANCE="reg_IFID_0" PORT="flush"/>
+            <CONNECTION INSTANCE="reg_IDEX_0" PORT="flush"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="instruction" RIGHT="0" SIGIS="undef" SIGNAME="reg_IFID_0_instruction">
@@ -219,8 +226,8 @@
         </PORT>
         <PORT DIR="O" NAME="reg_update_disable" SIGIS="undef" SIGNAME="Hazard_Processing_0_reg_update_disable">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="reg_IFID_0" PORT="IFID_update_disable"/>
             <CONNECTION INSTANCE="Instruction_Fetch_0" PORT="pc_update_disable"/>
+            <CONNECTION INSTANCE="reg_IFID_0" PORT="IFID_update_disable"/>
             <CONNECTION INSTANCE="reg_IDEX_0" PORT="IDEX_update_disable"/>
           </CONNECTIONS>
         </PORT>
@@ -277,6 +284,11 @@
         <PORT DIR="O" NAME="instruction30" SIGIS="undef" SIGNAME="Instruction_Decode_0_instruction30">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_IDEX_0" PORT="instruction30_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="jalr_mux" SIGIS="undef" SIGNAME="Instruction_Decode_0_jalr_mux">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="reg_IDEX_0" PORT="jalr_mux_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="memread" SIGIS="undef" SIGNAME="Instruction_Decode_0_memread">
@@ -431,8 +443,8 @@
         </PORT>
         <PORT DIR="O" NAME="pcrsrc" SIGIS="undef" SIGNAME="Memory_0_pcrsrc">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Hazard_Processing_0" PORT="pcsrc"/>
             <CONNECTION INSTANCE="Instruction_Fetch_0" PORT="pcsrc"/>
+            <CONNECTION INSTANCE="Hazard_Processing_0" PORT="pcsrc"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="read_data2" RIGHT="0" SIGIS="undef" SIGNAME="reg_EXMEM_0_read_data2">
@@ -472,8 +484,8 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="write_data" RIGHT="0" SIGIS="undef" SIGNAME="Write_back_0_write_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Execution_0" PORT="memtoreg_backward"/>
             <CONNECTION INSTANCE="Instruction_Decode_0" PORT="write_data_in"/>
+            <CONNECTION INSTANCE="Execution_0" PORT="memtoreg_backward"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -650,6 +662,11 @@
             <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="flush" SIGIS="undef" SIGNAME="Hazard_Processing_0_flush">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Hazard_Processing_0" PORT="flush"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="2" NAME="funct3" RIGHT="0" SIGIS="undef" SIGNAME="reg_IDEX_0_funct3">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Execution_0" PORT="funct3"/>
@@ -678,6 +695,16 @@
         <PORT DIR="I" NAME="instruction30_in" SIGIS="undef" SIGNAME="Instruction_Decode_0_instruction30">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Instruction_Decode_0" PORT="instruction30"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="jalr_mux" SIGIS="undef" SIGNAME="reg_IDEX_0_jalr_mux">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Execution_0" PORT="jalr_mux"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="jalr_mux_in" SIGIS="undef" SIGNAME="Instruction_Decode_0_jalr_mux">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Instruction_Decode_0" PORT="jalr_mux"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="memread" SIGIS="undef" SIGNAME="reg_IDEX_0_memread">
@@ -781,9 +808,9 @@
             <CONNECTION INSTANCE="Instruction_Decode_0" PORT="regwrite_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Hazard_Processing_0_flush">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Hazard_Processing_0" PORT="flush"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="4" NAME="write_register" RIGHT="0" SIGIS="undef" SIGNAME="reg_IDEX_0_write_register">
@@ -816,6 +843,11 @@
             <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="flush" SIGIS="undef" SIGNAME="Hazard_Processing_0_flush">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Hazard_Processing_0" PORT="flush"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="31" NAME="instruction" RIGHT="0" SIGIS="undef" SIGNAME="reg_IFID_0_instruction">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Hazard_Processing_0" PORT="instruction"/>
@@ -837,9 +869,9 @@
             <CONNECTION INSTANCE="Instruction_Fetch_0" PORT="program_counter"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Hazard_Processing_0_flush">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Hazard_Processing_0" PORT="flush"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Mon Feb  3 15:26:45 2025
+// Date        : Tue Feb  4 20:35:34 2025
 // Host        : COMSYS01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Instruction_Decode_0_0/RV32I_WSC_Instruction_Decode_0_0_sim_netlist.v
@@ -25,6 +25,7 @@ module RV32I_WSC_Instruction_Decode_0_0
     pc_vs_rs1_con,
     alusrc,
     aluop,
+    jalr_mux,
     branch,
     memwrite,
     memread,
@@ -46,6 +47,7 @@ module RV32I_WSC_Instruction_Decode_0_0
   output [1:0]pc_vs_rs1_con;
   output [1:0]alusrc;
   output [2:0]aluop;
+  output jalr_mux;
   output branch;
   output memwrite;
   output memread;
@@ -68,8 +70,9 @@ module RV32I_WSC_Instruction_Decode_0_0
   wire \imm_gen[30]_INST_0_i_1_n_0 ;
   wire \imm_gen[31]_INST_0_i_1_n_0 ;
   wire \imm_gen[31]_INST_0_i_2_n_0 ;
-  wire inst_n_6;
+  wire inst_n_7;
   wire [31:0]instruction;
+  wire jalr_mux;
   wire memtoreg;
   wire memwrite;
   wire [1:0]pc_vs_rs1_con;
@@ -308,7 +311,7 @@ module RV32I_WSC_Instruction_Decode_0_0
     .INIT(64'hFFFFFFFB3BFFFFFB)) 
     \imm_gen[30]_INST_0_i_1 
        (.I0(instruction[3]),
-        .I1(inst_n_6),
+        .I1(inst_n_7),
         .I2(instruction[2]),
         .I3(instruction[5]),
         .I4(instruction[6]),
@@ -324,7 +327,7 @@ module RV32I_WSC_Instruction_Decode_0_0
   LUT6 #(
     .INIT(64'h0202000288000002)) 
     \imm_gen[31]_INST_0_i_1 
-       (.I0(inst_n_6),
+       (.I0(inst_n_7),
         .I1(instruction[6]),
         .I2(instruction[3]),
         .I3(instruction[5]),
@@ -334,7 +337,7 @@ module RV32I_WSC_Instruction_Decode_0_0
   LUT6 #(
     .INIT(64'h2000002000000020)) 
     \imm_gen[31]_INST_0_i_2 
-       (.I0(inst_n_6),
+       (.I0(inst_n_7),
         .I1(instruction[4]),
         .I2(instruction[5]),
         .I3(instruction[3]),
@@ -403,7 +406,8 @@ module RV32I_WSC_Instruction_Decode_0_0
        (.aluop({branch,\^aluop }),
         .alusrc(alusrc),
         .instruction({instruction[24:15],instruction[6:0]}),
-        .instruction_1_sp_1(inst_n_6),
+        .instruction_1_sp_1(inst_n_7),
+        .jalr_mux(jalr_mux),
         .memtoreg(memtoreg),
         .memwrite(memwrite),
         .pc_vs_rs1_con(pc_vs_rs1_con),
@@ -418,7 +422,8 @@ endmodule
 
 (* ORIG_REF_NAME = "Controller" *) 
 module RV32I_WSC_Instruction_Decode_0_0_Controller
-   (memwrite,
+   (jalr_mux,
+    memwrite,
     memtoreg,
     regwrite_out,
     aluop,
@@ -426,6 +431,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
     alusrc,
     pc_vs_rs1_con,
     instruction);
+  output jalr_mux;
   output memwrite;
   output memtoreg;
   output regwrite_out;
@@ -446,6 +452,8 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
   wire \alusrc_reg[1]_i_1_n_0 ;
   wire [6:0]instruction;
   wire instruction_1_sn_1;
+  wire jalr_mux;
+  wire jalr_mux_reg_i_1_n_0;
   wire memread_reg_i_1_n_0;
   wire memread_reg_i_2_n_0;
   wire memtoreg;
@@ -526,6 +534,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .I4(instruction[3]),
         .I5(instruction[2]),
         .O(\aluop_reg[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \aluop_reg[2]_i_2 
@@ -576,29 +585,47 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
   LDCE #(
     .INIT(1'b0)) 
+    jalr_mux_reg
+       (.CLR(1'b0),
+        .D(jalr_mux_reg_i_1_n_0),
+        .G(\pc_vs_rs1_con_reg[1]_i_2_n_0 ),
+        .GE(1'b1),
+        .Q(jalr_mux));
+  LUT6 #(
+    .INIT(64'h1000000000000000)) 
+    jalr_mux_reg_i_1
+       (.I0(instruction[3]),
+        .I1(instruction[4]),
+        .I2(instruction[1]),
+        .I3(instruction[0]),
+        .I4(instruction[5]),
+        .I5(instruction[6]),
+        .O(jalr_mux_reg_i_1_n_0));
+  (* XILINX_LEGACY_PRIM = "LD" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
+  LDCE #(
+    .INIT(1'b0)) 
     memread_reg
        (.CLR(1'b0),
         .D(memread_reg_i_1_n_0),
         .G(\pc_vs_rs1_con_reg[1]_i_2_n_0 ),
         .GE(1'b1),
         .Q(memtoreg));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT4 #(
-    .INIT(16'h0010)) 
+  LUT6 #(
+    .INIT(64'h0000000000001000)) 
     memread_reg_i_1
        (.I0(instruction[5]),
         .I1(instruction[6]),
         .I2(instruction[0]),
-        .I3(memread_reg_i_2_n_0),
-        .O(memread_reg_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'hFEFF)) 
-    memread_reg_i_2
-       (.I0(instruction[3]),
-        .I1(instruction[4]),
-        .I2(instruction[2]),
         .I3(instruction[1]),
+        .I4(instruction[2]),
+        .I5(memread_reg_i_2_n_0),
+        .O(memread_reg_i_1_n_0));
+  LUT2 #(
+    .INIT(4'hE)) 
+    memread_reg_i_2
+       (.I0(instruction[4]),
+        .I1(instruction[3]),
         .O(memread_reg_i_2_n_0));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
@@ -631,14 +658,14 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(pc_vs_rs1_con[0]));
   LUT6 #(
-    .INIT(64'h0080080000000800)) 
+    .INIT(64'h0022200080002000)) 
     \pc_vs_rs1_con_reg[0]_i_1 
        (.I0(instruction_1_sn_1),
-        .I1(instruction[2]),
-        .I2(instruction[6]),
-        .I3(instruction[4]),
-        .I4(instruction[3]),
-        .I5(instruction[5]),
+        .I1(instruction[3]),
+        .I2(instruction[5]),
+        .I3(instruction[6]),
+        .I4(instruction[2]),
+        .I5(instruction[4]),
         .O(\pc_vs_rs1_con_reg[0]_i_1_n_0 ));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
@@ -670,7 +697,6 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .I4(instruction[3]),
         .I5(instruction[2]),
         .O(\pc_vs_rs1_con_reg[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \pc_vs_rs1_con_reg[1]_i_3 
@@ -701,7 +727,8 @@ endmodule
 
 (* ORIG_REF_NAME = "Instruction_Decode" *) 
 module RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode
-   (memwrite,
+   (jalr_mux,
+    memwrite,
     memtoreg,
     regwrite_out,
     aluop,
@@ -715,6 +742,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode
     instruction,
     write_register,
     regwrite);
+  output jalr_mux;
   output memwrite;
   output memtoreg;
   output regwrite_out;
@@ -734,6 +762,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode
   wire [1:0]alusrc;
   wire [16:0]instruction;
   wire instruction_1_sn_1;
+  wire jalr_mux;
   wire memtoreg;
   wire memwrite;
   wire [1:0]pc_vs_rs1_con;
@@ -752,6 +781,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode
         .alusrc(alusrc),
         .instruction(instruction[6:0]),
         .instruction_1_sp_1(instruction_1_sn_1),
+        .jalr_mux(jalr_mux),
         .memtoreg(memtoreg),
         .memwrite(memwrite),
         .pc_vs_rs1_con(pc_vs_rs1_con),

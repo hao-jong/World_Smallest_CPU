@@ -58,9 +58,11 @@
 module RV32I_WSC_reg_IDEX_0_0 (
   clk,
   rst,
+  flush,
   pc_vs_rs1_con_in,
   alusrc_in,
   aluop_in,
+  jalr_mux_in,
   branch_in,
   memwrite_in,
   memread_in,
@@ -84,6 +86,7 @@ module RV32I_WSC_reg_IDEX_0_0 (
   pc_vs_rs1_con,
   alusrc,
   aluop,
+  jalr_mux,
   program_counter,
   read_register1,
   read_register2,
@@ -101,9 +104,11 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
+input wire flush;
 input wire [1 : 0] pc_vs_rs1_con_in;
 input wire [1 : 0] alusrc_in;
 input wire [2 : 0] aluop_in;
+input wire jalr_mux_in;
 input wire branch_in;
 input wire memwrite_in;
 input wire memread_in;
@@ -127,6 +132,7 @@ output wire regwrite;
 output wire [1 : 0] pc_vs_rs1_con;
 output wire [1 : 0] alusrc;
 output wire [2 : 0] aluop;
+output wire jalr_mux;
 output wire [31 : 0] program_counter;
 output wire [4 : 0] read_register1;
 output wire [4 : 0] read_register2;
@@ -140,9 +146,11 @@ output wire [4 : 0] write_register;
   reg_IDEX inst (
     .clk(clk),
     .rst(rst),
+    .flush(flush),
     .pc_vs_rs1_con_in(pc_vs_rs1_con_in),
     .alusrc_in(alusrc_in),
     .aluop_in(aluop_in),
+    .jalr_mux_in(jalr_mux_in),
     .branch_in(branch_in),
     .memwrite_in(memwrite_in),
     .memread_in(memread_in),
@@ -166,6 +174,7 @@ output wire [4 : 0] write_register;
     .pc_vs_rs1_con(pc_vs_rs1_con),
     .alusrc(alusrc),
     .aluop(aluop),
+    .jalr_mux(jalr_mux),
     .program_counter(program_counter),
     .read_register1(read_register1),
     .read_register2(read_register2),

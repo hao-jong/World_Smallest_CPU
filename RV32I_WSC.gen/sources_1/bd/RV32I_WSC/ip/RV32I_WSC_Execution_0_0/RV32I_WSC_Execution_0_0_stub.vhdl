@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
--- Date        : Mon Feb  3 15:26:48 2025
+-- Date        : Tue Feb  4 20:39:41 2025
 -- Host        : COMSYS01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Execution_0_0/RV32I_WSC_Execution_0_0_stub.vhdl
@@ -18,6 +18,7 @@ entity RV32I_WSC_Execution_0_0 is
     pc_vs_rs1_con : in STD_LOGIC_VECTOR ( 1 downto 0 );
     alusrc : in STD_LOGIC_VECTOR ( 1 downto 0 );
     aluop : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    jalr_mux : in STD_LOGIC;
     load_use_hzd1_ctrl : in STD_LOGIC;
     load_use_hzd2_ctrl : in STD_LOGIC;
     forwA_ctrl : in STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -41,7 +42,7 @@ architecture stub of RV32I_WSC_Execution_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "pc_vs_rs1_con[1:0],alusrc[1:0],aluop[2:0],load_use_hzd1_ctrl,load_use_hzd2_ctrl,forwA_ctrl[1:0],forwB_ctrl[1:0],program_counter[31:0],read_data1[31:0],read_data2[31:0],imm_gen[31:0],funct3[2:0],instruction30,ALU_backward[31:0],memtoreg_backward[31:0],next_pc_cal[31:0],branch_ctrl,alu_result[31:0]";
+attribute black_box_pad_pin of stub : architecture is "pc_vs_rs1_con[1:0],alusrc[1:0],aluop[2:0],jalr_mux,load_use_hzd1_ctrl,load_use_hzd2_ctrl,forwA_ctrl[1:0],forwB_ctrl[1:0],program_counter[31:0],read_data1[31:0],read_data2[31:0],imm_gen[31:0],funct3[2:0],instruction30,ALU_backward[31:0],memtoreg_backward[31:0],next_pc_cal[31:0],branch_ctrl,alu_result[31:0]";
 attribute X_CORE_INFO : string;
 attribute X_CORE_INFO of stub : architecture is "Execution,Vivado 2024.1";
 begin

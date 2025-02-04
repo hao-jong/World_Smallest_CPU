@@ -64,6 +64,7 @@ module RV32I_WSC_Instruction_Decode_0_0 (
   pc_vs_rs1_con,
   alusrc,
   aluop,
+  jalr_mux,
   branch,
   memwrite,
   memread,
@@ -89,6 +90,7 @@ input wire regwrite;
 output wire [1 : 0] pc_vs_rs1_con;
 output wire [1 : 0] alusrc;
 output wire [2 : 0] aluop;
+output wire jalr_mux;
 output wire branch;
 output wire memwrite;
 output wire memread;
@@ -112,6 +114,7 @@ output wire [4 : 0] write_register_out;
     .pc_vs_rs1_con(pc_vs_rs1_con),
     .alusrc(alusrc),
     .aluop(aluop),
+    .jalr_mux(jalr_mux),
     .branch(branch),
     .memwrite(memwrite),
     .memread(memread),

@@ -130,6 +130,9 @@
             "left": "2",
             "right": "0"
           },
+          "jalr_mux": {
+            "direction": "O"
+          },
           "branch": {
             "direction": "O"
           },
@@ -211,6 +214,9 @@
             "type": "rst",
             "direction": "I"
           },
+          "flush": {
+            "direction": "I"
+          },
           "IFID_update_disable": {
             "direction": "I"
           },
@@ -262,6 +268,9 @@
             "type": "rst",
             "direction": "I"
           },
+          "flush": {
+            "direction": "I"
+          },
           "pc_vs_rs1_con_in": {
             "direction": "I",
             "left": "1",
@@ -276,6 +285,9 @@
             "direction": "I",
             "left": "2",
             "right": "0"
+          },
+          "jalr_mux_in": {
+            "direction": "I"
           },
           "branch_in": {
             "direction": "I"
@@ -368,6 +380,9 @@
             "left": "2",
             "right": "0"
           },
+          "jalr_mux": {
+            "direction": "O"
+          },
           "program_counter": {
             "direction": "O",
             "left": "31",
@@ -439,6 +454,9 @@
             "direction": "I",
             "left": "2",
             "right": "0"
+          },
+          "jalr_mux": {
+            "direction": "I"
           },
           "load_use_hzd1_ctrl": {
             "direction": "I"
@@ -896,8 +914,8 @@
       "Hazard_Processing_0_flush": {
         "ports": [
           "Hazard_Processing_0/flush",
-          "reg_IFID_0/rst",
-          "reg_IDEX_0/rst"
+          "reg_IFID_0/flush",
+          "reg_IDEX_0/flush"
         ]
       },
       "Hazard_Processing_0_load_use_hzd0": {
@@ -915,8 +933,8 @@
       "Hazard_Processing_0_reg_update_disable": {
         "ports": [
           "Hazard_Processing_0/reg_update_disable",
-          "reg_IFID_0/IFID_update_disable",
           "Instruction_Fetch_0/pc_update_disable",
+          "reg_IFID_0/IFID_update_disable",
           "reg_IDEX_0/IDEX_update_disable"
         ]
       },
@@ -954,6 +972,12 @@
         "ports": [
           "Instruction_Decode_0/instruction30",
           "reg_IDEX_0/instruction30_in"
+        ]
+      },
+      "Instruction_Decode_0_jalr_mux": {
+        "ports": [
+          "Instruction_Decode_0/jalr_mux",
+          "reg_IDEX_0/jalr_mux_in"
         ]
       },
       "Instruction_Decode_0_memread": {
@@ -1031,8 +1055,8 @@
       "Memory_0_pcrsrc": {
         "ports": [
           "Memory_0/pcrsrc",
-          "Hazard_Processing_0/pcsrc",
-          "Instruction_Fetch_0/pcsrc"
+          "Instruction_Fetch_0/pcsrc",
+          "Hazard_Processing_0/pcsrc"
         ]
       },
       "Memory_0_read_mem_data": {
@@ -1047,18 +1071,29 @@
           "Memory_0/clk",
           "reg_EXMEM_0/clk",
           "reg_MEMWB_0/clk",
+          "Instruction_Fetch_0/clk",
           "reg_IFID_0/clk",
           "Hazard_Processing_0/clk",
-          "Instruction_Fetch_0/clk",
           "Instruction_Decode_0/clk",
           "reg_IDEX_0/clk"
+        ]
+      },
+      "Net1": {
+        "ports": [
+          "rst",
+          "Instruction_Fetch_0/rst",
+          "reg_MEMWB_0/rst",
+          "reg_EXMEM_0/rst",
+          "reg_IFID_0/rst",
+          "Hazard_Processing_0/rst",
+          "reg_IDEX_0/rst"
         ]
       },
       "Write_back_0_write_data": {
         "ports": [
           "Write_back_0/write_data",
-          "Execution_0/memtoreg_backward",
-          "Instruction_Decode_0/write_data_in"
+          "Instruction_Decode_0/write_data_in",
+          "Execution_0/memtoreg_backward"
         ]
       },
       "reg_EXMEM_0_alu_result": {
@@ -1159,6 +1194,12 @@
         "ports": [
           "reg_IDEX_0/instruction30",
           "Execution_0/instruction30"
+        ]
+      },
+      "reg_IDEX_0_jalr_mux": {
+        "ports": [
+          "reg_IDEX_0/jalr_mux",
+          "Execution_0/jalr_mux"
         ]
       },
       "reg_IDEX_0_memread": {
@@ -1271,15 +1312,6 @@
           "reg_MEMWB_0/write_register",
           "Fowarding_Unit_0/MEMWB_write_register",
           "Instruction_Decode_0/write_register"
-        ]
-      },
-      "rst_1": {
-        "ports": [
-          "rst",
-          "reg_EXMEM_0/rst",
-          "reg_MEMWB_0/rst",
-          "Instruction_Fetch_0/rst",
-          "Hazard_Processing_0/rst"
         ]
       }
     }

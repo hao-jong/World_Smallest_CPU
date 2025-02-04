@@ -27,6 +27,7 @@ input [6:0] opcode,
 output reg [1:0] alusrc,
 output reg [1:0] pc_vs_rs1_con,
 output reg [2:0] aluop,
+output reg jalr_mux,
 //MEM_control//
 output reg branch,
 output reg memwrite,
@@ -58,6 +59,7 @@ localparam OP_J_TYPE        = 7'b1101111;
                 alusrc <= 2'b00;
                 pc_vs_rs1_con <= 2'b00;
                 aluop <= 3'b000;
+                jalr_mux <= 1'b0;
                 branch <= 1'b0;
                 memwrite <= 1'b1;
                 memread <= 1'b0;
@@ -67,8 +69,9 @@ localparam OP_J_TYPE        = 7'b1101111;
         OP_B_TYPE:
             begin
                 alusrc <= 2'b00;
-                pc_vs_rs1_con <= 2'b00;
+                pc_vs_rs1_con <= 2'b01;
                 aluop <= 3'b100;
+                jalr_mux <= 1'b1;
                 branch <= 1'b1;
                 memwrite <= 1'b0;
                 memread <= 1'b0;
@@ -80,6 +83,7 @@ localparam OP_J_TYPE        = 7'b1101111;
                 alusrc <= 2'b01;               
                 pc_vs_rs1_con <= 2'b00;
                 aluop <= 3'b010;
+                jalr_mux <= 1'b0;
                 branch <= 1'b0;
                 memwrite <= 1'b1;
                 memread <= 1'b0;
@@ -91,6 +95,7 @@ localparam OP_J_TYPE        = 7'b1101111;
                 alusrc <= 2'b11;
                 pc_vs_rs1_con <= 2'b00;
                 aluop <= 3'b110;
+                jalr_mux <= 1'b1;
                 branch <= 1'b1; //fix : brach_ctrl == 1 when add 
                 memwrite <= 1'b0;
                 memread <= 1'b0;
@@ -102,6 +107,7 @@ localparam OP_J_TYPE        = 7'b1101111;
                 alusrc <= 2'b01;
                 pc_vs_rs1_con <= 2'b00;
                 aluop <= 3'b010;
+                jalr_mux <= 1'b0;
                 branch <= 1'b0;
                 memwrite <= 1'b0;
                 memread <= 1'b1;
@@ -113,6 +119,7 @@ localparam OP_J_TYPE        = 7'b1101111;
                 alusrc <= 2'b01;
                 pc_vs_rs1_con <= 2'b00;
                 aluop <= 3'b001;
+                jalr_mux <= 1'b0;
                 branch <= 1'b0;
                 memwrite <= 1'b0;
                 memread <= 1'b0;
@@ -132,6 +139,7 @@ localparam OP_J_TYPE        = 7'b1101111;
                 alusrc <= 2'b01;
                 pc_vs_rs1_con <= 2'b11;
                 aluop <= 3'b010;
+                jalr_mux <= 1'b0;
                 branch <= 1'b0;
                 memwrite <= 1'b0;
                 memread <= 1'b0;
@@ -143,6 +151,7 @@ localparam OP_J_TYPE        = 7'b1101111;
                 alusrc <= 2'b01;
                 pc_vs_rs1_con <= 2'b11;
                 aluop <= 3'b010;
+                jalr_mux <= 1'b0;
                 branch <= 1'b0;
                 memwrite <= 1'b0;
                 memread <= 1'b0;
@@ -154,6 +163,7 @@ localparam OP_J_TYPE        = 7'b1101111;
                 alusrc <= 2'b11;
                 pc_vs_rs1_con <= 2'b01;
                 aluop <= 3'b111;
+                jalr_mux <= 1'b0;
                 branch <= 1'b1;
                 memwrite <= 1'b0;
                 memread <= 1'b0;
@@ -165,6 +175,7 @@ localparam OP_J_TYPE        = 7'b1101111;
                 alusrc <= 2'b00;
                 pc_vs_rs1_con <= 2'b00;
                 aluop <= 3'b000;
+                jalr_mux <= 1'b0;
                 branch <= 1'b0;
                 memwrite <= 1'b0;
                 memread <= 1'b0;

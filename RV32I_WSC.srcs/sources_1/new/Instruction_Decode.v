@@ -32,6 +32,7 @@ input regwrite,
 output [1:0] pc_vs_rs1_con,
 output [1:0] alusrc,
 output [2:0] aluop,
+output jalr_mux,
 output branch,
 output memwrite,
 output memread,
@@ -60,7 +61,7 @@ assign read_register1 = instruction[19:15];
 assign read_register2 = instruction[24:20];
 
 Register_File Register_File_0 (.clk(clk),.read_register1(instruction[19:15]),.read_register2(instruction[24:20]),.write_register(write_register),.write_data(write_data_in),.read_data1(read_data1),.read_data2(read_data2),.regwrite(regwrite));
-Controller Controller_0(.opcode(instruction[6:0]),.alusrc(alusrc),.pc_vs_rs1_con(pc_vs_rs1_con),.aluop(aluop),.branch(branch),.memwrite(memwrite),.memread(memread),.memtoreg(memtoreg),.regwrite(regwrite_out));
+Controller Controller_0(.opcode(instruction[6:0]),.alusrc(alusrc),.pc_vs_rs1_con(pc_vs_rs1_con),.aluop(aluop),.jalr_mux(jalr_mux),.branch(branch),.memwrite(memwrite),.memread(memread),.memtoreg(memtoreg),.regwrite(regwrite_out));
 Imm_Gen Imm_Gen_0 (.instruction(instruction),.imm_gen(imm_gen));    
     
 endmodule

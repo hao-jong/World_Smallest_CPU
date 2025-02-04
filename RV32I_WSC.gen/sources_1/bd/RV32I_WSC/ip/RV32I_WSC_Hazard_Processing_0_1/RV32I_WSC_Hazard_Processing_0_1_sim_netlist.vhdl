@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
--- Date        : Mon Feb  3 15:10:19 2025
+-- Date        : Tue Feb  4 18:41:02 2025
 -- Host        : COMSYS01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Hazard_Processing_0_1/RV32I_WSC_Hazard_Processing_0_1_sim_netlist.vhdl
@@ -17,14 +17,12 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing is
   port (
-    flush : out STD_LOGIC;
     reg_update_disable : out STD_LOGIC;
     load_use_hzd1 : out STD_LOGIC;
     load_use_hzd0 : out STD_LOGIC;
     instruction : in STD_LOGIC_VECTOR ( 21 downto 0 );
     rst : in STD_LOGIC;
-    clk : in STD_LOGIC;
-    pcsrc : in STD_LOGIC
+    clk : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing : entity is "Hazard_Processing";
@@ -254,14 +252,6 @@ begin
       Q => state(2),
       R => '0'
     );
-flush_reg: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => pcsrc,
-      Q => flush,
-      R => '0'
-    );
 \load_rd[4]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"0056"
@@ -397,6 +387,7 @@ entity RV32I_WSC_Hazard_Processing_0_1 is
 end RV32I_WSC_Hazard_Processing_0_1;
 
 architecture STRUCTURE of RV32I_WSC_Hazard_Processing_0_1 is
+  signal \^pcsrc\ : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -404,15 +395,15 @@ architecture STRUCTURE of RV32I_WSC_Hazard_Processing_0_1 is
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
+  \^pcsrc\ <= pcsrc;
+  flush <= \^pcsrc\;
 inst: entity work.RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing
      port map (
       clk => clk,
-      flush => flush,
       instruction(21 downto 12) => instruction(24 downto 15),
       instruction(11 downto 0) => instruction(11 downto 0),
       load_use_hzd0 => load_use_hzd0,
       load_use_hzd1 => load_use_hzd1,
-      pcsrc => pcsrc,
       reg_update_disable => reg_update_disable,
       rst => rst
     );

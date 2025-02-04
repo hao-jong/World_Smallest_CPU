@@ -1,0 +1,23 @@
+.global _boot
+.text
+
+main:
+    li a0, 5            
+    li a1, 3            
+    jal ra, sum         
+    j end
+    li a3, 44
+    li a4, 55
+    li a4, 66
+sum:
+    add a2, a0, a1     
+    jalr zero, ra, 0    
+end:
+    nop                 
+.data
+variable:
+	.word 0x00000200
+variable2:
+	.word 0x00000204
+ProcedureAddr:
+	.word 0x0000030

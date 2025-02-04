@@ -24,6 +24,7 @@ module Execution(
 input [1:0] pc_vs_rs1_con,
 input [1:0] alusrc,
 input [2:0] aluop,
+input jalr_mux,
 input load_use_hzd1_ctrl,
 input load_use_hzd2_ctrl,
 input [1:0] forwA_ctrl,
@@ -49,12 +50,14 @@ reg [31:0] alu_in_b;
 reg [31:0] pc_vs_rs1;
 reg [31:0] forwA;
 reg [31:0] forwB;
+wire [31:0] jalr_mux_o;
 wire [31:0] load_use_hzd1;
 wire [31:0] load_use_hzd2;
 wire [4:0] alu_control;
 
 assign load_use_hzd1 = load_use_hzd1_ctrl ? memtoreg_backward : read_data1;
 assign load_use_hzd2 = load_use_hzd2_ctrl ? memtoreg_backward : read_data2;
+assign jalr_mux_o = jalr_mux ? forwA : pc_vs_rs1;
 
 always@(*)
 begin
@@ -76,13 +79,13 @@ begin
     endcase
 end
 
-assign next_pc_cal =  (program_counter) + (imm_gen[31:0]);    
+assign next_pc_cal =  (pc_vs_rs1) + (imm_gen[31:0]);    
 
 always@(*)
 begin
     case(pc_vs_rs1_con)
     2'b00 : pc_vs_rs1 <= forwA;
-    2'b10 : pc_vs_rs1 <= program_counter;
+    2'b01 : pc_vs_rs1 <= program_counter;
     2'b11 : pc_vs_rs1 <= 32'd0;
     default : pc_vs_rs1 <= forwA;
     endcase
@@ -98,8 +101,7 @@ begin
     endcase
 end
 
-
-ALU ALU_0(.alu_in_a(pc_vs_rs1),.alu_in_b(alu_in_b),.alu_control(alu_control),.branch_ctrl(branch_ctrl),.alu_result(alu_result));
+ALU ALU_0(.alu_in_a(jalr_mux_o),.alu_in_b(alu_in_b),.alu_control(alu_control),.branch_ctrl(branch_ctrl),.alu_result(alu_result));
 alu_control alu_control_0(.aluop(aluop),.funct3(funct3),.instruction30(instruction30),.alu_control(alu_control));
     
 endmodule

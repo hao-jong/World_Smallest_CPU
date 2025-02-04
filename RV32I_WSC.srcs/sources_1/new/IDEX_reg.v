@@ -5,13 +5,14 @@ module reg_IDEX(
 //base//
 input clk,
 input rst,
-
+input flush,
 
 
 //control_input//
 input [1:0] pc_vs_rs1_con_in,
 input [1:0] alusrc_in,
 input [2:0] aluop_in,
+input jalr_mux_in,
 
 input branch_in,
 input memwrite_in,
@@ -44,6 +45,7 @@ output reg regwrite,
 output reg [1:0] pc_vs_rs1_con,
 output reg [1:0] alusrc,
 output reg [2:0] aluop,
+output reg jalr_mux,
 //data//
 output reg [31:0] program_counter,
 output reg [4:0] read_register1,
@@ -60,8 +62,56 @@ output reg [4:0] write_register
 
 
 always@(posedge clk)
-if(rst)
-    begin
+begin
+    if(rst)
+        begin
+            memtoreg <= 1'b0;
+            regwrite <= 1'b0;
+            branch <= 1'b0;
+            memwrite <= 1'b0;
+            memread <= 1'b0;
+            pc_vs_rs1_con <= 2'b00;
+            alusrc <= 2'b00;
+            aluop <= 3'b000;
+            jalr_mux <= 1'b0;
+            program_counter <= 32'h0;
+            read_register1 <= 5'd0;
+            read_register2<= 5'd0;
+            read_data1 <= 32'h0;
+            read_data2 <= 32'h0;
+            imm_gen <= 64'h0;
+            funct3 <= 3'b000;
+            instruction30 <= 1'b0;
+            write_register <= 5'b00000;        
+        end
+    else
+        begin
+            if (!IDEX_update_disable)
+            begin
+                memtoreg <= memtoreg_in;
+                regwrite <= regwrite_in;
+                branch <= branch_in;
+                memwrite <= memwrite_in;
+                memread <= memread_in;
+                pc_vs_rs1_con <= pc_vs_rs1_con_in;
+                alusrc <= alusrc_in;
+                aluop <= aluop_in;
+                jalr_mux <= jalr_mux_in;
+                program_counter <= program_counter_in;
+                read_register1 <= read_register1_in;
+                read_register2 <= read_register2_in;
+                read_data1 <= read_data1_in;
+                read_data2 <= read_data2_in;
+                imm_gen <= imm_gen_in;
+                funct3 <= funct3_in;
+                instruction30 <= instruction30_in;
+                write_register <= write_register_in;       
+            end
+        end
+ end
+ 
+always @ (flush)
+begin
         memtoreg <= 1'b0;
         regwrite <= 1'b0;
         branch <= 1'b0;
@@ -70,6 +120,7 @@ if(rst)
         pc_vs_rs1_con <= 2'b00;
         alusrc <= 2'b00;
         aluop <= 3'b000;
+        jalr_mux <= 1'b0;
         program_counter <= 32'h0;
         read_register1 <= 5'd0;
         read_register2<= 5'd0;
@@ -79,28 +130,5 @@ if(rst)
         funct3 <= 3'b000;
         instruction30 <= 1'b0;
         write_register <= 5'b00000;        
-    end
-else
-    begin
-        if (!IDEX_update_disable)
-        begin
-            memtoreg <= memtoreg_in;
-            regwrite <= regwrite_in;
-            branch <= branch_in;
-            memwrite <= memwrite_in;
-            memread <= memread_in;
-            pc_vs_rs1_con <= pc_vs_rs1_con_in;
-            alusrc <= alusrc_in;
-            aluop <= aluop_in;
-            program_counter <= program_counter_in;
-            read_register1 <= read_register1_in;
-            read_register2 <= read_register2_in;
-            read_data1 <= read_data1_in;
-            read_data2 <= read_data2_in;
-            imm_gen <= imm_gen_in;
-            funct3 <= funct3_in;
-            instruction30 <= instruction30_in;
-            write_register <= write_register_in;       
-        end
-    end    
+end
 endmodule

@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Mon Feb  3 15:26:45 2025
+// Date        : Tue Feb  4 20:35:34 2025
 // Host        : COMSYS01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Instruction_Decode_0_0/RV32I_WSC_Instruction_Decode_0_0_stub.v
@@ -16,10 +16,10 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "Instruction_Decode,Vivado 2024.1" *)
 module RV32I_WSC_Instruction_Decode_0_0(clk, instruction, write_register, 
-  write_data_in, regwrite, pc_vs_rs1_con, alusrc, aluop, branch, memwrite, memread, memtoreg, 
-  regwrite_out, read_register1, read_register2, read_data1, read_data2, imm_gen, funct3, 
-  instruction30, write_register_out)
-/* synthesis syn_black_box black_box_pad_pin="instruction[31:0],write_register[4:0],write_data_in[31:0],regwrite,pc_vs_rs1_con[1:0],alusrc[1:0],aluop[2:0],branch,memwrite,memread,memtoreg,regwrite_out,read_register1[4:0],read_register2[4:0],read_data1[31:0],read_data2[31:0],imm_gen[31:0],funct3[2:0],instruction30,write_register_out[4:0]" */
+  write_data_in, regwrite, pc_vs_rs1_con, alusrc, aluop, jalr_mux, branch, memwrite, memread, 
+  memtoreg, regwrite_out, read_register1, read_register2, read_data1, read_data2, imm_gen, 
+  funct3, instruction30, write_register_out)
+/* synthesis syn_black_box black_box_pad_pin="instruction[31:0],write_register[4:0],write_data_in[31:0],regwrite,pc_vs_rs1_con[1:0],alusrc[1:0],aluop[2:0],jalr_mux,branch,memwrite,memread,memtoreg,regwrite_out,read_register1[4:0],read_register2[4:0],read_data1[31:0],read_data2[31:0],imm_gen[31:0],funct3[2:0],instruction30,write_register_out[4:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input [31:0]instruction;
@@ -29,6 +29,7 @@ module RV32I_WSC_Instruction_Decode_0_0(clk, instruction, write_register,
   output [1:0]pc_vs_rs1_con;
   output [1:0]alusrc;
   output [2:0]aluop;
+  output jalr_mux;
   output branch;
   output memwrite;
   output memread;

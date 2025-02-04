@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
--- Date        : Mon Feb  3 15:26:45 2025
+-- Date        : Tue Feb  4 20:35:34 2025
 -- Host        : COMSYS01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Instruction_Decode_0_0/RV32I_WSC_Instruction_Decode_0_0_sim_netlist.vhdl
@@ -17,6 +17,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity RV32I_WSC_Instruction_Decode_0_0_Controller is
   port (
+    jalr_mux : out STD_LOGIC;
     memwrite : out STD_LOGIC;
     memtoreg : out STD_LOGIC;
     regwrite_out : out STD_LOGIC;
@@ -39,6 +40,7 @@ architecture STRUCTURE of RV32I_WSC_Instruction_Decode_0_0_Controller is
   signal \alusrc_reg[0]_i_1_n_0\ : STD_LOGIC;
   signal \alusrc_reg[1]_i_1_n_0\ : STD_LOGIC;
   signal instruction_1_sn_1 : STD_LOGIC;
+  signal jalr_mux_reg_i_1_n_0 : STD_LOGIC;
   signal memread_reg_i_1_n_0 : STD_LOGIC;
   signal memread_reg_i_2_n_0 : STD_LOGIC;
   signal memwrite_reg_i_1_n_0 : STD_LOGIC;
@@ -56,21 +58,21 @@ architecture STRUCTURE of RV32I_WSC_Instruction_Decode_0_0_Controller is
   attribute XILINX_TRANSFORM_PINMAP of \aluop_reg[1]\ : label is "VCC:GE GND:CLR";
   attribute XILINX_LEGACY_PRIM of \aluop_reg[2]\ : label is "LD";
   attribute XILINX_TRANSFORM_PINMAP of \aluop_reg[2]\ : label is "VCC:GE GND:CLR";
+  attribute SOFT_HLUTNM of \aluop_reg[2]_i_2\ : label is "soft_lutpair0";
   attribute XILINX_LEGACY_PRIM of \alusrc_reg[0]\ : label is "LD";
   attribute XILINX_TRANSFORM_PINMAP of \alusrc_reg[0]\ : label is "VCC:GE GND:CLR";
   attribute XILINX_LEGACY_PRIM of \alusrc_reg[1]\ : label is "LD";
   attribute XILINX_TRANSFORM_PINMAP of \alusrc_reg[1]\ : label is "VCC:GE GND:CLR";
+  attribute XILINX_LEGACY_PRIM of jalr_mux_reg : label is "LD";
+  attribute XILINX_TRANSFORM_PINMAP of jalr_mux_reg : label is "VCC:GE GND:CLR";
   attribute XILINX_LEGACY_PRIM of memread_reg : label is "LD";
   attribute XILINX_TRANSFORM_PINMAP of memread_reg : label is "VCC:GE GND:CLR";
-  attribute SOFT_HLUTNM of memread_reg_i_1 : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of memread_reg_i_2 : label is "soft_lutpair1";
   attribute XILINX_LEGACY_PRIM of memwrite_reg : label is "LD";
   attribute XILINX_TRANSFORM_PINMAP of memwrite_reg : label is "VCC:GE GND:CLR";
   attribute XILINX_LEGACY_PRIM of \pc_vs_rs1_con_reg[0]\ : label is "LD";
   attribute XILINX_TRANSFORM_PINMAP of \pc_vs_rs1_con_reg[0]\ : label is "VCC:GE GND:CLR";
   attribute XILINX_LEGACY_PRIM of \pc_vs_rs1_con_reg[1]\ : label is "LD";
   attribute XILINX_TRANSFORM_PINMAP of \pc_vs_rs1_con_reg[1]\ : label is "VCC:GE GND:CLR";
-  attribute SOFT_HLUTNM of \pc_vs_rs1_con_reg[1]_i_3\ : label is "soft_lutpair1";
   attribute XILINX_LEGACY_PRIM of regwrite_reg : label is "LD";
   attribute XILINX_TRANSFORM_PINMAP of regwrite_reg : label is "VCC:GE GND:CLR";
 begin
@@ -213,6 +215,30 @@ begin
       I5 => instruction(2),
       O => \alusrc_reg[1]_i_1_n_0\
     );
+jalr_mux_reg: unisim.vcomponents.LDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      CLR => '0',
+      D => jalr_mux_reg_i_1_n_0,
+      G => \pc_vs_rs1_con_reg[1]_i_2_n_0\,
+      GE => '1',
+      Q => jalr_mux
+    );
+jalr_mux_reg_i_1: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"1000000000000000"
+    )
+        port map (
+      I0 => instruction(3),
+      I1 => instruction(4),
+      I2 => instruction(1),
+      I3 => instruction(0),
+      I4 => instruction(5),
+      I5 => instruction(6),
+      O => jalr_mux_reg_i_1_n_0
+    );
 memread_reg: unisim.vcomponents.LDCE
     generic map(
       INIT => '0'
@@ -224,26 +250,26 @@ memread_reg: unisim.vcomponents.LDCE
       GE => '1',
       Q => memtoreg
     );
-memread_reg_i_1: unisim.vcomponents.LUT4
+memread_reg_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0010"
+      INIT => X"0000000000001000"
     )
         port map (
       I0 => instruction(5),
       I1 => instruction(6),
       I2 => instruction(0),
-      I3 => memread_reg_i_2_n_0,
+      I3 => instruction(1),
+      I4 => instruction(2),
+      I5 => memread_reg_i_2_n_0,
       O => memread_reg_i_1_n_0
     );
-memread_reg_i_2: unisim.vcomponents.LUT4
+memread_reg_i_2: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FEFF"
+      INIT => X"E"
     )
         port map (
-      I0 => instruction(3),
-      I1 => instruction(4),
-      I2 => instruction(2),
-      I3 => instruction(1),
+      I0 => instruction(4),
+      I1 => instruction(3),
       O => memread_reg_i_2_n_0
     );
 memwrite_reg: unisim.vcomponents.LDCE
@@ -283,15 +309,15 @@ memwrite_reg_i_1: unisim.vcomponents.LUT6
     );
 \pc_vs_rs1_con_reg[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0080080000000800"
+      INIT => X"0022200080002000"
     )
         port map (
       I0 => instruction_1_sn_1,
-      I1 => instruction(2),
-      I2 => instruction(6),
-      I3 => instruction(4),
-      I4 => instruction(3),
-      I5 => instruction(5),
+      I1 => instruction(3),
+      I2 => instruction(5),
+      I3 => instruction(6),
+      I4 => instruction(2),
+      I5 => instruction(4),
       O => \pc_vs_rs1_con_reg[0]_i_1_n_0\
     );
 \pc_vs_rs1_con_reg[1]\: unisim.vcomponents.LDCE
@@ -1690,6 +1716,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode is
   port (
+    jalr_mux : out STD_LOGIC;
     memwrite : out STD_LOGIC;
     memtoreg : out STD_LOGIC;
     regwrite_out : out STD_LOGIC;
@@ -1721,6 +1748,7 @@ Controller_0: entity work.RV32I_WSC_Instruction_Decode_0_0_Controller
       alusrc(1 downto 0) => alusrc(1 downto 0),
       instruction(6 downto 0) => instruction(6 downto 0),
       instruction_1_sp_1 => instruction_1_sn_1,
+      jalr_mux => jalr_mux,
       memtoreg => memtoreg,
       memwrite => memwrite,
       pc_vs_rs1_con(1 downto 0) => pc_vs_rs1_con(1 downto 0),
@@ -1751,6 +1779,7 @@ entity RV32I_WSC_Instruction_Decode_0_0 is
     pc_vs_rs1_con : out STD_LOGIC_VECTOR ( 1 downto 0 );
     alusrc : out STD_LOGIC_VECTOR ( 1 downto 0 );
     aluop : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    jalr_mux : out STD_LOGIC;
     branch : out STD_LOGIC;
     memwrite : out STD_LOGIC;
     memread : out STD_LOGIC;
@@ -1783,7 +1812,7 @@ architecture STRUCTURE of RV32I_WSC_Instruction_Decode_0_0 is
   signal \imm_gen[30]_INST_0_i_1_n_0\ : STD_LOGIC;
   signal \imm_gen[31]_INST_0_i_1_n_0\ : STD_LOGIC;
   signal \imm_gen[31]_INST_0_i_2_n_0\ : STD_LOGIC;
-  signal inst_n_6 : STD_LOGIC;
+  signal inst_n_7 : STD_LOGIC;
   signal \^instruction\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \^memtoreg\ : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
@@ -2096,7 +2125,7 @@ begin
     )
         port map (
       I0 => \^instruction\(3),
-      I1 => inst_n_6,
+      I1 => inst_n_7,
       I2 => \^instruction\(2),
       I3 => \^instruction\(5),
       I4 => \^instruction\(6),
@@ -2118,7 +2147,7 @@ begin
       INIT => X"0202000288000002"
     )
         port map (
-      I0 => inst_n_6,
+      I0 => inst_n_7,
       I1 => \^instruction\(6),
       I2 => \^instruction\(3),
       I3 => \^instruction\(5),
@@ -2131,7 +2160,7 @@ begin
       INIT => X"2000002000000020"
     )
         port map (
-      I0 => inst_n_6,
+      I0 => inst_n_7,
       I1 => \^instruction\(4),
       I2 => \^instruction\(5),
       I3 => \^instruction\(3),
@@ -2225,7 +2254,8 @@ inst: entity work.RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode
       alusrc(1 downto 0) => alusrc(1 downto 0),
       instruction(16 downto 7) => \^instruction\(24 downto 15),
       instruction(6 downto 0) => \^instruction\(6 downto 0),
-      instruction_1_sp_1 => inst_n_6,
+      instruction_1_sp_1 => inst_n_7,
+      jalr_mux => jalr_mux,
       memtoreg => \^memtoreg\,
       memwrite => memwrite,
       pc_vs_rs1_con(1 downto 0) => pc_vs_rs1_con(1 downto 0),

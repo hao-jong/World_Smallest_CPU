@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Mon Feb  3 15:10:19 2025
+| Date         : Tue Feb  4 18:41:02 2025
 | Host         : COMSYS01 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file RV32I_WSC_Hazard_Processing_0_1_utilization_synth.rpt -pb RV32I_WSC_Hazard_Processing_0_1_utilization_synth.pb
 | Design       : RV32I_WSC_Hazard_Processing_0_1
@@ -34,8 +34,8 @@ Table of Contents
 | Slice LUTs*             |   18 |     0 |          0 |     14400 |  0.13 |
 |   LUT as Logic          |   18 |     0 |          0 |     14400 |  0.13 |
 |   LUT as Memory         |    0 |     0 |          0 |      6000 |  0.00 |
-| Slice Registers         |    9 |     0 |          0 |     28800 |  0.03 |
-|   Register as Flip Flop |    9 |     0 |          0 |     28800 |  0.03 |
+| Slice Registers         |    8 |     0 |          0 |     28800 |  0.03 |
+|   Register as Flip Flop |    8 |     0 |          0 |     28800 |  0.03 |
 |   Register as Latch     |    0 |     0 |          0 |     28800 |  0.00 |
 | F7 Muxes                |    0 |     0 |          0 |      8800 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |      4400 |  0.00 |
@@ -60,7 +60,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 9     |          Yes |       Reset |            - |
+| 8     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -150,7 +150,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | LUT6     |   10 |                 LUT |
-| FDRE     |    9 |        Flop & Latch |
+| FDRE     |    8 |        Flop & Latch |
 | LUT5     |    3 |                 LUT |
 | LUT3     |    3 |                 LUT |
 | LUT4     |    2 |                 LUT |

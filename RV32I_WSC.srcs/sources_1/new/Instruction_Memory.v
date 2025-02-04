@@ -29,7 +29,7 @@ wire [3:0] mem_address;
 
 initial
 begin
-$readmemh("Test002.txt",inst_mem);
+$readmemh("Test003.txt",inst_mem);
 end
     
 
