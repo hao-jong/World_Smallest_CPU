@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Tue Feb  4 14:31:27 2025
+// Date        : Wed Feb  5 19:02:01 2025
 // Host        : COMSYS01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Memory_0_0/RV32I_WSC_Memory_0_0_stub.v
@@ -17,13 +17,12 @@
 (* X_CORE_INFO = "Memory,Vivado 2024.1" *)
 module RV32I_WSC_Memory_0_0(clk, branch, memwrite, memread, branch_ctrl, 
   alu_result, read_data2, pcrsrc, read_mem_data)
-/* synthesis syn_black_box black_box_pad_pin="branch,memwrite,branch_ctrl,alu_result[31:0],read_data2[31:0],pcrsrc,read_mem_data[31:0]" */
-/* synthesis syn_force_seq_prim="clk" */
-/* synthesis syn_force_seq_prim="memread" */;
+/* synthesis syn_black_box black_box_pad_pin="branch,memwrite,memread,branch_ctrl,alu_result[31:0],read_data2[31:0],pcrsrc,read_mem_data[31:0]" */
+/* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input branch;
   input memwrite;
-  input memread /* synthesis syn_isclock = 1 */;
+  input memread;
   input branch_ctrl;
   input [31:0]alu_result;
   input [31:0]read_data2;

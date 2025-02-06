@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
--- Date        : Tue Feb  4 14:31:27 2025
+-- Date        : Thu Feb  6 10:32:53 2025
 -- Host        : COMSYS01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_reg_EXMEM_0_0/RV32I_WSC_reg_EXMEM_0_0_stub.vhdl
@@ -17,6 +17,7 @@ entity RV32I_WSC_reg_EXMEM_0_0 is
   Port ( 
     clk : in STD_LOGIC;
     rst : in STD_LOGIC;
+    flush : in STD_LOGIC;
     branch_in : in STD_LOGIC;
     memwrite_in : in STD_LOGIC;
     memread_in : in STD_LOGIC;
@@ -45,7 +46,7 @@ architecture stub of RV32I_WSC_reg_EXMEM_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clk,rst,branch_in,memwrite_in,memread_in,memtoreg_in,regwrite_in,next_pc_cal_in[31:0],branch_ctrl_in,alu_result_in[31:0],read_data2_in[31:0],write_register_in[4:0],memtoreg,regwrite,branch,memwrite,memread,next_pc_cal[31:0],branch_ctrl,alu_result[31:0],read_data2[31:0],write_register[4:0]";
+attribute black_box_pad_pin of stub : architecture is "clk,rst,flush,branch_in,memwrite_in,memread_in,memtoreg_in,regwrite_in,next_pc_cal_in[31:0],branch_ctrl_in,alu_result_in[31:0],read_data2_in[31:0],write_register_in[4:0],memtoreg,regwrite,branch,memwrite,memread,next_pc_cal[31:0],branch_ctrl,alu_result[31:0],read_data2[31:0],write_register[4:0]";
 attribute X_CORE_INFO : string;
 attribute X_CORE_INFO of stub : architecture is "reg_EXMEM,Vivado 2024.1";
 begin

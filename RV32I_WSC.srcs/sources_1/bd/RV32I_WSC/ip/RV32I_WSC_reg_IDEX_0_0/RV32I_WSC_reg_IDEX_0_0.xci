@@ -49,7 +49,6 @@
         "memread_in": [ { "direction": "in" } ],
         "memtoreg_in": [ { "direction": "in" } ],
         "regwrite_in": [ { "direction": "in" } ],
-        "IDEX_update_disable": [ { "direction": "in" } ],
         "program_counter_in": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
         "read_register1_in": [ { "direction": "in", "size_left": "4", "size_right": "0" } ],
         "read_register2_in": [ { "direction": "in", "size_left": "4", "size_right": "0" } ],

@@ -59,8 +59,6 @@ module RV32I_WSC_Execution_0_0 (
   alusrc,
   aluop,
   jalr_mux,
-  load_use_hzd1_ctrl,
-  load_use_hzd2_ctrl,
   forwA_ctrl,
   forwB_ctrl,
   program_counter,
@@ -73,15 +71,14 @@ module RV32I_WSC_Execution_0_0 (
   memtoreg_backward,
   next_pc_cal,
   branch_ctrl,
-  alu_result
+  alu_result,
+  forwB
 );
 
 input wire [1 : 0] pc_vs_rs1_con;
 input wire [1 : 0] alusrc;
 input wire [2 : 0] aluop;
 input wire jalr_mux;
-input wire load_use_hzd1_ctrl;
-input wire load_use_hzd2_ctrl;
 input wire [1 : 0] forwA_ctrl;
 input wire [1 : 0] forwB_ctrl;
 input wire [31 : 0] program_counter;
@@ -95,14 +92,13 @@ input wire [31 : 0] memtoreg_backward;
 output wire [31 : 0] next_pc_cal;
 output wire branch_ctrl;
 output wire [31 : 0] alu_result;
+output wire [31 : 0] forwB;
 
   Execution inst (
     .pc_vs_rs1_con(pc_vs_rs1_con),
     .alusrc(alusrc),
     .aluop(aluop),
     .jalr_mux(jalr_mux),
-    .load_use_hzd1_ctrl(load_use_hzd1_ctrl),
-    .load_use_hzd2_ctrl(load_use_hzd2_ctrl),
     .forwA_ctrl(forwA_ctrl),
     .forwB_ctrl(forwB_ctrl),
     .program_counter(program_counter),
@@ -115,6 +111,7 @@ output wire [31 : 0] alu_result;
     .memtoreg_backward(memtoreg_backward),
     .next_pc_cal(next_pc_cal),
     .branch_ctrl(branch_ctrl),
-    .alu_result(alu_result)
+    .alu_result(alu_result),
+    .forwB(forwB)
   );
 endmodule

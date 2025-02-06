@@ -239,6 +239,16 @@
             "direction": "O",
             "left": "31",
             "right": "0"
+          },
+          "IFID_registerRS1": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "IFID_registerRS2": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
           }
         }
       },
@@ -302,9 +312,6 @@
             "direction": "I"
           },
           "regwrite_in": {
-            "direction": "I"
-          },
-          "IDEX_update_disable": {
             "direction": "I"
           },
           "program_counter_in": {
@@ -458,12 +465,6 @@
           "jalr_mux": {
             "direction": "I"
           },
-          "load_use_hzd1_ctrl": {
-            "direction": "I"
-          },
-          "load_use_hzd2_ctrl": {
-            "direction": "I"
-          },
           "forwA_ctrl": {
             "direction": "I",
             "left": "1",
@@ -524,6 +525,11 @@
             "direction": "O",
             "left": "31",
             "right": "0"
+          },
+          "forwB": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
           }
         }
       },
@@ -551,6 +557,9 @@
           },
           "rst": {
             "type": "rst",
+            "direction": "I"
+          },
+          "flush": {
             "direction": "I"
           },
           "branch_in": {
@@ -810,21 +819,34 @@
           "pcsrc": {
             "direction": "I"
           },
-          "instruction": {
+          "IDEX_memread": {
+            "direction": "I"
+          },
+          "IDEX_RegisterRD": {
             "direction": "I",
-            "left": "31",
+            "left": "4",
             "right": "0"
           },
-          "flush": {
+          "IFID_RegisterRS1": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "IFID_RegisterRS2": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "PC_IFID_update_disable": {
             "direction": "O"
           },
-          "reg_update_disable": {
+          "IFID_flush": {
             "direction": "O"
           },
-          "load_use_hzd0": {
+          "IDEX_flush": {
             "direction": "O"
           },
-          "load_use_hzd1": {
+          "EXMEM_flush": {
             "direction": "O"
           }
         }
@@ -893,6 +915,12 @@
           "reg_EXMEM_0/branch_ctrl_in"
         ]
       },
+      "Execution_0_forwB": {
+        "ports": [
+          "Execution_0/forwB",
+          "reg_EXMEM_0/read_data2_in"
+        ]
+      },
       "Execution_0_next_pc_cal": {
         "ports": [
           "Execution_0/next_pc_cal",
@@ -911,31 +939,29 @@
           "Execution_0/forwB_ctrl"
         ]
       },
-      "Hazard_Processing_0_flush": {
+      "Hazard_Processing_0_EXMEM_flush": {
         "ports": [
-          "Hazard_Processing_0/flush",
-          "reg_IFID_0/flush",
+          "Hazard_Processing_0/EXMEM_flush",
+          "reg_EXMEM_0/flush"
+        ]
+      },
+      "Hazard_Processing_0_IDEX_flush": {
+        "ports": [
+          "Hazard_Processing_0/IDEX_flush",
           "reg_IDEX_0/flush"
         ]
       },
-      "Hazard_Processing_0_load_use_hzd0": {
+      "Hazard_Processing_0_IFID_flush": {
         "ports": [
-          "Hazard_Processing_0/load_use_hzd0",
-          "Execution_0/load_use_hzd1_ctrl"
+          "Hazard_Processing_0/IFID_flush",
+          "reg_IFID_0/flush"
         ]
       },
-      "Hazard_Processing_0_load_use_hzd1": {
+      "Hazard_Processing_0_PC_IFID_update_disable": {
         "ports": [
-          "Hazard_Processing_0/load_use_hzd1",
-          "Execution_0/load_use_hzd2_ctrl"
-        ]
-      },
-      "Hazard_Processing_0_reg_update_disable": {
-        "ports": [
-          "Hazard_Processing_0/reg_update_disable",
+          "Hazard_Processing_0/PC_IFID_update_disable",
           "Instruction_Fetch_0/pc_update_disable",
-          "reg_IFID_0/IFID_update_disable",
-          "reg_IDEX_0/IDEX_update_disable"
+          "reg_IFID_0/IFID_update_disable"
         ]
       },
       "Instruction_Decode_0_aluop": {
@@ -1069,24 +1095,24 @@
         "ports": [
           "clk",
           "Memory_0/clk",
-          "reg_EXMEM_0/clk",
           "reg_MEMWB_0/clk",
+          "Instruction_Decode_0/clk",
           "Instruction_Fetch_0/clk",
+          "reg_IDEX_0/clk",
           "reg_IFID_0/clk",
           "Hazard_Processing_0/clk",
-          "Instruction_Decode_0/clk",
-          "reg_IDEX_0/clk"
+          "reg_EXMEM_0/clk"
         ]
       },
       "Net1": {
         "ports": [
           "rst",
-          "Instruction_Fetch_0/rst",
           "reg_MEMWB_0/rst",
-          "reg_EXMEM_0/rst",
+          "Instruction_Fetch_0/rst",
+          "reg_IDEX_0/rst",
           "reg_IFID_0/rst",
           "Hazard_Processing_0/rst",
-          "reg_IDEX_0/rst"
+          "reg_EXMEM_0/rst"
         ]
       },
       "Write_back_0_write_data": {
@@ -1205,6 +1231,7 @@
       "reg_IDEX_0_memread": {
         "ports": [
           "reg_IDEX_0/memread",
+          "Hazard_Processing_0/IDEX_memread",
           "reg_EXMEM_0/memread_in"
         ]
       },
@@ -1241,7 +1268,6 @@
       "reg_IDEX_0_read_data2": {
         "ports": [
           "reg_IDEX_0/read_data2",
-          "reg_EXMEM_0/read_data2_in",
           "Execution_0/read_data2"
         ]
       },
@@ -1266,13 +1292,25 @@
       "reg_IDEX_0_write_register": {
         "ports": [
           "reg_IDEX_0/write_register",
+          "Hazard_Processing_0/IDEX_RegisterRD",
           "reg_EXMEM_0/write_register_in"
+        ]
+      },
+      "reg_IFID_0_IFID_registerRS1": {
+        "ports": [
+          "reg_IFID_0/IFID_registerRS1",
+          "Hazard_Processing_0/IFID_RegisterRS1"
+        ]
+      },
+      "reg_IFID_0_IFID_registerRS2": {
+        "ports": [
+          "reg_IFID_0/IFID_registerRS2",
+          "Hazard_Processing_0/IFID_RegisterRS2"
         ]
       },
       "reg_IFID_0_instruction": {
         "ports": [
           "reg_IFID_0/instruction",
-          "Hazard_Processing_0/instruction",
           "Instruction_Decode_0/instruction"
         ]
       },

@@ -39,6 +39,7 @@
       "ports": {
         "clk": [ { "direction": "in" } ],
         "rst": [ { "direction": "in" } ],
+        "flush": [ { "direction": "in" } ],
         "branch_in": [ { "direction": "in" } ],
         "memwrite_in": [ { "direction": "in" } ],
         "memread_in": [ { "direction": "in" } ],

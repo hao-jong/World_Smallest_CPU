@@ -1,0 +1,145 @@
+    .global _start
+    .text
+_start:
+    li  x10, 15
+    li  x11, 7
+    li  x12, 22
+    li  x13, 1
+    li  x14, 9
+
+    addi x17, x0, 4
+    addi x15, x0, 0
+
+outer_loop:
+    bge  x15, x17, end_sort
+
+    addi x16, x15, 0
+
+inner_loop:
+    bge  x16, x17, end_inner
+ 
+
+    addi x19, x0, 0
+    beq x16, x19, reg1
+    addi x19, x0, 1
+    beq x16, x19, reg2
+    addi x19, x0, 2
+    beq x16, x19, reg3
+    addi x19, x0, 3
+    beq x16, x19, reg4
+    addi x19, x0, 4
+    beq x16, x19, reg5
+    
+reg1:
+    add x20, x0, x10
+    j con
+reg2:
+    add x20, x0, x11
+    j con
+reg3:
+    add x20, x0, x12
+    j con
+reg4:
+    add x20, x0, x13
+    j con
+reg5:
+    add x20, x0, x14
+    j con
+con:
+
+
+    addi x19, x0, 1
+    beq x16, x19, reg6
+    addi x19, x0, 2
+    beq x16, x19, reg7
+    addi x19, x0, 3
+    beq x16, x19, reg8
+    addi x19, x0, 4
+    beq x16, x19, reg9
+    addi x19, x0, 5
+    beq x16, x19, reg10
+    
+reg6:
+    add x21, x0, x11
+    j con2
+reg7:
+    add x21, x0, x12
+    j con2
+reg8:
+    add x21, x0, x13
+    j con2
+reg9:
+    add x21, x0, x14
+    j con2
+reg10:
+    add x21, x0, x0
+    j con2
+
+con2:
+    addi x19, x0, 0
+    beq x16, x19, swap1_1
+    addi x19, x0, 1
+    beq x16, x19, swap1_2
+    addi x19, x0, 2
+    beq x16, x19, swap1_3
+    addi x19, x0, 3
+    beq x16, x19, swap1_4
+    addi x19, x0, 4
+    beq x16, x19, swap1_5
+    
+swap1_1:
+    add x10, x0, x21
+    j swap2
+swap1_2:
+    add x11, x0, x21
+    j swap2
+swap1_3:
+    add x12, x0, x21
+    j swap2
+swap1_4:
+    add x13, x0, x21
+    j swap2
+swap1_5:
+    add x14, x0, x21
+    j swap2
+
+swap2:
+
+    addi x19, x0, 1
+    beq x16, x19, swap2_1
+    addi x19, x0, 2
+    beq x16, x19, swap2_2
+    addi x19, x0, 3
+    beq x16, x19, swap2_3
+    addi x19, x0, 4
+    beq x16, x19, swap2_4
+    addi x19, x0, 5
+    beq x16, x19, swap2_5
+swap2_1:
+    add x11, x0, x20
+    j no_swap
+swap2_2:
+    add x12, x0, x20
+    j no_swap
+swap2_3:
+    add x13, x0, x20
+    j no_swap
+swap2_4:
+    add x14, x0, x20
+    j no_swap
+swap2_5:
+    add x10, x0, x20
+    j no_swap
+    
+
+no_swap:
+    addi x16, x16, 1
+    j    inner_loop
+
+end_inner:
+    addi x15, x15, 1
+    j    outer_loop
+
+end_sort:
+    li  x17, 10
+    ecall

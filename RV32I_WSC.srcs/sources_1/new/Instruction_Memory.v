@@ -24,15 +24,15 @@ module Instruction_Memory(
 input [31:0] address,
 output [31:0] instruction
     );
-reg [31:0] inst_mem [15:0];
-wire [3:0] mem_address;
+reg [31:0] inst_mem [511:0];
+wire [8:0] mem_address;
 
 initial
 begin
-$readmemh("Test003.txt",inst_mem);
+$readmemh("Sort.txt",inst_mem);
 end
     
 
-assign mem_address = address[5:2];
+assign mem_address = address[10:2];
 assign instruction = inst_mem[mem_address];
 endmodule

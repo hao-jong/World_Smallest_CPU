@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-//Date        : Tue Feb  4 20:39:13 2025
+//Date        : Thu Feb  6 10:33:04 2025
 //Host        : COMSYS01 running 64-bit major release  (build 9200)
 //Command     : generate_target RV32I_WSC.bd
 //Design      : RV32I_WSC
@@ -19,13 +19,14 @@ module RV32I_WSC
 
   wire [31:0]Execution_0_alu_result;
   wire Execution_0_branch_ctrl;
+  wire [31:0]Execution_0_forwB;
   wire [31:0]Execution_0_next_pc_cal;
   wire [1:0]Fowarding_Unit_0_forw1_vs_ldhzd;
   wire [1:0]Fowarding_Unit_0_forw2_vs_ldhzd;
-  wire Hazard_Processing_0_flush;
-  wire Hazard_Processing_0_load_use_hzd0;
-  wire Hazard_Processing_0_load_use_hzd1;
-  wire Hazard_Processing_0_reg_update_disable;
+  wire Hazard_Processing_0_EXMEM_flush;
+  wire Hazard_Processing_0_IDEX_flush;
+  wire Hazard_Processing_0_IFID_flush;
+  wire Hazard_Processing_0_PC_IFID_update_disable;
   wire [2:0]Instruction_Decode_0_aluop;
   wire [1:0]Instruction_Decode_0_alusrc;
   wire Instruction_Decode_0_branch;
@@ -78,6 +79,8 @@ module RV32I_WSC
   wire [4:0]reg_IDEX_0_read_register2;
   wire reg_IDEX_0_regwrite;
   wire [4:0]reg_IDEX_0_write_register;
+  wire [4:0]reg_IFID_0_IFID_registerRS1;
+  wire [4:0]reg_IFID_0_IFID_registerRS2;
   wire [31:0]reg_IFID_0_instruction;
   wire [31:0]reg_IFID_0_program_counter;
   wire [31:0]reg_MEMWB_0_alu_result;
@@ -95,13 +98,12 @@ module RV32I_WSC
         .alusrc(reg_IDEX_0_alusrc),
         .branch_ctrl(Execution_0_branch_ctrl),
         .forwA_ctrl(Fowarding_Unit_0_forw1_vs_ldhzd),
+        .forwB(Execution_0_forwB),
         .forwB_ctrl(Fowarding_Unit_0_forw2_vs_ldhzd),
         .funct3(reg_IDEX_0_funct3),
         .imm_gen(reg_IDEX_0_imm_gen),
         .instruction30(reg_IDEX_0_instruction30),
         .jalr_mux(reg_IDEX_0_jalr_mux),
-        .load_use_hzd1_ctrl(Hazard_Processing_0_load_use_hzd0),
-        .load_use_hzd2_ctrl(Hazard_Processing_0_load_use_hzd1),
         .memtoreg_backward(Write_back_0_write_data),
         .next_pc_cal(Execution_0_next_pc_cal),
         .pc_vs_rs1_con(reg_IDEX_0_pc_vs_rs1_con),
@@ -118,13 +120,16 @@ module RV32I_WSC
         .forw1_vs_ldhzd(Fowarding_Unit_0_forw1_vs_ldhzd),
         .forw2_vs_ldhzd(Fowarding_Unit_0_forw2_vs_ldhzd));
   RV32I_WSC_Hazard_Processing_0_1 Hazard_Processing_0
-       (.clk(Net),
-        .flush(Hazard_Processing_0_flush),
-        .instruction(reg_IFID_0_instruction),
-        .load_use_hzd0(Hazard_Processing_0_load_use_hzd0),
-        .load_use_hzd1(Hazard_Processing_0_load_use_hzd1),
+       (.EXMEM_flush(Hazard_Processing_0_EXMEM_flush),
+        .IDEX_RegisterRD(reg_IDEX_0_write_register),
+        .IDEX_flush(Hazard_Processing_0_IDEX_flush),
+        .IDEX_memread(reg_IDEX_0_memread),
+        .IFID_RegisterRS1(reg_IFID_0_IFID_registerRS1),
+        .IFID_RegisterRS2(reg_IFID_0_IFID_registerRS2),
+        .IFID_flush(Hazard_Processing_0_IFID_flush),
+        .PC_IFID_update_disable(Hazard_Processing_0_PC_IFID_update_disable),
+        .clk(Net),
         .pcsrc(Memory_0_pcrsrc),
-        .reg_update_disable(Hazard_Processing_0_reg_update_disable),
         .rst(Net1));
   RV32I_WSC_Instruction_Decode_0_0 Instruction_Decode_0
        (.aluop(Instruction_Decode_0_aluop),
@@ -153,7 +158,7 @@ module RV32I_WSC
        (.addr_cal(reg_EXMEM_0_next_pc_cal),
         .clk(Net),
         .instruction(Instruction_Fetch_0_instruction),
-        .pc_update_disable(Hazard_Processing_0_reg_update_disable),
+        .pc_update_disable(Hazard_Processing_0_PC_IFID_update_disable),
         .pcsrc(Memory_0_pcrsrc),
         .program_counter(Instruction_Fetch_0_program_counter),
         .rst(Net1));
@@ -180,6 +185,7 @@ module RV32I_WSC
         .branch_ctrl_in(Execution_0_branch_ctrl),
         .branch_in(reg_IDEX_0_branch),
         .clk(Net),
+        .flush(Hazard_Processing_0_EXMEM_flush),
         .memread(reg_EXMEM_0_memread),
         .memread_in(reg_IDEX_0_memread),
         .memtoreg(reg_EXMEM_0_memtoreg),
@@ -189,22 +195,21 @@ module RV32I_WSC
         .next_pc_cal(reg_EXMEM_0_next_pc_cal),
         .next_pc_cal_in(Execution_0_next_pc_cal),
         .read_data2(reg_EXMEM_0_read_data2),
-        .read_data2_in(reg_IDEX_0_read_data2),
+        .read_data2_in(Execution_0_forwB),
         .regwrite(reg_EXMEM_0_regwrite),
         .regwrite_in(reg_IDEX_0_regwrite),
         .rst(Net1),
         .write_register(reg_EXMEM_0_write_register),
         .write_register_in(reg_IDEX_0_write_register));
   RV32I_WSC_reg_IDEX_0_0 reg_IDEX_0
-       (.IDEX_update_disable(Hazard_Processing_0_reg_update_disable),
-        .aluop(reg_IDEX_0_aluop),
+       (.aluop(reg_IDEX_0_aluop),
         .aluop_in(Instruction_Decode_0_aluop),
         .alusrc(reg_IDEX_0_alusrc),
         .alusrc_in(Instruction_Decode_0_alusrc),
         .branch(reg_IDEX_0_branch),
         .branch_in(Instruction_Decode_0_branch),
         .clk(Net),
-        .flush(Hazard_Processing_0_flush),
+        .flush(Hazard_Processing_0_IDEX_flush),
         .funct3(reg_IDEX_0_funct3),
         .funct3_in(Instruction_Decode_0_funct3),
         .imm_gen(reg_IDEX_0_imm_gen),
@@ -237,9 +242,11 @@ module RV32I_WSC
         .write_register(reg_IDEX_0_write_register),
         .write_register_in(Instruction_Decode_0_write_register_out));
   RV32I_WSC_reg_IFID_0_0 reg_IFID_0
-       (.IFID_update_disable(Hazard_Processing_0_reg_update_disable),
+       (.IFID_registerRS1(reg_IFID_0_IFID_registerRS1),
+        .IFID_registerRS2(reg_IFID_0_IFID_registerRS2),
+        .IFID_update_disable(Hazard_Processing_0_PC_IFID_update_disable),
         .clk(Net),
-        .flush(Hazard_Processing_0_flush),
+        .flush(Hazard_Processing_0_IFID_flush),
         .instruction(reg_IFID_0_instruction),
         .instruction_in(Instruction_Fetch_0_instruction),
         .program_counter(reg_IFID_0_program_counter),

@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Tue Feb  4 18:41:02 2025
+// Date        : Thu Feb  6 10:31:23 2025
 // Host        : COMSYS01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Hazard_Processing_0_1/RV32I_WSC_Hazard_Processing_0_1_sim_netlist.v
@@ -20,310 +20,93 @@ module RV32I_WSC_Hazard_Processing_0_1
    (clk,
     rst,
     pcsrc,
-    instruction,
-    flush,
-    reg_update_disable,
-    load_use_hzd0,
-    load_use_hzd1);
+    IDEX_memread,
+    IDEX_RegisterRD,
+    IFID_RegisterRS1,
+    IFID_RegisterRS2,
+    PC_IFID_update_disable,
+    IFID_flush,
+    IDEX_flush,
+    EXMEM_flush);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input pcsrc;
-  input [31:0]instruction;
-  output flush;
-  output reg_update_disable;
-  output load_use_hzd0;
-  output load_use_hzd1;
+  input IDEX_memread;
+  input [4:0]IDEX_RegisterRD;
+  input [4:0]IFID_RegisterRS1;
+  input [4:0]IFID_RegisterRS2;
+  output PC_IFID_update_disable;
+  output IFID_flush;
+  output IDEX_flush;
+  output EXMEM_flush;
 
-  wire clk;
-  wire [31:0]instruction;
-  wire load_use_hzd0;
-  wire load_use_hzd1;
+  wire [4:0]IDEX_RegisterRD;
+  wire IDEX_flush;
+  wire IDEX_memread;
+  wire [4:0]IFID_RegisterRS1;
+  wire [4:0]IFID_RegisterRS2;
+  wire PC_IFID_update_disable;
+  wire PC_IFID_update_disable1;
+  wire PC_IFID_update_disable11_out;
+  wire PC_IFID_update_disable_INST_0_i_3_n_0;
+  wire PC_IFID_update_disable_INST_0_i_4_n_0;
   wire pcsrc;
-  wire reg_update_disable;
-  wire rst;
 
-  assign flush = pcsrc;
-  RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing inst
-       (.clk(clk),
-        .instruction({instruction[24:15],instruction[11:0]}),
-        .load_use_hzd0(load_use_hzd0),
-        .load_use_hzd1(load_use_hzd1),
-        .reg_update_disable(reg_update_disable),
-        .rst(rst));
-endmodule
-
-(* ORIG_REF_NAME = "Hazard_Processing" *) 
-module RV32I_WSC_Hazard_Processing_0_1_Hazard_Processing
-   (reg_update_disable,
-    load_use_hzd1,
-    load_use_hzd0,
-    instruction,
-    rst,
-    clk);
-  output reg_update_disable;
-  output load_use_hzd1;
-  output load_use_hzd0;
-  input [21:0]instruction;
-  input rst;
-  input clk;
-
-  wire \FSM_sequential_state[0]_i_1_n_0 ;
-  wire \FSM_sequential_state[0]_i_2_n_0 ;
-  wire \FSM_sequential_state[1]_i_1_n_0 ;
-  wire \FSM_sequential_state[1]_i_2_n_0 ;
-  wire \FSM_sequential_state[1]_i_3_n_0 ;
-  wire \FSM_sequential_state[2]_i_1_n_0 ;
-  wire \FSM_sequential_state[2]_i_2_n_0 ;
-  wire \FSM_sequential_state[2]_i_3_n_0 ;
-  wire \FSM_sequential_state[2]_i_4_n_0 ;
-  wire \FSM_sequential_state[2]_i_5_n_0 ;
-  wire \FSM_sequential_state[2]_i_6_n_0 ;
-  wire \FSM_sequential_state[2]_i_7_n_0 ;
-  wire \FSM_sequential_state[2]_i_8_n_0 ;
-  wire \FSM_sequential_state[2]_i_9_n_0 ;
-  wire clk;
-  wire [21:0]instruction;
-  wire [4:0]load_rd;
-  wire \load_rd[4]_i_1_n_0 ;
-  wire \load_rd[4]_i_2_n_0 ;
-  wire \load_rd[4]_i_3_n_0 ;
-  wire load_use_hzd0;
-  wire load_use_hzd1;
-  wire reg_update_disable;
-  wire rst;
-  wire [2:0]state;
-
-  LUT6 #(
-    .INIT(64'h0000000011111151)) 
-    \FSM_sequential_state[0]_i_1 
-       (.I0(\FSM_sequential_state[0]_i_2_n_0 ),
-        .I1(state[0]),
-        .I2(\FSM_sequential_state[2]_i_2_n_0 ),
-        .I3(\FSM_sequential_state[2]_i_3_n_0 ),
-        .I4(\FSM_sequential_state[1]_i_2_n_0 ),
-        .I5(rst),
-        .O(\FSM_sequential_state[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'hFDFDFDFC)) 
-    \FSM_sequential_state[0]_i_2 
-       (.I0(state[0]),
-        .I1(state[2]),
-        .I2(state[1]),
-        .I3(instruction[4]),
-        .I4(\load_rd[4]_i_3_n_0 ),
-        .O(\FSM_sequential_state[0]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000010)) 
-    \FSM_sequential_state[1]_i_1 
-       (.I0(\FSM_sequential_state[2]_i_3_n_0 ),
-        .I1(\FSM_sequential_state[1]_i_2_n_0 ),
-        .I2(state[0]),
-        .I3(state[1]),
-        .I4(state[2]),
-        .I5(rst),
-        .O(\FSM_sequential_state[1]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFBFBFFFAFFFAF)) 
-    \FSM_sequential_state[1]_i_2 
-       (.I0(\FSM_sequential_state[1]_i_3_n_0 ),
-        .I1(instruction[5]),
-        .I2(instruction[0]),
-        .I3(instruction[2]),
-        .I4(instruction[4]),
-        .I5(instruction[6]),
-        .O(\FSM_sequential_state[1]_i_2_n_0 ));
+  assign EXMEM_flush = pcsrc;
+  assign IFID_flush = pcsrc;
+  LUT3 #(
+    .INIT(8'hFE)) 
+    IDEX_flush_INST_0
+       (.I0(PC_IFID_update_disable1),
+        .I1(PC_IFID_update_disable11_out),
+        .I2(pcsrc),
+        .O(IDEX_flush));
   LUT2 #(
-    .INIT(4'hB)) 
-    \FSM_sequential_state[1]_i_3 
-       (.I0(instruction[3]),
-        .I1(instruction[1]),
-        .O(\FSM_sequential_state[1]_i_3_n_0 ));
+    .INIT(4'hE)) 
+    PC_IFID_update_disable_INST_0
+       (.I0(PC_IFID_update_disable11_out),
+        .I1(PC_IFID_update_disable1),
+        .O(PC_IFID_update_disable));
   LUT6 #(
-    .INIT(64'h0000000000040000)) 
-    \FSM_sequential_state[2]_i_1 
-       (.I0(\FSM_sequential_state[2]_i_2_n_0 ),
-        .I1(\FSM_sequential_state[2]_i_3_n_0 ),
-        .I2(state[2]),
-        .I3(state[1]),
-        .I4(state[0]),
-        .I5(rst),
-        .O(\FSM_sequential_state[2]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFEFF)) 
-    \FSM_sequential_state[2]_i_2 
-       (.I0(\FSM_sequential_state[2]_i_4_n_0 ),
-        .I1(\FSM_sequential_state[2]_i_5_n_0 ),
-        .I2(\FSM_sequential_state[2]_i_6_n_0 ),
-        .I3(\FSM_sequential_state[2]_i_7_n_0 ),
-        .I4(\FSM_sequential_state[2]_i_8_n_0 ),
-        .O(\FSM_sequential_state[2]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hF6FFFFF6)) 
-    \FSM_sequential_state[2]_i_3 
-       (.I0(instruction[15]),
-        .I1(load_rd[3]),
-        .I2(\FSM_sequential_state[2]_i_9_n_0 ),
-        .I3(load_rd[4]),
-        .I4(instruction[16]),
-        .O(\FSM_sequential_state[2]_i_3_n_0 ));
+    .INIT(64'h8200000000008200)) 
+    PC_IFID_update_disable_INST_0_i_1
+       (.I0(IDEX_memread),
+        .I1(IDEX_RegisterRD[4]),
+        .I2(IFID_RegisterRS1[4]),
+        .I3(PC_IFID_update_disable_INST_0_i_3_n_0),
+        .I4(IFID_RegisterRS1[3]),
+        .I5(IDEX_RegisterRD[3]),
+        .O(PC_IFID_update_disable11_out));
   LUT6 #(
-    .INIT(64'h66F666F666F6FFFF)) 
-    \FSM_sequential_state[2]_i_4 
-       (.I0(instruction[19]),
-        .I1(load_rd[2]),
-        .I2(load_rd[3]),
-        .I3(instruction[20]),
-        .I4(instruction[4]),
-        .I5(instruction[6]),
-        .O(\FSM_sequential_state[2]_i_4_n_0 ));
+    .INIT(64'h8200000000008200)) 
+    PC_IFID_update_disable_INST_0_i_2
+       (.I0(IDEX_memread),
+        .I1(IDEX_RegisterRD[4]),
+        .I2(IFID_RegisterRS2[4]),
+        .I3(PC_IFID_update_disable_INST_0_i_4_n_0),
+        .I4(IFID_RegisterRS2[3]),
+        .I5(IDEX_RegisterRD[3]),
+        .O(PC_IFID_update_disable1));
   LUT6 #(
-    .INIT(64'hF444F444FFFFF444)) 
-    \FSM_sequential_state[2]_i_5 
-       (.I0(instruction[18]),
-        .I1(load_rd[1]),
-        .I2(instruction[4]),
-        .I3(instruction[6]),
-        .I4(instruction[17]),
-        .I5(load_rd[0]),
-        .O(\FSM_sequential_state[2]_i_5_n_0 ));
+    .INIT(64'h9009000000009009)) 
+    PC_IFID_update_disable_INST_0_i_3
+       (.I0(IDEX_RegisterRD[0]),
+        .I1(IFID_RegisterRS1[0]),
+        .I2(IFID_RegisterRS1[2]),
+        .I3(IDEX_RegisterRD[2]),
+        .I4(IFID_RegisterRS1[1]),
+        .I5(IDEX_RegisterRD[1]),
+        .O(PC_IFID_update_disable_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'hFFFF6FFFFFFFFFFF)) 
-    \FSM_sequential_state[2]_i_6 
-       (.I0(instruction[21]),
-        .I1(load_rd[4]),
-        .I2(instruction[0]),
-        .I3(instruction[5]),
-        .I4(instruction[3]),
-        .I5(instruction[1]),
-        .O(\FSM_sequential_state[2]_i_6_n_0 ));
-  LUT3 #(
-    .INIT(8'h45)) 
-    \FSM_sequential_state[2]_i_7 
-       (.I0(instruction[2]),
-        .I1(load_rd[1]),
-        .I2(instruction[18]),
-        .O(\FSM_sequential_state[2]_i_7_n_0 ));
-  LUT4 #(
-    .INIT(16'h4F44)) 
-    \FSM_sequential_state[2]_i_8 
-       (.I0(instruction[17]),
-        .I1(load_rd[0]),
-        .I2(load_rd[3]),
-        .I3(instruction[20]),
-        .O(\FSM_sequential_state[2]_i_8_n_0 ));
-  LUT6 #(
-    .INIT(64'h6FF6FFFFFFFF6FF6)) 
-    \FSM_sequential_state[2]_i_9 
-       (.I0(instruction[12]),
-        .I1(load_rd[0]),
-        .I2(load_rd[1]),
-        .I3(instruction[13]),
-        .I4(load_rd[2]),
-        .I5(instruction[14]),
-        .O(\FSM_sequential_state[2]_i_9_n_0 ));
-  (* FSM_ENCODED_STATES = "iSTATE:001,iSTATE0:010,iSTATE1:011,iSTATE2:000,iSTATE3:100" *) 
-  FDRE \FSM_sequential_state_reg[0] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\FSM_sequential_state[0]_i_1_n_0 ),
-        .Q(state[0]),
-        .R(1'b0));
-  (* FSM_ENCODED_STATES = "iSTATE:001,iSTATE0:010,iSTATE1:011,iSTATE2:000,iSTATE3:100" *) 
-  FDRE \FSM_sequential_state_reg[1] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\FSM_sequential_state[1]_i_1_n_0 ),
-        .Q(state[1]),
-        .R(1'b0));
-  (* FSM_ENCODED_STATES = "iSTATE:001,iSTATE0:010,iSTATE1:011,iSTATE2:000,iSTATE3:100" *) 
-  FDRE \FSM_sequential_state_reg[2] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\FSM_sequential_state[2]_i_1_n_0 ),
-        .Q(state[2]),
-        .R(1'b0));
-  LUT4 #(
-    .INIT(16'h0056)) 
-    \load_rd[4]_i_1 
-       (.I0(state[2]),
-        .I1(state[1]),
-        .I2(state[0]),
-        .I3(rst),
-        .O(\load_rd[4]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h000000000F0F0FF1)) 
-    \load_rd[4]_i_2 
-       (.I0(instruction[4]),
-        .I1(\load_rd[4]_i_3_n_0 ),
-        .I2(state[2]),
-        .I3(state[1]),
-        .I4(state[0]),
-        .I5(rst),
-        .O(\load_rd[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFEFFFFFFFFFF)) 
-    \load_rd[4]_i_3 
-       (.I0(instruction[6]),
-        .I1(instruction[2]),
-        .I2(instruction[3]),
-        .I3(instruction[1]),
-        .I4(instruction[5]),
-        .I5(instruction[0]),
-        .O(\load_rd[4]_i_3_n_0 ));
-  FDRE \load_rd_reg[0] 
-       (.C(clk),
-        .CE(\load_rd[4]_i_2_n_0 ),
-        .D(instruction[7]),
-        .Q(load_rd[0]),
-        .R(\load_rd[4]_i_1_n_0 ));
-  FDRE \load_rd_reg[1] 
-       (.C(clk),
-        .CE(\load_rd[4]_i_2_n_0 ),
-        .D(instruction[8]),
-        .Q(load_rd[1]),
-        .R(\load_rd[4]_i_1_n_0 ));
-  FDRE \load_rd_reg[2] 
-       (.C(clk),
-        .CE(\load_rd[4]_i_2_n_0 ),
-        .D(instruction[9]),
-        .Q(load_rd[2]),
-        .R(\load_rd[4]_i_1_n_0 ));
-  FDRE \load_rd_reg[3] 
-       (.C(clk),
-        .CE(\load_rd[4]_i_2_n_0 ),
-        .D(instruction[10]),
-        .Q(load_rd[3]),
-        .R(\load_rd[4]_i_1_n_0 ));
-  FDRE \load_rd_reg[4] 
-       (.C(clk),
-        .CE(\load_rd[4]_i_2_n_0 ),
-        .D(instruction[11]),
-        .Q(load_rd[4]),
-        .R(\load_rd[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    load_use_hzd0_INST_0
-       (.I0(state[1]),
-        .I1(state[2]),
-        .O(load_use_hzd0));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT3 #(
-    .INIT(8'h06)) 
-    load_use_hzd1_INST_0
-       (.I0(state[1]),
-        .I1(state[2]),
-        .I2(state[0]),
-        .O(load_use_hzd1));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT3 #(
-    .INIT(8'h02)) 
-    reg_update_disable_INST_0
-       (.I0(state[0]),
-        .I1(state[1]),
-        .I2(state[2]),
-        .O(reg_update_disable));
+    .INIT(64'h9009000000009009)) 
+    PC_IFID_update_disable_INST_0_i_4
+       (.I0(IDEX_RegisterRD[0]),
+        .I1(IFID_RegisterRS2[0]),
+        .I2(IFID_RegisterRS2[2]),
+        .I3(IDEX_RegisterRD[2]),
+        .I4(IFID_RegisterRS2[1]),
+        .I5(IDEX_RegisterRD[1]),
+        .O(PC_IFID_update_disable_INST_0_i_4_n_0));
 endmodule
 `ifndef GLBL
 `define GLBL

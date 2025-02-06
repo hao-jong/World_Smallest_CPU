@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Tue Feb  4 20:35:10 2025
-# Process ID: 18140
+# Start of session at: Thu Feb  6 09:56:43 2025
+# Process ID: 16040
 # Current directory: C:/FPGA_project/RV32I_WSC/RV32I_WSC.runs/RV32I_WSC_reg_IDEX_0_0_synth_1
 # Command line: vivado.exe -log RV32I_WSC_reg_IDEX_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RV32I_WSC_reg_IDEX_0_0.tcl
 # Log file: C:/FPGA_project/RV32I_WSC/RV32I_WSC.runs/RV32I_WSC_reg_IDEX_0_0_synth_1/RV32I_WSC_reg_IDEX_0_0.vds
@@ -19,9 +19,10 @@
 # Host memory       :34020 MB
 # Swap memory       :2147 MB
 # Total Virtual     :36167 MB
-# Available Virtual :23260 MB
+# Available Virtual :23512 MB
 #-----------------------------------------------------------
 source RV32I_WSC_reg_IDEX_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 520.848 ; gain = 202.934
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
@@ -32,31 +33,30 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z007
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 3672
+INFO: [Synth 8-7075] Helper process launched with PID 9020
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 990.184 ; gain = 451.723
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 990.625 ; gain = 449.242
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'RV32I_WSC_reg_IDEX_0_0' [c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_reg_IDEX_0_0/synth/RV32I_WSC_reg_IDEX_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'reg_IDEX' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:4]
 INFO: [Synth 8-6155] done synthesizing module 'reg_IDEX' (0#1) [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:4]
 INFO: [Synth 8-6155] done synthesizing module 'RV32I_WSC_reg_IDEX_0_0' (0#1) [c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_reg_IDEX_0_0/synth/RV32I_WSC_reg_IDEX_0_0.v:53]
-WARNING: [Synth 8-7129] Port flush in module reg_IDEX is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1100.129 ; gain = 561.668
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1099.930 ; gain = 558.547
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1100.129 ; gain = 561.668
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1099.930 ; gain = 558.547
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z007sclg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1100.129 ; gain = 561.668
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1099.930 ; gain = 558.547
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z007sclg400-1
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1100.129 ; gain = 561.668
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1099.930 ; gain = 558.547
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
@@ -87,325 +87,21 @@ No constraint files found.
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port branch driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port memwrite driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port memread driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port memtoreg driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port regwrite driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port pc_vs_rs1_con[1] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port pc_vs_rs1_con[0] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port alusrc[1] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port alusrc[0] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port aluop[2] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port aluop[1] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port aluop[0] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port jalr_mux driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[31] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[30] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[29] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[28] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[27] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[26] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[25] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[24] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[23] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[22] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[21] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[20] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[19] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[18] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[17] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[16] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[15] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[14] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[13] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[12] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[11] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[10] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[9] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[8] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[7] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[6] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[5] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[4] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[3] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[2] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[1] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port program_counter[0] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register1[4] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register1[3] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register1[2] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register1[1] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register1[0] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register2[4] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register2[3] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register2[2] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register2[1] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_register2[0] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[31] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[30] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[29] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[28] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[27] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[26] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[25] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[24] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[23] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[22] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[21] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[20] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[19] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[18] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[17] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[16] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[15] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[14] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[13] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[12] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[11] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[10] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[9] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[8] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[7] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[6] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[5] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[4] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[3] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[2] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[1] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data1[0] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[31] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[30] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[29] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[28] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[27] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[26] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[25] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[24] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[23] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[22] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[21] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[20] driven by constant 0
-INFO: [Synth 8-3917] design RV32I_WSC_reg_IDEX_0_0 has port read_data2[19] driven by constant 0
-INFO: [Common 17-14] Message 'Synth 8-3917' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-WARNING: [Synth 8-7129] Port flush in module RV32I_WSC_reg_IDEX_0_0 is either unconnected or has no load
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin branch_reg with 1st driver pin 'inst/branch_reg/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:70]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin branch_reg with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:70]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net branch_reg is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:70]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin memwrite_reg with 1st driver pin 'inst/memwrite_reg/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:71]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin memwrite_reg with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:71]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net memwrite_reg is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:71]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin memread_reg with 1st driver pin 'inst/memread_reg/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:72]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin memread_reg with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:72]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net memread_reg is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:72]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin memtoreg_reg with 1st driver pin 'inst/memtoreg_reg/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:68]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin memtoreg_reg with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:68]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net memtoreg_reg is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:68]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin regwrite_reg with 1st driver pin 'inst/regwrite_reg/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:69]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin regwrite_reg with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:69]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net regwrite_reg is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:69]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin pc_vs_rs1_con_reg[1] with 1st driver pin 'inst/pc_vs_rs1_con_reg[1]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:73]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin pc_vs_rs1_con_reg[1] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:73]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net pc_vs_rs1_con_reg[1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:73]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin pc_vs_rs1_con_reg[0] with 1st driver pin 'inst/pc_vs_rs1_con_reg[0]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:73]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin pc_vs_rs1_con_reg[0] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:73]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net pc_vs_rs1_con_reg[0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:73]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin alusrc_reg[1] with 1st driver pin 'inst/alusrc_reg[1]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:74]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin alusrc_reg[1] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:74]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net alusrc_reg[1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:74]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin alusrc_reg[0] with 1st driver pin 'inst/alusrc_reg[0]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:74]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin alusrc_reg[0] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:74]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net alusrc_reg[0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:74]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin aluop_reg[2] with 1st driver pin 'inst/aluop_reg[2]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:75]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin aluop_reg[2] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:75]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net aluop_reg[2] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:75]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin aluop_reg[1] with 1st driver pin 'inst/aluop_reg[1]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:75]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin aluop_reg[1] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:75]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net aluop_reg[1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:75]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin aluop_reg[0] with 1st driver pin 'inst/aluop_reg[0]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:75]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin aluop_reg[0] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:75]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net aluop_reg[0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:75]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin jalr_mux_reg with 1st driver pin 'inst/jalr_mux_reg/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:76]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin jalr_mux_reg with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:76]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net jalr_mux_reg is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:76]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[31] with 1st driver pin 'inst/program_counter_reg[31]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[31] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[31] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[30] with 1st driver pin 'inst/program_counter_reg[30]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[30] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[30] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[29] with 1st driver pin 'inst/program_counter_reg[29]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[29] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[29] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[28] with 1st driver pin 'inst/program_counter_reg[28]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[28] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[28] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[27] with 1st driver pin 'inst/program_counter_reg[27]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[27] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[27] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[26] with 1st driver pin 'inst/program_counter_reg[26]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[26] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[26] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[25] with 1st driver pin 'inst/program_counter_reg[25]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[25] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[25] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[24] with 1st driver pin 'inst/program_counter_reg[24]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[24] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[24] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[23] with 1st driver pin 'inst/program_counter_reg[23]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[23] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[23] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[22] with 1st driver pin 'inst/program_counter_reg[22]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[22] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[22] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[21] with 1st driver pin 'inst/program_counter_reg[21]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[21] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[21] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[20] with 1st driver pin 'inst/program_counter_reg[20]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[20] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[20] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[19] with 1st driver pin 'inst/program_counter_reg[19]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[19] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[19] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[18] with 1st driver pin 'inst/program_counter_reg[18]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[18] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[18] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[17] with 1st driver pin 'inst/program_counter_reg[17]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[17] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[17] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[16] with 1st driver pin 'inst/program_counter_reg[16]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[16] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[16] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[15] with 1st driver pin 'inst/program_counter_reg[15]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[15] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[15] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[14] with 1st driver pin 'inst/program_counter_reg[14]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[14] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[14] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[13] with 1st driver pin 'inst/program_counter_reg[13]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[13] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[13] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[12] with 1st driver pin 'inst/program_counter_reg[12]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[12] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[12] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[11] with 1st driver pin 'inst/program_counter_reg[11]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[11] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[11] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[10] with 1st driver pin 'inst/program_counter_reg[10]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[10] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[10] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[9] with 1st driver pin 'inst/program_counter_reg[9]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[9] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[9] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[8] with 1st driver pin 'inst/program_counter_reg[8]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[8] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[8] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[7] with 1st driver pin 'inst/program_counter_reg[7]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[7] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[7] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[6] with 1st driver pin 'inst/program_counter_reg[6]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[6] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[6] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[5] with 1st driver pin 'inst/program_counter_reg[5]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[5] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[5] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[4] with 1st driver pin 'inst/program_counter_reg[4]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[4] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[4] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[3] with 1st driver pin 'inst/program_counter_reg[3]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[3] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[3] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[2] with 1st driver pin 'inst/program_counter_reg[2]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[2] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[2] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[1] with 1st driver pin 'inst/program_counter_reg[1]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[1] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[0] with 1st driver pin 'inst/program_counter_reg[0]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin program_counter_reg[0] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net program_counter_reg[0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:77]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[4] with 1st driver pin 'inst/read_register1_reg[4]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[4] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register1_reg[4] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[3] with 1st driver pin 'inst/read_register1_reg[3]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[3] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register1_reg[3] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[2] with 1st driver pin 'inst/read_register1_reg[2]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[2] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register1_reg[2] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[1] with 1st driver pin 'inst/read_register1_reg[1]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[1] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register1_reg[1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[0] with 1st driver pin 'inst/read_register1_reg[0]/Q' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin read_register1_reg[0] with 2nd driver pin 'GND' [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-INFO: [Common 17-14] Message 'Synth 8-6859' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register1_reg[0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:78]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register2_reg[4] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:79]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register2_reg[3] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:79]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register2_reg[2] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:79]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register2_reg[1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:79]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_register2_reg[0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:79]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[31] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[30] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[29] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[28] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[27] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[26] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[25] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[24] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[23] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[22] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[21] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[20] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[19] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[18] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[17] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[16] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[15] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[14] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[13] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[12] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[11] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[10] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[9] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[8] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[7] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[6] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[5] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[4] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[3] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[2] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data1_reg[0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:80]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[31] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[30] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[29] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[28] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[27] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[26] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[25] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[24] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[23] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[22] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[21] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[20] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net read_data2_reg[19] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/FPGA_project/RV32I_WSC/RV32I_WSC.srcs/sources_1/new/IDEX_reg.v:81]
-INFO: [Common 17-14] Message 'Synth 8-6858' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished Timing Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished Technology Mapping : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -423,37 +119,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished IO Insertion : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -466,38 +162,40 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+-+-----+------+
-| |Cell |Count |
-+-+-----+------+
-+-+-----+------+
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |LUT2 |     1|
+|2     |FDRE |   160|
++------+-----+------+
 
 Report Instance Areas: 
-+------+---------+-------+------+
-|      |Instance |Module |Cells |
-+------+---------+-------+------+
-|1     |top      |       |     0|
-+------+---------+-------+------+
++------+---------+---------+------+
+|      |Instance |Module   |Cells |
++------+---------+---------+------+
+|1     |top      |         |   161|
+|2     |  inst   |reg_IDEX |   161|
++------+---------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1274.766 ; gain = 733.383
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 480 critical warnings and 3 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1280.488 ; gain = 742.027
-Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1280.488 ; gain = 742.027
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1274.766 ; gain = 733.383
+Synthesis Optimization Complete : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1274.766 ; gain = 733.383
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1280.488 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1284.734 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1382.465 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1389.855 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 575271d9
+Synth Design complete | Checksum: e6568617
 INFO: [Common 17-83] Releasing license: Synthesis
-122 Infos, 3 Warnings, 200 Critical Warnings and 0 Errors encountered.
+19 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 1387.473 ; gain = 853.004
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+synth_design: Time (s): cpu = 00:00:07 ; elapsed = 00:00:13 . Memory (MB): peak = 1389.855 ; gain = 854.469
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [Common 17-1381] The checkpoint 'C:/FPGA_project/RV32I_WSC/RV32I_WSC.runs/RV32I_WSC_reg_IDEX_0_0_synth_1/RV32I_WSC_reg_IDEX_0_0.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file RV32I_WSC_reg_IDEX_0_0_utilization_synth.rpt -pb RV32I_WSC_reg_IDEX_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Feb  4 20:35:34 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu Feb  6 09:57:08 2025...

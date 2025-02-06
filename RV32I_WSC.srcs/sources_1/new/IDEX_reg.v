@@ -20,7 +20,6 @@ input memread_in,
 
 input memtoreg_in,
 input regwrite_in,
-input IDEX_update_disable,
 
 //data//
 input [31:0] program_counter_in,
@@ -63,7 +62,7 @@ output reg [4:0] write_register
 
 always@(posedge clk)
 begin
-    if(rst)
+    if(rst || flush)
         begin
             memtoreg <= 1'b0;
             regwrite <= 1'b0;
@@ -86,8 +85,6 @@ begin
         end
     else
         begin
-            if (!IDEX_update_disable)
-            begin
                 memtoreg <= memtoreg_in;
                 regwrite <= regwrite_in;
                 branch <= branch_in;
@@ -106,29 +103,9 @@ begin
                 funct3 <= funct3_in;
                 instruction30 <= instruction30_in;
                 write_register <= write_register_in;       
-            end
         end
- end
+end  
+
  
-always @ (flush)
-begin
-        memtoreg <= 1'b0;
-        regwrite <= 1'b0;
-        branch <= 1'b0;
-        memwrite <= 1'b0;
-        memread <= 1'b0;
-        pc_vs_rs1_con <= 2'b00;
-        alusrc <= 2'b00;
-        aluop <= 3'b000;
-        jalr_mux <= 1'b0;
-        program_counter <= 32'h0;
-        read_register1 <= 5'd0;
-        read_register2<= 5'd0;
-        read_data1 <= 32'h0;
-        read_data2 <= 32'h0;
-        imm_gen <= 64'h0;
-        funct3 <= 3'b000;
-        instruction30 <= 1'b0;
-        write_register <= 5'b00000;        
-end
+
 endmodule

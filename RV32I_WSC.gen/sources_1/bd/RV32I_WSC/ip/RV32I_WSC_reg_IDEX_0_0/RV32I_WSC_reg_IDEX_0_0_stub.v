@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Tue Feb  4 20:35:33 2025
+// Date        : Thu Feb  6 09:57:08 2025
 // Host        : COMSYS01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_reg_IDEX_0_0/RV32I_WSC_reg_IDEX_0_0_stub.v
@@ -17,13 +17,13 @@
 (* X_CORE_INFO = "reg_IDEX,Vivado 2024.1" *)
 module RV32I_WSC_reg_IDEX_0_0(clk, rst, flush, pc_vs_rs1_con_in, alusrc_in, 
   aluop_in, jalr_mux_in, branch_in, memwrite_in, memread_in, memtoreg_in, regwrite_in, 
-  IDEX_update_disable, program_counter_in, read_register1_in, read_register2_in, 
-  read_data1_in, read_data2_in, imm_gen_in, funct3_in, instruction30_in, write_register_in, 
-  branch, memwrite, memread, memtoreg, regwrite, pc_vs_rs1_con, alusrc, aluop, jalr_mux, 
-  program_counter, read_register1, read_register2, read_data1, read_data2, imm_gen, funct3, 
-  instruction30, write_register)
-/* synthesis syn_black_box black_box_pad_pin="clk,rst,flush,pc_vs_rs1_con_in[1:0],alusrc_in[1:0],aluop_in[2:0],jalr_mux_in,branch_in,memwrite_in,memread_in,memtoreg_in,regwrite_in,IDEX_update_disable,program_counter_in[31:0],read_register1_in[4:0],read_register2_in[4:0],read_data1_in[31:0],read_data2_in[31:0],imm_gen_in[31:0],funct3_in[2:0],instruction30_in,write_register_in[4:0],branch,memwrite,memread,memtoreg,regwrite,pc_vs_rs1_con[1:0],alusrc[1:0],aluop[2:0],jalr_mux,program_counter[31:0],read_register1[4:0],read_register2[4:0],read_data1[31:0],read_data2[31:0],imm_gen[31:0],funct3[2:0],instruction30,write_register[4:0]" */;
-  input clk;
+  program_counter_in, read_register1_in, read_register2_in, read_data1_in, read_data2_in, 
+  imm_gen_in, funct3_in, instruction30_in, write_register_in, branch, memwrite, memread, 
+  memtoreg, regwrite, pc_vs_rs1_con, alusrc, aluop, jalr_mux, program_counter, read_register1, 
+  read_register2, read_data1, read_data2, imm_gen, funct3, instruction30, write_register)
+/* synthesis syn_black_box black_box_pad_pin="rst,flush,pc_vs_rs1_con_in[1:0],alusrc_in[1:0],aluop_in[2:0],jalr_mux_in,branch_in,memwrite_in,memread_in,memtoreg_in,regwrite_in,program_counter_in[31:0],read_register1_in[4:0],read_register2_in[4:0],read_data1_in[31:0],read_data2_in[31:0],imm_gen_in[31:0],funct3_in[2:0],instruction30_in,write_register_in[4:0],branch,memwrite,memread,memtoreg,regwrite,pc_vs_rs1_con[1:0],alusrc[1:0],aluop[2:0],jalr_mux,program_counter[31:0],read_register1[4:0],read_register2[4:0],read_data1[31:0],read_data2[31:0],imm_gen[31:0],funct3[2:0],instruction30,write_register[4:0]" */
+/* synthesis syn_force_seq_prim="clk" */;
+  input clk /* synthesis syn_isclock = 1 */;
   input rst;
   input flush;
   input [1:0]pc_vs_rs1_con_in;
@@ -35,7 +35,6 @@ module RV32I_WSC_reg_IDEX_0_0(clk, rst, flush, pc_vs_rs1_con_in, alusrc_in,
   input memread_in;
   input memtoreg_in;
   input regwrite_in;
-  input IDEX_update_disable;
   input [31:0]program_counter_in;
   input [4:0]read_register1_in;
   input [4:0]read_register2_in;

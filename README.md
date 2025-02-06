@@ -32,8 +32,7 @@
 |  |  |  |  |  |  |  |  |  |  |  |
 
 ## Overall Schematic 
-### V2.10
-<img src="WSC_schematic_last.png">
+<img src="WSC_schematic_last_last.png">
 
 ## Verification Method
 ### 개별 명령어 입력
@@ -61,6 +60,9 @@
 	- conditional & unconditional jump 검증 예정
 ### V2.20 (2025-02-04)
 	- conditional & unconditional jump 검증 (Test003, Test004)
+### V2.30 (2025-02-06)
+	- branch prediction & harzard processing 검증 
+
 ## Tool
  1. ***AMD Vivado***
  2. ***RISC-V online assembler (https://riscvasm.lucasteske.dev/#)*** 

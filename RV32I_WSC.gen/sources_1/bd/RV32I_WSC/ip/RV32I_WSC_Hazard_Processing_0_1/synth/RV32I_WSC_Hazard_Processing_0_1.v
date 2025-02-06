@@ -59,11 +59,14 @@ module RV32I_WSC_Hazard_Processing_0_1 (
   clk,
   rst,
   pcsrc,
-  instruction,
-  flush,
-  reg_update_disable,
-  load_use_hzd0,
-  load_use_hzd1
+  IDEX_memread,
+  IDEX_RegisterRD,
+  IFID_RegisterRS1,
+  IFID_RegisterRS2,
+  PC_IFID_update_disable,
+  IFID_flush,
+  IDEX_flush,
+  EXMEM_flush
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *)
@@ -73,20 +76,26 @@ input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
 input wire pcsrc;
-input wire [31 : 0] instruction;
-output wire flush;
-output wire reg_update_disable;
-output wire load_use_hzd0;
-output wire load_use_hzd1;
+input wire IDEX_memread;
+input wire [4 : 0] IDEX_RegisterRD;
+input wire [4 : 0] IFID_RegisterRS1;
+input wire [4 : 0] IFID_RegisterRS2;
+output wire PC_IFID_update_disable;
+output wire IFID_flush;
+output wire IDEX_flush;
+output wire EXMEM_flush;
 
   Hazard_Processing inst (
     .clk(clk),
     .rst(rst),
     .pcsrc(pcsrc),
-    .instruction(instruction),
-    .flush(flush),
-    .reg_update_disable(reg_update_disable),
-    .load_use_hzd0(load_use_hzd0),
-    .load_use_hzd1(load_use_hzd1)
+    .IDEX_memread(IDEX_memread),
+    .IDEX_RegisterRD(IDEX_RegisterRD),
+    .IFID_RegisterRS1(IFID_RegisterRS1),
+    .IFID_RegisterRS2(IFID_RegisterRS2),
+    .PC_IFID_update_disable(PC_IFID_update_disable),
+    .IFID_flush(IFID_flush),
+    .IDEX_flush(IDEX_flush),
+    .EXMEM_flush(EXMEM_flush)
   );
 endmodule

@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Tue Feb  4 14:30:48 2025
-# Process ID: 7856
+# Start of session at: Thu Feb  6 10:32:30 2025
+# Process ID: 332
 # Current directory: C:/FPGA_project/RV32I_WSC/RV32I_WSC.runs/RV32I_WSC_reg_EXMEM_0_0_synth_1
 # Command line: vivado.exe -log RV32I_WSC_reg_EXMEM_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RV32I_WSC_reg_EXMEM_0_0.tcl
 # Log file: C:/FPGA_project/RV32I_WSC/RV32I_WSC.runs/RV32I_WSC_reg_EXMEM_0_0_synth_1/RV32I_WSC_reg_EXMEM_0_0.vds
@@ -17,8 +17,8 @@
 # CPU Physical cores:16
 # CPU Logical cores :24
 # Host memory       :34020 MB
-# Swap memory       :4895 MB
-# Total Virtual     :38916 MB
-# Available Virtual :10392 MB
+# Swap memory       :2147 MB
+# Total Virtual     :36167 MB
+# Available Virtual :23297 MB
 #-----------------------------------------------------------
 source RV32I_WSC_reg_EXMEM_0_0.tcl -notrace

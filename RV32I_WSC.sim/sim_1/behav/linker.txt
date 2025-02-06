@@ -1,11 +1,11 @@
 /* Thanks https://github.com/darklife/darkriscv */
-  __heap_size    = 0x100;  /* required amount of heap */
-  __stack_size  = 0x100;  /* required amount of stack */
+  __heap_size    = 0x040;  /* required amount of heap */
+  __stack_size  = 0x000;  /* required amount of stack */
 
   MEMORY
   {
     ROM (rwx) : ORIGIN = 0x00000000, LENGTH = 0x00040
-    RAM (rwx) : ORIGIN = 0x00000100, LENGTH = 0x00300
+    RAM (rwx) : ORIGIN = 0x00000100, LENGTH = 0x00080
   }
   SECTIONS
   {

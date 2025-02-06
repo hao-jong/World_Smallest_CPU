@@ -62,7 +62,9 @@ module RV32I_WSC_reg_IFID_0_0 (
   program_counter_in,
   instruction_in,
   program_counter,
-  instruction
+  instruction,
+  IFID_registerRS1,
+  IFID_registerRS2
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *)
@@ -77,6 +79,8 @@ input wire [31 : 0] program_counter_in;
 input wire [31 : 0] instruction_in;
 output wire [31 : 0] program_counter;
 output wire [31 : 0] instruction;
+output wire [4 : 0] IFID_registerRS1;
+output wire [4 : 0] IFID_registerRS2;
 
   reg_IFID inst (
     .clk(clk),
@@ -86,6 +90,8 @@ output wire [31 : 0] instruction;
     .program_counter_in(program_counter_in),
     .instruction_in(instruction_in),
     .program_counter(program_counter),
-    .instruction(instruction)
+    .instruction(instruction),
+    .IFID_registerRS1(IFID_registerRS1),
+    .IFID_registerRS2(IFID_registerRS2)
   );
 endmodule

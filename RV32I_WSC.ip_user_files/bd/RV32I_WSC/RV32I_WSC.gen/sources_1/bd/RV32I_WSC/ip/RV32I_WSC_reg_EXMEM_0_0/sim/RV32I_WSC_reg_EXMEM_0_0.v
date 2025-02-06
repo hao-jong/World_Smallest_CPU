@@ -57,6 +57,7 @@
 module RV32I_WSC_reg_EXMEM_0_0 (
   clk,
   rst,
+  flush,
   branch_in,
   memwrite_in,
   memread_in,
@@ -85,6 +86,7 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
+input wire flush;
 input wire branch_in;
 input wire memwrite_in;
 input wire memread_in;
@@ -109,6 +111,7 @@ output wire [4 : 0] write_register;
   reg_EXMEM inst (
     .clk(clk),
     .rst(rst),
+    .flush(flush),
     .branch_in(branch_in),
     .memwrite_in(memwrite_in),
     .memread_in(memread_in),

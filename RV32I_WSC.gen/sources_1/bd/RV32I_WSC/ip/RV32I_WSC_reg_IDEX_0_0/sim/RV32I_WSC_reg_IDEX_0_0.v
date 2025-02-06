@@ -67,7 +67,6 @@ module RV32I_WSC_reg_IDEX_0_0 (
   memread_in,
   memtoreg_in,
   regwrite_in,
-  IDEX_update_disable,
   program_counter_in,
   read_register1_in,
   read_register2_in,
@@ -113,7 +112,6 @@ input wire memwrite_in;
 input wire memread_in;
 input wire memtoreg_in;
 input wire regwrite_in;
-input wire IDEX_update_disable;
 input wire [31 : 0] program_counter_in;
 input wire [4 : 0] read_register1_in;
 input wire [4 : 0] read_register2_in;
@@ -155,7 +153,6 @@ output wire [4 : 0] write_register;
     .memread_in(memread_in),
     .memtoreg_in(memtoreg_in),
     .regwrite_in(regwrite_in),
-    .IDEX_update_disable(IDEX_update_disable),
     .program_counter_in(program_counter_in),
     .read_register1_in(read_register1_in),
     .read_register2_in(read_register2_in),

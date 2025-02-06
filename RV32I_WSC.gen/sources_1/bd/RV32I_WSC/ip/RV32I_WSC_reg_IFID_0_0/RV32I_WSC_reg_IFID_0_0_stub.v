@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Tue Feb  4 17:46:46 2025
+// Date        : Thu Feb  6 09:57:08 2025
 // Host        : COMSYS01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_reg_IFID_0_0/RV32I_WSC_reg_IFID_0_0_stub.v
@@ -16,9 +16,11 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "reg_IFID,Vivado 2024.1" *)
 module RV32I_WSC_reg_IFID_0_0(clk, rst, flush, IFID_update_disable, 
-  program_counter_in, instruction_in, program_counter, instruction)
-/* synthesis syn_black_box black_box_pad_pin="clk,rst,flush,IFID_update_disable,program_counter_in[31:0],instruction_in[31:0],program_counter[31:0],instruction[31:0]" */;
-  input clk;
+  program_counter_in, instruction_in, program_counter, instruction, IFID_registerRS1, 
+  IFID_registerRS2)
+/* synthesis syn_black_box black_box_pad_pin="rst,flush,IFID_update_disable,program_counter_in[31:0],instruction_in[31:0],program_counter[31:0],instruction[31:0],IFID_registerRS1[4:0],IFID_registerRS2[4:0]" */
+/* synthesis syn_force_seq_prim="clk" */;
+  input clk /* synthesis syn_isclock = 1 */;
   input rst;
   input flush;
   input IFID_update_disable;
@@ -26,4 +28,6 @@ module RV32I_WSC_reg_IFID_0_0(clk, rst, flush, IFID_update_disable,
   input [31:0]instruction_in;
   output [31:0]program_counter;
   output [31:0]instruction;
+  output [4:0]IFID_registerRS1;
+  output [4:0]IFID_registerRS2;
 endmodule

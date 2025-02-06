@@ -41,8 +41,6 @@
         "alusrc": [ { "direction": "in", "size_left": "1", "size_right": "0" } ],
         "aluop": [ { "direction": "in", "size_left": "2", "size_right": "0" } ],
         "jalr_mux": [ { "direction": "in" } ],
-        "load_use_hzd1_ctrl": [ { "direction": "in" } ],
-        "load_use_hzd2_ctrl": [ { "direction": "in" } ],
         "forwA_ctrl": [ { "direction": "in", "size_left": "1", "size_right": "0" } ],
         "forwB_ctrl": [ { "direction": "in", "size_left": "1", "size_right": "0" } ],
         "program_counter": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
@@ -55,7 +53,8 @@
         "memtoreg_backward": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
         "next_pc_cal": [ { "direction": "out", "size_left": "31", "size_right": "0" } ],
         "branch_ctrl": [ { "direction": "out" } ],
-        "alu_result": [ { "direction": "out", "size_left": "31", "size_right": "0" } ]
+        "alu_result": [ { "direction": "out", "size_left": "31", "size_right": "0" } ],
+        "forwB": [ { "direction": "out", "size_left": "31", "size_right": "0" } ]
       }
     }
   }

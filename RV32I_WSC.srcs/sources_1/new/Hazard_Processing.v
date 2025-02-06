@@ -24,12 +24,16 @@ module Hazard_Processing(
 input clk,
 input rst,
 input pcsrc,
-input [31:0] instruction,
+input IDEX_memread,
+input [4:0] IDEX_RegisterRD,
+input [4:0] IFID_RegisterRS1,
+input [4:0] IFID_RegisterRS2,
+output reg PC_IFID_update_disable,
+output IFID_flush,
+output IDEX_flush,
+output EXMEM_flush
 
-output reg flush,
-output reg reg_update_disable,
-output reg load_use_hzd0,
-output reg load_use_hzd1
+
     );
     
 localparam OP_R_TYPE        = 7'b0110011;
@@ -44,127 +48,39 @@ localparam OP_U_LUI_TYPE    = 7'b0110111;
 localparam OP_U_AUIPC_TYPE  = 7'b0010111;
 localparam OP_J_TYPE        = 7'b1101111;   
 
-reg [2:0] state;
-reg [4:0] load_rd;
 
+reg IFID_flush_B;
+reg IDEX_flush_B;
+reg EXMEM_flush_B;
+reg IDEX_flush_h;
 
-//load use hazard unit//  
-always @ (posedge clk)
-begin
-    if(rst)
-       state <= 3'b000;
-    else
-        begin
-                case (state)
-                3'b000 :
-                    begin     
-                        if(instruction [6:0] == OP_I_LOAD_TYPE)
-                        begin
-                            state <= 3'b001;
-                            load_rd <= instruction[11:7];
-                        end
-                        else
-                            state <= 3'b000;
-                    end
-                 3'b001 :
-                     begin
-                        if
-                        (
-                            (   (instruction [6:0] == OP_R_TYPE) || (instruction [6:0] == OP_B_TYPE)  )
-                        &&  (   (load_rd == instruction [19:15]) && (load_rd == instruction [24:20]))  
-                        )
-                        begin
-                        state <= 3'b110;
-                        load_rd <= 5'b00000;
-                        end
-                        else if
-                        (
-                            (   (instruction [6:0] == OP_R_TYPE) || (instruction [6:0] == OP_B_TYPE) || (instruction [6:0] == OP_S_TYPE) || (instruction [6:0] == OP_I_JALR_TYPE) || (instruction [6:0] == OP_I_LOAD_TYPE) || (instruction [6:0] == OP_I_ALU_TYPE)   )
-                        &&  (   (load_rd == instruction [19:15]) )  
-                        )
-                        begin
-                        state <= 3'b100;
-                        load_rd <= 5'b00000;
-                        end
-                        
-                        else if
-                        (
-                            (   (instruction [6:0] == OP_R_TYPE) || (instruction [6:0] == OP_B_TYPE)  )
-                        &&  (   (load_rd == instruction [24:20]))  
-                        )       
-                        begin
-                        state <= 3'b101;
-                        load_rd <= 5'b00000;
-                        end
-                        else
-                        state <= 3'b000;
-                        load_rd <= 5'b00000;
-                    end
-                  3'b100 :
-                    begin      
-                            state <= 3'b000;
-                            load_rd <= 5'b00000;
-                     end
-                  3'b101 :
-                    begin      
-                            state <= 3'b000;
-                            load_rd <= 5'b00000;
-                     end 
-                  3'b110 :
-                    begin      
-                            state <= 3'b000;
-                            load_rd <= 5'b00000;
-                     end
-                  default :
-                    begin      
-                            state <= 3'b000;
-                            load_rd <= 5'b00000;
-                     end    
-                
-                endcase
-        end
-end
+assign EXMEM_flush = EXMEM_flush_B;
+assign IFID_flush = IFID_flush_B;
+assign IDEX_flush = (IDEX_flush_h) | (IDEX_flush_B);
 
+//load use hazard unit//
 always @ (*)
 begin
-    case (state)
-        3'b000 :
+    if  (
+            (
+                    (IDEX_memread == 1)
+                &&  (IDEX_RegisterRD == IFID_RegisterRS1)  
+            )
+            ||
+            (
+                    (IDEX_memread == 1)
+                &&  (IDEX_RegisterRD == IFID_RegisterRS2)  
+            )            
+        )
         begin
-                            reg_update_disable <= 1'b0;
-                            load_use_hzd0 <= 1'b0;
-                            load_use_hzd1 <= 1'b0;
+            PC_IFID_update_disable <= 1'b1;
+            IDEX_flush_h <= 1'b1;
         end
-        3'b001 :
+    else
         begin
-                            reg_update_disable <= 1'b1;
-                            load_use_hzd0 <= 1'b0;
-                            load_use_hzd1 <= 1'b0;
-        end        
-        3'b100 :
-        begin
-                            reg_update_disable <= 1'b0;
-                            load_use_hzd0 <= 1'b1;
-                            load_use_hzd1 <= 1'b0;
+            PC_IFID_update_disable <= 1'b0;
+            IDEX_flush_h <= 1'b0;
         end
-        3'b101 :
-        begin
-                            reg_update_disable <= 1'b0;
-                            load_use_hzd0 <= 1'b0;
-                            load_use_hzd1 <= 1'b1;
-        end
-        3'b110 :
-        begin
-                            reg_update_disable <= 1'b0;
-                            load_use_hzd0 <= 1'b1;
-                            load_use_hzd1 <= 1'b1;
-        end
-        default :
-        begin
-                            reg_update_disable <= 1'b0;
-                            load_use_hzd0 <= 1'b0;
-                            load_use_hzd1 <= 1'b0;
-        end
-        endcase                       
 end
 
      
@@ -173,11 +89,15 @@ always @ (*)
 begin
     if(pcsrc)
     begin
-        flush <= 1;
+        IFID_flush_B <= 1'b1;    
+        IDEX_flush_B <= 1'b1;
+        EXMEM_flush_B <= 1'b1;
     end
     else    
     begin
-        flush <= 0;
+        IFID_flush_B <= 1'b0;    
+        IDEX_flush_B <= 1'b0;
+        EXMEM_flush_B <= 1'b0;
     end
 end
 

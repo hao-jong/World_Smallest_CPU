@@ -5,6 +5,7 @@ module reg_EXMEM(
 //base//
 input clk,
 input rst,
+input flush,
 //controller_output//
 input branch_in,
 input memwrite_in,
@@ -36,7 +37,7 @@ output reg [4:0] write_register
     );
     
 always@(posedge clk)
-    if(rst)
+    if(rst|| flush)
         begin
             memtoreg <= 1'b0;
             regwrite <= 1'b0;
