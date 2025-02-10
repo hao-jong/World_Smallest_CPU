@@ -66,10 +66,10 @@ begin
       {3'b100, 3'b111, 1'bx}: alu_control = 5'b01111; //bgeu // unsigned (rs1>=rs2) ? 1 : 0
       
       //jalr//
-      {3'b110, 3'bxxx, 1'bx}: alu_control = 5'b11111; // jalr (add & branch_ctrl = 1 )
+      {3'b110, 3'b000, 1'bx}: alu_control = 5'b11111; // jalr (add & branch_ctrl = 1 )
       
       //jal//
-      {3'b111, 3'b000, 1'bx}: alu_control = 5'b11111; // jal (add & branch_ctrl = 1 )
+      {3'b111, 3'bxxx, 1'bx}: alu_control = 5'b11111; // jal (add & branch_ctrl = 1 )
       
      
       

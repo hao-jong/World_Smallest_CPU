@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
--- Date        : Wed Feb  5 19:30:21 2025
+-- Date        : Mon Feb 10 11:41:49 2025
 -- Host        : COMSYS01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Execution_0_0/RV32I_WSC_Execution_0_0_sim_netlist.vhdl
@@ -23,9 +23,9 @@ entity RV32I_WSC_Execution_0_0_ALU is
     \forwA__228\ : out STD_LOGIC_VECTOR ( 31 downto 0 );
     imm_gen : in STD_LOGIC_VECTOR ( 31 downto 0 );
     alusrc : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    instruction30 : in STD_LOGIC;
-    funct3 : in STD_LOGIC_VECTOR ( 2 downto 0 );
     aluop : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    funct3 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    instruction30 : in STD_LOGIC;
     program_counter : in STD_LOGIC_VECTOR ( 31 downto 0 );
     pc_vs_rs1_con : in STD_LOGIC_VECTOR ( 1 downto 0 );
     jalr_mux : in STD_LOGIC;
@@ -426,7 +426,7 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   signal \alu_result[31]_INST_0_i_12_n_7\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_13_n_0\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_14_n_0\ : STD_LOGIC;
-  signal \alu_result[31]_INST_0_i_15_n_0\ : STD_LOGIC;
+  signal \alu_result[31]_INST_0_i_16_n_0\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_17_n_0\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_18_n_0\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_19_n_0\ : STD_LOGIC;
@@ -450,7 +450,6 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   signal \alu_result[31]_INST_0_i_35_n_0\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_36_n_0\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_37_n_0\ : STD_LOGIC;
-  signal \alu_result[31]_INST_0_i_38_n_0\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_3_n_0\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_4_n_0\ : STD_LOGIC;
   signal \alu_result[31]_INST_0_i_5_n_0\ : STD_LOGIC;
@@ -596,40 +595,39 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   signal branch_ctrl_INST_0_i_12_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_13_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_14_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_15_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_16_n_0 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_15_n_2 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_15_n_3 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_16_n_2 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_16_n_3 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_17_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_18_n_2 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_18_n_3 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_19_n_2 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_19_n_3 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_1_n_0 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_17_n_1 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_17_n_2 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_17_n_3 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_18_n_0 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_19_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_20_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_20_n_1 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_20_n_2 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_20_n_3 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_21_n_0 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_21_n_1 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_21_n_2 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_21_n_3 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_22_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_23_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_24_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_24_n_1 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_24_n_2 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_24_n_3 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_25_n_0 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_25_n_1 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_25_n_2 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_25_n_3 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_26_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_27_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_28_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_28_n_1 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_28_n_2 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_28_n_3 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_29_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_30_n_0 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_30_n_1 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_30_n_2 : STD_LOGIC;
+  signal branch_ctrl_INST_0_i_30_n_3 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_31_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_32_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_33_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_33_n_1 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_33_n_2 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_33_n_3 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_34_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_35_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_36_n_0 : STD_LOGIC;
@@ -639,9 +637,6 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   signal branch_ctrl_INST_0_i_40_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_41_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_42_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_43_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_44_n_0 : STD_LOGIC;
-  signal branch_ctrl_INST_0_i_45_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_6_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_7_n_0 : STD_LOGIC;
   signal branch_ctrl_INST_0_i_8_n_0 : STD_LOGIC;
@@ -812,14 +807,14 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   signal \NLW_branch_ctrl0_inferred__3/i__carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_branch_ctrl0_inferred__3/i__carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_branch_ctrl0_inferred__3/i__carry__2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_branch_ctrl_INST_0_i_18_CO_UNCONNECTED : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal NLW_branch_ctrl_INST_0_i_18_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_branch_ctrl_INST_0_i_19_CO_UNCONNECTED : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal NLW_branch_ctrl_INST_0_i_19_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_branch_ctrl_INST_0_i_20_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_branch_ctrl_INST_0_i_24_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_branch_ctrl_INST_0_i_28_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_branch_ctrl_INST_0_i_33_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_branch_ctrl_INST_0_i_15_CO_UNCONNECTED : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal NLW_branch_ctrl_INST_0_i_15_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_branch_ctrl_INST_0_i_16_CO_UNCONNECTED : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal NLW_branch_ctrl_INST_0_i_16_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_branch_ctrl_INST_0_i_17_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_branch_ctrl_INST_0_i_21_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_branch_ctrl_INST_0_i_25_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_branch_ctrl_INST_0_i_30_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \alu_result0_inferred__0/i__carry\ : label is 35;
   attribute ADDER_THRESHOLD of \alu_result0_inferred__0/i__carry__0\ : label is 35;
@@ -832,12 +827,12 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \alu_result[10]_INST_0_i_11\ : label is "soft_lutpair10";
   attribute SOFT_HLUTNM of \alu_result[10]_INST_0_i_12\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \alu_result[10]_INST_0_i_9\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \alu_result[11]_INST_0_i_13\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \alu_result[10]_INST_0_i_9\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \alu_result[11]_INST_0_i_13\ : label is "soft_lutpair33";
   attribute SOFT_HLUTNM of \alu_result[11]_INST_0_i_15\ : label is "soft_lutpair9";
   attribute ADDER_THRESHOLD of \alu_result[11]_INST_0_i_4\ : label is 35;
   attribute SOFT_HLUTNM of \alu_result[12]_INST_0_i_11\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \alu_result[12]_INST_0_i_9\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \alu_result[12]_INST_0_i_9\ : label is "soft_lutpair34";
   attribute SOFT_HLUTNM of \alu_result[13]_INST_0_i_10\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \alu_result[14]_INST_0_i_11\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of \alu_result[15]_INST_0_i_15\ : label is "soft_lutpair5";
@@ -856,34 +851,34 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   attribute SOFT_HLUTNM of \alu_result[18]_INST_0_i_12\ : label is "soft_lutpair10";
   attribute SOFT_HLUTNM of \alu_result[18]_INST_0_i_13\ : label is "soft_lutpair16";
   attribute SOFT_HLUTNM of \alu_result[18]_INST_0_i_14\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \alu_result[19]_INST_0_i_15\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \alu_result[19]_INST_0_i_15\ : label is "soft_lutpair32";
   attribute SOFT_HLUTNM of \alu_result[19]_INST_0_i_16\ : label is "soft_lutpair9";
   attribute SOFT_HLUTNM of \alu_result[19]_INST_0_i_17\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \alu_result[19]_INST_0_i_18\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \alu_result[19]_INST_0_i_18\ : label is "soft_lutpair32";
   attribute ADDER_THRESHOLD of \alu_result[19]_INST_0_i_4\ : label is 35;
   attribute SOFT_HLUTNM of \alu_result[1]_INST_0_i_8\ : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \alu_result[20]_INST_0_i_12\ : label is "soft_lutpair18";
   attribute SOFT_HLUTNM of \alu_result[20]_INST_0_i_13\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \alu_result[20]_INST_0_i_7\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \alu_result[20]_INST_0_i_7\ : label is "soft_lutpair36";
   attribute SOFT_HLUTNM of \alu_result[21]_INST_0_i_11\ : label is "soft_lutpair19";
   attribute SOFT_HLUTNM of \alu_result[21]_INST_0_i_12\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \alu_result[21]_INST_0_i_7\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \alu_result[21]_INST_0_i_7\ : label is "soft_lutpair37";
   attribute SOFT_HLUTNM of \alu_result[22]_INST_0_i_12\ : label is "soft_lutpair20";
   attribute SOFT_HLUTNM of \alu_result[22]_INST_0_i_13\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \alu_result[22]_INST_0_i_7\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \alu_result[23]_INST_0_i_14\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \alu_result[22]_INST_0_i_7\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \alu_result[23]_INST_0_i_14\ : label is "soft_lutpair39";
   attribute SOFT_HLUTNM of \alu_result[23]_INST_0_i_16\ : label is "soft_lutpair13";
   attribute ADDER_THRESHOLD of \alu_result[23]_INST_0_i_4\ : label is 35;
-  attribute SOFT_HLUTNM of \alu_result[23]_INST_0_i_8\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \alu_result[24]_INST_0_i_10\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \alu_result[23]_INST_0_i_8\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \alu_result[24]_INST_0_i_10\ : label is "soft_lutpair40";
   attribute SOFT_HLUTNM of \alu_result[24]_INST_0_i_12\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \alu_result[24]_INST_0_i_7\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \alu_result[24]_INST_0_i_7\ : label is "soft_lutpair38";
   attribute SOFT_HLUTNM of \alu_result[25]_INST_0_i_11\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \alu_result[25]_INST_0_i_7\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \alu_result[25]_INST_0_i_9\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \alu_result[26]_INST_0_i_10\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \alu_result[25]_INST_0_i_7\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \alu_result[25]_INST_0_i_9\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \alu_result[26]_INST_0_i_10\ : label is "soft_lutpair40";
   attribute SOFT_HLUTNM of \alu_result[26]_INST_0_i_12\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \alu_result[27]_INST_0_i_14\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \alu_result[27]_INST_0_i_14\ : label is "soft_lutpair41";
   attribute SOFT_HLUTNM of \alu_result[27]_INST_0_i_15\ : label is "soft_lutpair24";
   attribute SOFT_HLUTNM of \alu_result[27]_INST_0_i_16\ : label is "soft_lutpair17";
   attribute SOFT_HLUTNM of \alu_result[27]_INST_0_i_18\ : label is "soft_lutpair24";
@@ -891,7 +886,7 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   attribute SOFT_HLUTNM of \alu_result[28]_INST_0_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \alu_result[28]_INST_0_i_10\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \alu_result[28]_INST_0_i_11\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \alu_result[28]_INST_0_i_8\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \alu_result[28]_INST_0_i_8\ : label is "soft_lutpair41";
   attribute SOFT_HLUTNM of \alu_result[29]_INST_0_i_1\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \alu_result[29]_INST_0_i_10\ : label is "soft_lutpair19";
   attribute SOFT_HLUTNM of \alu_result[29]_INST_0_i_5\ : label is "soft_lutpair3";
@@ -901,21 +896,21 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   attribute SOFT_HLUTNM of \alu_result[30]_INST_0_i_10\ : label is "soft_lutpair20";
   attribute SOFT_HLUTNM of \alu_result[30]_INST_0_i_5\ : label is "soft_lutpair3";
   attribute ADDER_THRESHOLD of \alu_result[31]_INST_0_i_12\ : label is 35;
-  attribute SOFT_HLUTNM of \alu_result[31]_INST_0_i_23\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \alu_result[31]_INST_0_i_24\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \alu_result[31]_INST_0_i_27\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \alu_result[31]_INST_0_i_28\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \alu_result[31]_INST_0_i_22\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \alu_result[31]_INST_0_i_23\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \alu_result[31]_INST_0_i_26\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \alu_result[31]_INST_0_i_27\ : label is "soft_lutpair28";
   attribute ADDER_THRESHOLD of \alu_result[3]_INST_0_i_4\ : label is 35;
   attribute SOFT_HLUTNM of \alu_result[3]_INST_0_i_9\ : label is "soft_lutpair23";
   attribute SOFT_HLUTNM of \alu_result[4]_INST_0_i_8\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \alu_result[7]_INST_0_i_13\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \alu_result[7]_INST_0_i_13\ : label is "soft_lutpair35";
   attribute SOFT_HLUTNM of \alu_result[7]_INST_0_i_16\ : label is "soft_lutpair21";
   attribute ADDER_THRESHOLD of \alu_result[7]_INST_0_i_4\ : label is 35;
   attribute SOFT_HLUTNM of \alu_result[8]_INST_0_i_11\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \alu_result[8]_INST_0_i_9\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \alu_result[8]_INST_0_i_9\ : label is "soft_lutpair35";
   attribute SOFT_HLUTNM of \alu_result[9]_INST_0_i_10\ : label is "soft_lutpair11";
   attribute SOFT_HLUTNM of \alu_result[9]_INST_0_i_11\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \alu_result[9]_INST_0_i_8\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \alu_result[9]_INST_0_i_8\ : label is "soft_lutpair33";
   attribute COMPARATOR_THRESHOLD : integer;
   attribute COMPARATOR_THRESHOLD of \branch_ctrl0_inferred__1/i__carry\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \branch_ctrl0_inferred__1/i__carry__0\ : label is 11;
@@ -929,13 +924,13 @@ architecture STRUCTURE of RV32I_WSC_Execution_0_0_ALU is
   attribute COMPARATOR_THRESHOLD of \branch_ctrl0_inferred__3/i__carry__0\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \branch_ctrl0_inferred__3/i__carry__1\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \branch_ctrl0_inferred__3/i__carry__2\ : label is 11;
-  attribute SOFT_HLUTNM of branch_ctrl_INST_0_i_12 : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of branch_ctrl_INST_0_i_16 : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \i__carry__0_i_9\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \i__carry__1_i_11\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \i__carry__1_i_9\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of branch_ctrl_INST_0_i_2 : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of branch_ctrl_INST_0_i_3 : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \i__carry__0_i_9\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \i__carry__1_i_11\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \i__carry__1_i_9\ : label is "soft_lutpair30";
   attribute SOFT_HLUTNM of \i__carry__2_i_10\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \i__carry__2_i_11\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \i__carry__2_i_11\ : label is "soft_lutpair31";
   attribute SOFT_HLUTNM of \i__carry__2_i_9\ : label is "soft_lutpair4";
 begin
   \forwA__228\(31 downto 0) <= \^forwa__228\(31 downto 0);
@@ -1129,7 +1124,7 @@ begin
       INIT => X"20"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[1]_INST_0_i_9_n_0\,
       O => data2(0)
@@ -1142,7 +1137,7 @@ begin
       I0 => \alu_result[1]_INST_0_i_7_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[0]_INST_0_i_8_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(0)
     );
@@ -1161,7 +1156,7 @@ begin
       INIT => X"A00088FFA0FF8800"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[0]_INST_0_i_8_n_0\,
       I2 => \alu_result[1]_INST_0_i_7_n_0\,
       I3 => \alu_result[31]_INST_0_i_8_n_0\,
@@ -1282,7 +1277,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[10]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[11]_INST_0_i_8_n_0\,
@@ -1295,7 +1290,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[11]_INST_0_i_13_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[10]_INST_0_i_9_n_0\,
@@ -1322,7 +1317,7 @@ begin
       I0 => \alu_result[11]_INST_0_i_14_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[10]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(10)
     );
@@ -1482,7 +1477,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[11]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[12]_INST_0_i_7_n_0\,
@@ -1513,7 +1508,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[12]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[11]_INST_0_i_13_n_0\,
@@ -1540,7 +1535,7 @@ begin
       I0 => \alu_result[12]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[11]_INST_0_i_14_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(11)
     );
@@ -1653,7 +1648,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[12]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[13]_INST_0_i_7_n_0\,
@@ -1666,7 +1661,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[13]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[12]_INST_0_i_9_n_0\,
@@ -1693,7 +1688,7 @@ begin
       I0 => \alu_result[13]_INST_0_i_9_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[12]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(12)
     );
@@ -1804,7 +1799,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[13]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[14]_INST_0_i_7_n_0\,
@@ -1817,7 +1812,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[14]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[13]_INST_0_i_8_n_0\,
@@ -1844,7 +1839,7 @@ begin
       I0 => \alu_result[14]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[13]_INST_0_i_9_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(13)
     );
@@ -1974,7 +1969,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[14]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[15]_INST_0_i_8_n_0\,
@@ -1987,7 +1982,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[15]_INST_0_i_13_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[14]_INST_0_i_9_n_0\,
@@ -2014,7 +2009,7 @@ begin
       I0 => \alu_result[15]_INST_0_i_14_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[14]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(14)
     );
@@ -2176,7 +2171,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[15]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[16]_INST_0_i_7_n_0\,
@@ -2207,7 +2202,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[16]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[15]_INST_0_i_13_n_0\,
@@ -2234,7 +2229,7 @@ begin
       I0 => \alu_result[16]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[15]_INST_0_i_14_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(15)
     );
@@ -2354,7 +2349,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[16]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[17]_INST_0_i_7_n_0\,
@@ -2367,7 +2362,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[17]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[16]_INST_0_i_9_n_0\,
@@ -2394,7 +2389,7 @@ begin
       I0 => \alu_result[17]_INST_0_i_9_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[16]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(16)
     );
@@ -2515,7 +2510,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[17]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[18]_INST_0_i_7_n_0\,
@@ -2528,7 +2523,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[18]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[17]_INST_0_i_8_n_0\,
@@ -2555,7 +2550,7 @@ begin
       I0 => \alu_result[18]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[17]_INST_0_i_9_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(17)
     );
@@ -2693,7 +2688,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[18]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[19]_INST_0_i_8_n_0\,
@@ -2706,7 +2701,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[19]_INST_0_i_13_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[18]_INST_0_i_9_n_0\,
@@ -2733,7 +2728,7 @@ begin
       I0 => \alu_result[19]_INST_0_i_14_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[18]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(18)
     );
@@ -2916,7 +2911,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[19]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[20]_INST_0_i_7_n_0\,
@@ -2947,7 +2942,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[20]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[19]_INST_0_i_13_n_0\,
@@ -2974,7 +2969,7 @@ begin
       I0 => \alu_result[20]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[19]_INST_0_i_14_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(19)
     );
@@ -3048,7 +3043,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[1]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[2]_INST_0_i_7_n_0\,
@@ -3061,7 +3056,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[2]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[1]_INST_0_i_9_n_0\,
@@ -3088,7 +3083,7 @@ begin
       I0 => \alu_result[2]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[1]_INST_0_i_7_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(1)
     );
@@ -3223,7 +3218,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[20]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[21]_INST_0_i_7_n_0\,
@@ -3236,7 +3231,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[21]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[20]_INST_0_i_9_n_0\,
@@ -3263,7 +3258,7 @@ begin
       I0 => \alu_result[21]_INST_0_i_9_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[20]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(20)
     );
@@ -3383,7 +3378,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[21]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[22]_INST_0_i_7_n_0\,
@@ -3396,7 +3391,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[22]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[21]_INST_0_i_8_n_0\,
@@ -3423,7 +3418,7 @@ begin
       I0 => \alu_result[22]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[21]_INST_0_i_9_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(21)
     );
@@ -3558,7 +3553,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[22]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[23]_INST_0_i_8_n_0\,
@@ -3571,7 +3566,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[23]_INST_0_i_13_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[22]_INST_0_i_9_n_0\,
@@ -3598,7 +3593,7 @@ begin
       I0 => \alu_result[23]_INST_0_i_14_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[22]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(22)
     );
@@ -3758,7 +3753,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[23]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[24]_INST_0_i_7_n_0\,
@@ -3789,7 +3784,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[24]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[23]_INST_0_i_13_n_0\,
@@ -3816,7 +3811,7 @@ begin
       I0 => \alu_result[24]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[23]_INST_0_i_14_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(23)
     );
@@ -3922,7 +3917,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[24]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[25]_INST_0_i_7_n_0\,
@@ -3935,7 +3930,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[25]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[24]_INST_0_i_9_n_0\,
@@ -3962,7 +3957,7 @@ begin
       I0 => \alu_result[25]_INST_0_i_9_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[24]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(24)
     );
@@ -4072,7 +4067,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[25]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[26]_INST_0_i_7_n_0\,
@@ -4085,7 +4080,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[26]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[25]_INST_0_i_8_n_0\,
@@ -4112,7 +4107,7 @@ begin
       I0 => \alu_result[26]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[25]_INST_0_i_9_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(25)
     );
@@ -4136,7 +4131,7 @@ begin
       I2 => \alu_in_b__65\(1),
       I3 => \alu_result[27]_INST_0_i_16_n_0\,
       I4 => \alu_in_b__65\(2),
-      I5 => \alu_result[31]_INST_0_i_33_n_0\,
+      I5 => \alu_result[31]_INST_0_i_32_n_0\,
       O => \alu_result[25]_INST_0_i_8_n_0\
     );
 \alu_result[25]_INST_0_i_9\: unisim.vcomponents.LUT3
@@ -4233,7 +4228,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[26]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[27]_INST_0_i_8_n_0\,
@@ -4246,7 +4241,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[27]_INST_0_i_13_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[26]_INST_0_i_9_n_0\,
@@ -4273,7 +4268,7 @@ begin
       I0 => \alu_result[27]_INST_0_i_14_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[26]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(26)
     );
@@ -4309,7 +4304,7 @@ begin
       I2 => \alu_in_b__65\(1),
       I3 => \alu_result[28]_INST_0_i_11_n_0\,
       I4 => \alu_in_b__65\(2),
-      I5 => \alu_result[31]_INST_0_i_29_n_0\,
+      I5 => \alu_result[31]_INST_0_i_28_n_0\,
       O => \alu_result[26]_INST_0_i_9_n_0\
     );
 \alu_result[27]_INST_0\: unisim.vcomponents.MUXF7
@@ -4364,11 +4359,11 @@ begin
     )
         port map (
       I0 => \alu_result[27]_INST_0_i_16_n_0\,
-      I1 => \alu_result[31]_INST_0_i_33_n_0\,
+      I1 => \alu_result[31]_INST_0_i_32_n_0\,
       I2 => \alu_in_b__65\(1),
       I3 => \alu_result[29]_INST_0_i_10_n_0\,
       I4 => \alu_in_b__65\(2),
-      I5 => \alu_result[31]_INST_0_i_35_n_0\,
+      I5 => \alu_result[31]_INST_0_i_34_n_0\,
       O => \alu_result[27]_INST_0_i_13_n_0\
     );
 \alu_result[27]_INST_0_i_14\: unisim.vcomponents.LUT3
@@ -4446,7 +4441,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[27]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[28]_INST_0_i_9_n_0\,
@@ -4477,7 +4472,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[28]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[27]_INST_0_i_13_n_0\,
@@ -4504,7 +4499,7 @@ begin
       I0 => \alu_result[28]_INST_0_i_8_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[27]_INST_0_i_14_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(27)
     );
@@ -4614,7 +4609,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[29]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[28]_INST_0_i_7_n_0\,
@@ -4641,7 +4636,7 @@ begin
       I0 => \alu_result[29]_INST_0_i_8_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[28]_INST_0_i_8_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(28)
     );
@@ -4650,7 +4645,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[28]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[29]_INST_0_i_9_n_0\,
@@ -4664,11 +4659,11 @@ begin
     )
         port map (
       I0 => \alu_result[28]_INST_0_i_11_n_0\,
-      I1 => \alu_result[31]_INST_0_i_29_n_0\,
+      I1 => \alu_result[31]_INST_0_i_28_n_0\,
       I2 => \alu_in_b__65\(1),
       I3 => \alu_result[30]_INST_0_i_10_n_0\,
       I4 => \alu_in_b__65\(2),
-      I5 => \alu_result[31]_INST_0_i_31_n_0\,
+      I5 => \alu_result[31]_INST_0_i_30_n_0\,
       O => \alu_result[28]_INST_0_i_7_n_0\
     );
 \alu_result[28]_INST_0_i_8\: unisim.vcomponents.LUT3
@@ -4746,7 +4741,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[30]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[29]_INST_0_i_7_n_0\,
@@ -4773,7 +4768,7 @@ begin
       I0 => \alu_result[30]_INST_0_i_8_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[29]_INST_0_i_8_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(29)
     );
@@ -4782,7 +4777,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[29]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[30]_INST_0_i_9_n_0\,
@@ -4797,9 +4792,9 @@ begin
         port map (
       I0 => \alu_result[29]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(2),
-      I2 => \alu_result[31]_INST_0_i_35_n_0\,
-      I3 => \alu_result[31]_INST_0_i_33_n_0\,
-      I4 => \alu_result[31]_INST_0_i_34_n_0\,
+      I2 => \alu_result[31]_INST_0_i_34_n_0\,
+      I3 => \alu_result[31]_INST_0_i_32_n_0\,
+      I4 => \alu_result[31]_INST_0_i_33_n_0\,
       I5 => \alu_in_b__65\(1),
       O => \alu_result[29]_INST_0_i_7_n_0\
     );
@@ -4892,7 +4887,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[2]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[3]_INST_0_i_8_n_0\,
@@ -4905,7 +4900,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[3]_INST_0_i_14_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[2]_INST_0_i_9_n_0\,
@@ -4932,7 +4927,7 @@ begin
       I0 => \alu_result[3]_INST_0_i_15_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[2]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(2)
     );
@@ -5022,8 +5017,8 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
-      I1 => \alu_result[31]_INST_0_i_17_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
+      I1 => \alu_result[31]_INST_0_i_16_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[30]_INST_0_i_7_n_0\,
       I4 => \alu_result[31]_INST_0_i_11_n_0\,
@@ -5048,7 +5043,7 @@ begin
         port map (
       I0 => \alu_in_b__65\(0),
       I1 => \alu_result[30]_INST_0_i_8_n_0\,
-      I2 => \alu_result[31]_INST_0_i_14_n_0\,
+      I2 => \alu_result[31]_INST_0_i_13_n_0\,
       I3 => \jalr_mux_o__95\(31),
       O => data7(30)
     );
@@ -5057,10 +5052,10 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[30]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
-      I3 => \alu_result[31]_INST_0_i_18_n_0\,
+      I3 => \alu_result[31]_INST_0_i_17_n_0\,
       I4 => \alu_result[31]_INST_0_i_8_n_0\,
       I5 => \i__carry__2_i_9_n_0\,
       O => \alu_result[30]_INST_0_i_6_n_0\
@@ -5072,9 +5067,9 @@ begin
         port map (
       I0 => \alu_result[30]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(2),
-      I2 => \alu_result[31]_INST_0_i_31_n_0\,
-      I3 => \alu_result[31]_INST_0_i_29_n_0\,
-      I4 => \alu_result[31]_INST_0_i_30_n_0\,
+      I2 => \alu_result[31]_INST_0_i_30_n_0\,
+      I3 => \alu_result[31]_INST_0_i_28_n_0\,
+      I4 => \alu_result[31]_INST_0_i_29_n_0\,
       I5 => \alu_in_b__65\(1),
       O => \alu_result[30]_INST_0_i_7_n_0\
     );
@@ -5131,22 +5126,24 @@ begin
       INIT => X"200020FF20FF2000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_in_b__65\(0),
-      I2 => \alu_result[31]_INST_0_i_18_n_0\,
+      I2 => \alu_result[31]_INST_0_i_17_n_0\,
       I3 => \alu_result[31]_INST_0_i_8_n_0\,
       I4 => \jalr_mux_o__95\(31),
       I5 => \alu_in_b__65\(31),
       O => \alu_result[31]_INST_0_i_10_n_0\
     );
-\alu_result[31]_INST_0_i_11\: unisim.vcomponents.LUT3
+\alu_result[31]_INST_0_i_11\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"EA"
+      INIT => X"7FF4FA7A"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_13_n_0\,
-      I1 => \alu_result[31]_INST_0_i_6_n_0\,
-      I2 => \alu_result[31]_INST_0_i_8_n_0\,
+      I0 => alu_control(2),
+      I1 => alu_control(0),
+      I2 => alu_control(1),
+      I3 => alu_control(3),
+      I4 => alu_control(4),
       O => \alu_result[31]_INST_0_i_11_n_0\
     );
 \alu_result[31]_INST_0_i_12\: unisim.vcomponents.CARRY4
@@ -5163,50 +5160,38 @@ begin
       O(2) => \alu_result[31]_INST_0_i_12_n_5\,
       O(1) => \alu_result[31]_INST_0_i_12_n_6\,
       O(0) => \alu_result[31]_INST_0_i_12_n_7\,
-      S(3) => \alu_result[31]_INST_0_i_19_n_0\,
-      S(2) => \alu_result[31]_INST_0_i_20_n_0\,
-      S(1) => \alu_result[31]_INST_0_i_21_n_0\,
-      S(0) => \alu_result[31]_INST_0_i_22_n_0\
+      S(3) => \alu_result[31]_INST_0_i_18_n_0\,
+      S(2) => \alu_result[31]_INST_0_i_19_n_0\,
+      S(1) => \alu_result[31]_INST_0_i_20_n_0\,
+      S(0) => \alu_result[31]_INST_0_i_21_n_0\
     );
-\alu_result[31]_INST_0_i_13\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"04514504"
-    )
-        port map (
-      I0 => alu_control(3),
-      I1 => alu_control(0),
-      I2 => branch_ctrl_INST_0_i_1_n_0,
-      I3 => alu_control(4),
-      I4 => alu_control(2),
-      O => \alu_result[31]_INST_0_i_13_n_0\
-    );
-\alu_result[31]_INST_0_i_14\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_13\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000000000001"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_23_n_0\,
-      I1 => \alu_result[31]_INST_0_i_24_n_0\,
-      I2 => \alu_result[31]_INST_0_i_25_n_0\,
-      I3 => \alu_result[31]_INST_0_i_26_n_0\,
-      I4 => \alu_result[31]_INST_0_i_27_n_0\,
-      I5 => \alu_result[31]_INST_0_i_28_n_0\,
-      O => \alu_result[31]_INST_0_i_14_n_0\
+      I0 => \alu_result[31]_INST_0_i_22_n_0\,
+      I1 => \alu_result[31]_INST_0_i_23_n_0\,
+      I2 => \alu_result[31]_INST_0_i_24_n_0\,
+      I3 => \alu_result[31]_INST_0_i_25_n_0\,
+      I4 => \alu_result[31]_INST_0_i_26_n_0\,
+      I5 => \alu_result[31]_INST_0_i_27_n_0\,
+      O => \alu_result[31]_INST_0_i_13_n_0\
     );
-\alu_result[31]_INST_0_i_15\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_14\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"B8FFB833B8CCB800"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_29_n_0\,
+      I0 => \alu_result[31]_INST_0_i_28_n_0\,
       I1 => \alu_in_b__65\(2),
-      I2 => \alu_result[31]_INST_0_i_30_n_0\,
+      I2 => \alu_result[31]_INST_0_i_29_n_0\,
       I3 => \alu_in_b__65\(1),
-      I4 => \alu_result[31]_INST_0_i_31_n_0\,
-      I5 => \alu_result[31]_INST_0_i_32_n_0\,
-      O => \alu_result[31]_INST_0_i_15_n_0\
+      I4 => \alu_result[31]_INST_0_i_30_n_0\,
+      I5 => \alu_result[31]_INST_0_i_31_n_0\,
+      O => \alu_result[31]_INST_0_i_14_n_0\
     );
-\alu_result[31]_INST_0_i_16\: unisim.vcomponents.LUT4
+\alu_result[31]_INST_0_i_15\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"2F20"
     )
@@ -5217,20 +5202,20 @@ begin
       I3 => \^forwb\(0),
       O => \alu_in_b__65\(0)
     );
-\alu_result[31]_INST_0_i_17\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_16\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"B8FFB833B8CCB800"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_33_n_0\,
+      I0 => \alu_result[31]_INST_0_i_32_n_0\,
       I1 => \alu_in_b__65\(2),
-      I2 => \alu_result[31]_INST_0_i_34_n_0\,
+      I2 => \alu_result[31]_INST_0_i_33_n_0\,
       I3 => \alu_in_b__65\(1),
-      I4 => \alu_result[31]_INST_0_i_35_n_0\,
-      I5 => \alu_result[31]_INST_0_i_36_n_0\,
-      O => \alu_result[31]_INST_0_i_17_n_0\
+      I4 => \alu_result[31]_INST_0_i_34_n_0\,
+      I5 => \alu_result[31]_INST_0_i_35_n_0\,
+      O => \alu_result[31]_INST_0_i_16_n_0\
     );
-\alu_result[31]_INST_0_i_18\: unisim.vcomponents.LUT5
+\alu_result[31]_INST_0_i_17\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00000010"
     )
@@ -5240,25 +5225,33 @@ begin
       I2 => \jalr_mux_o__95\(31),
       I3 => \alu_in_b__65\(3),
       I4 => \alu_in_b__65\(1),
-      O => \alu_result[31]_INST_0_i_18_n_0\
+      O => \alu_result[31]_INST_0_i_17_n_0\
     );
-\alu_result[31]_INST_0_i_19\: unisim.vcomponents.LUT2
+\alu_result[31]_INST_0_i_18\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => \jalr_mux_o__95\(31),
       I1 => \alu_in_b__65\(31),
+      O => \alu_result[31]_INST_0_i_18_n_0\
+    );
+\alu_result[31]_INST_0_i_19\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \i__carry__2_i_9_n_0\,
       O => \alu_result[31]_INST_0_i_19_n_0\
     );
 \alu_result[31]_INST_0_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F7FFA400"
+      INIT => X"7FFF6200"
     )
         port map (
       I0 => alu_control(4),
-      I1 => alu_control(0),
-      I2 => branch_ctrl_INST_0_i_1_n_0,
+      I1 => alu_control(1),
+      I2 => alu_control(0),
       I3 => alu_control(2),
       I4 => alu_control(3),
       O => \alu_result[31]_INST_0_i_2_n_0\
@@ -5268,27 +5261,19 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \i__carry__2_i_9_n_0\,
+      I0 => \i__carry__2_i_10_n_0\,
       O => \alu_result[31]_INST_0_i_20_n_0\
     );
-\alu_result[31]_INST_0_i_21\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \i__carry__2_i_10_n_0\,
-      O => \alu_result[31]_INST_0_i_21_n_0\
-    );
-\alu_result[31]_INST_0_i_22\: unisim.vcomponents.LUT2
+\alu_result[31]_INST_0_i_21\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => \alu_in_b__65\(28),
       I1 => jalr_mux_o(28),
-      O => \alu_result[31]_INST_0_i_22_n_0\
+      O => \alu_result[31]_INST_0_i_21_n_0\
     );
-\alu_result[31]_INST_0_i_23\: unisim.vcomponents.LUT4
+\alu_result[31]_INST_0_i_22\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFFE"
     )
@@ -5297,9 +5282,9 @@ begin
       I1 => \alu_in_b__65\(28),
       I2 => \alu_in_b__65\(25),
       I3 => \alu_in_b__65\(26),
-      O => \alu_result[31]_INST_0_i_23_n_0\
+      O => \alu_result[31]_INST_0_i_22_n_0\
     );
-\alu_result[31]_INST_0_i_24\: unisim.vcomponents.LUT4
+\alu_result[31]_INST_0_i_23\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFFE"
     )
@@ -5308,9 +5293,9 @@ begin
       I1 => \alu_in_b__65\(24),
       I2 => \alu_in_b__65\(21),
       I3 => \alu_in_b__65\(22),
-      O => \alu_result[31]_INST_0_i_24_n_0\
+      O => \alu_result[31]_INST_0_i_23_n_0\
     );
-\alu_result[31]_INST_0_i_25\: unisim.vcomponents.LUT3
+\alu_result[31]_INST_0_i_24\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
@@ -5318,9 +5303,9 @@ begin
       I0 => \alu_in_b__65\(31),
       I1 => \alu_in_b__65\(29),
       I2 => \alu_in_b__65\(30),
-      O => \alu_result[31]_INST_0_i_25_n_0\
+      O => \alu_result[31]_INST_0_i_24_n_0\
     );
-\alu_result[31]_INST_0_i_26\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_25\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFFFFFFFE"
     )
@@ -5329,11 +5314,11 @@ begin
       I1 => \alu_in_b__65\(9),
       I2 => \alu_in_b__65\(12),
       I3 => \alu_in_b__65\(11),
-      I4 => \alu_result[31]_INST_0_i_37_n_0\,
-      I5 => \alu_result[31]_INST_0_i_38_n_0\,
-      O => \alu_result[31]_INST_0_i_26_n_0\
+      I4 => \alu_result[31]_INST_0_i_36_n_0\,
+      I5 => \alu_result[31]_INST_0_i_37_n_0\,
+      O => \alu_result[31]_INST_0_i_25_n_0\
     );
-\alu_result[31]_INST_0_i_27\: unisim.vcomponents.LUT4
+\alu_result[31]_INST_0_i_26\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFFE"
     )
@@ -5342,9 +5327,9 @@ begin
       I1 => \alu_in_b__65\(20),
       I2 => \alu_in_b__65\(17),
       I3 => \alu_in_b__65\(18),
-      O => \alu_result[31]_INST_0_i_27_n_0\
+      O => \alu_result[31]_INST_0_i_26_n_0\
     );
-\alu_result[31]_INST_0_i_28\: unisim.vcomponents.LUT4
+\alu_result[31]_INST_0_i_27\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFFE"
     )
@@ -5353,9 +5338,9 @@ begin
       I1 => \alu_in_b__65\(16),
       I2 => \alu_in_b__65\(13),
       I3 => \alu_in_b__65\(14),
-      O => \alu_result[31]_INST_0_i_28_n_0\
+      O => \alu_result[31]_INST_0_i_27_n_0\
     );
-\alu_result[31]_INST_0_i_29\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_28\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AFA0CFCFAFA0C0C0"
     )
@@ -5366,6 +5351,19 @@ begin
       I3 => jalr_mux_o(9),
       I4 => \alu_in_b__65\(4),
       I5 => jalr_mux_o(25),
+      O => \alu_result[31]_INST_0_i_28_n_0\
+    );
+\alu_result[31]_INST_0_i_29\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => jalr_mux_o(5),
+      I1 => jalr_mux_o(21),
+      I2 => \alu_in_b__65\(3),
+      I3 => jalr_mux_o(13),
+      I4 => \alu_in_b__65\(4),
+      I5 => jalr_mux_o(29),
       O => \alu_result[31]_INST_0_i_29_n_0\
     );
 \alu_result[31]_INST_0_i_3\: unisim.vcomponents.LUT4
@@ -5384,28 +5382,15 @@ begin
       INIT => X"AFA0CFCFAFA0C0C0"
     )
         port map (
-      I0 => jalr_mux_o(5),
-      I1 => jalr_mux_o(21),
-      I2 => \alu_in_b__65\(3),
-      I3 => jalr_mux_o(13),
-      I4 => \alu_in_b__65\(4),
-      I5 => jalr_mux_o(29),
-      O => \alu_result[31]_INST_0_i_30_n_0\
-    );
-\alu_result[31]_INST_0_i_31\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"AFA0CFCFAFA0C0C0"
-    )
-        port map (
       I0 => jalr_mux_o(3),
       I1 => jalr_mux_o(19),
       I2 => \alu_in_b__65\(3),
       I3 => jalr_mux_o(11),
       I4 => \alu_in_b__65\(4),
       I5 => jalr_mux_o(27),
-      O => \alu_result[31]_INST_0_i_31_n_0\
+      O => \alu_result[31]_INST_0_i_30_n_0\
     );
-\alu_result[31]_INST_0_i_32\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_31\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AFA0CFCFAFA0C0C0"
     )
@@ -5416,9 +5401,9 @@ begin
       I3 => jalr_mux_o(15),
       I4 => \alu_in_b__65\(4),
       I5 => \jalr_mux_o__95\(31),
-      O => \alu_result[31]_INST_0_i_32_n_0\
+      O => \alu_result[31]_INST_0_i_31_n_0\
     );
-\alu_result[31]_INST_0_i_33\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_32\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AFA0CFCFAFA0C0C0"
     )
@@ -5429,9 +5414,9 @@ begin
       I3 => jalr_mux_o(8),
       I4 => \alu_in_b__65\(4),
       I5 => jalr_mux_o(24),
-      O => \alu_result[31]_INST_0_i_33_n_0\
+      O => \alu_result[31]_INST_0_i_32_n_0\
     );
-\alu_result[31]_INST_0_i_34\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_33\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AFA0CFCFAFA0C0C0"
     )
@@ -5442,9 +5427,9 @@ begin
       I3 => jalr_mux_o(12),
       I4 => \alu_in_b__65\(4),
       I5 => jalr_mux_o(28),
-      O => \alu_result[31]_INST_0_i_34_n_0\
+      O => \alu_result[31]_INST_0_i_33_n_0\
     );
-\alu_result[31]_INST_0_i_35\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_34\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AFA0CFCFAFA0C0C0"
     )
@@ -5455,9 +5440,9 @@ begin
       I3 => jalr_mux_o(10),
       I4 => \alu_in_b__65\(4),
       I5 => jalr_mux_o(26),
-      O => \alu_result[31]_INST_0_i_35_n_0\
+      O => \alu_result[31]_INST_0_i_34_n_0\
     );
-\alu_result[31]_INST_0_i_36\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_35\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AFA0CFCFAFA0C0C0"
     )
@@ -5468,9 +5453,9 @@ begin
       I3 => jalr_mux_o(14),
       I4 => \alu_in_b__65\(4),
       I5 => jalr_mux_o(30),
-      O => \alu_result[31]_INST_0_i_36_n_0\
+      O => \alu_result[31]_INST_0_i_35_n_0\
     );
-\alu_result[31]_INST_0_i_37\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_36\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"00FAFFFA00FACCFA"
     )
@@ -5481,9 +5466,9 @@ begin
       I3 => alusrc(0),
       I4 => alusrc(1),
       I5 => imm_gen(5),
-      O => \alu_result[31]_INST_0_i_37_n_0\
+      O => \alu_result[31]_INST_0_i_36_n_0\
     );
-\alu_result[31]_INST_0_i_38\: unisim.vcomponents.LUT6
+\alu_result[31]_INST_0_i_37\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"00FAFFFA00FACCFA"
     )
@@ -5494,15 +5479,18 @@ begin
       I3 => alusrc(0),
       I4 => alusrc(1),
       I5 => imm_gen(7),
-      O => \alu_result[31]_INST_0_i_38_n_0\
+      O => \alu_result[31]_INST_0_i_37_n_0\
     );
-\alu_result[31]_INST_0_i_4\: unisim.vcomponents.LUT2
+\alu_result[31]_INST_0_i_4\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"B"
+      INIT => X"B1133227"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_13_n_0\,
-      I1 => \alu_result[31]_INST_0_i_6_n_0\,
+      I0 => alu_control(4),
+      I1 => alu_control(3),
+      I2 => alu_control(1),
+      I3 => alu_control(0),
+      I4 => alu_control(2),
       O => \alu_result[31]_INST_0_i_4_n_0\
     );
 \alu_result[31]_INST_0_i_5\: unisim.vcomponents.LUT6
@@ -5510,22 +5498,22 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
-      I1 => \alu_result[31]_INST_0_i_15_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
+      I1 => \alu_result[31]_INST_0_i_14_n_0\,
       I2 => \alu_in_b__65\(0),
-      I3 => \alu_result[31]_INST_0_i_17_n_0\,
+      I3 => \alu_result[31]_INST_0_i_16_n_0\,
       I4 => \alu_result[31]_INST_0_i_11_n_0\,
       I5 => \alu_result0_inferred__0/i__carry__6_n_4\,
       O => \alu_result[31]_INST_0_i_5_n_0\
     );
 \alu_result[31]_INST_0_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F78EEFC3"
+      INIT => X"7FE8FE3C"
     )
         port map (
       I0 => alu_control(2),
       I1 => alu_control(0),
-      I2 => branch_ctrl_INST_0_i_1_n_0,
+      I2 => alu_control(1),
       I3 => alu_control(3),
       I4 => alu_control(4),
       O => \alu_result[31]_INST_0_i_6_n_0\
@@ -5543,14 +5531,14 @@ begin
     );
 \alu_result[31]_INST_0_i_8\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FD55FFD5"
+      INIT => X"FFFDD555"
     )
         port map (
       I0 => alu_control(0),
-      I1 => alu_control(2),
-      I2 => alu_control(4),
-      I3 => alu_control(3),
-      I4 => branch_ctrl_INST_0_i_1_n_0,
+      I1 => alu_control(1),
+      I2 => alu_control(2),
+      I3 => alu_control(4),
+      I4 => alu_control(3),
       O => \alu_result[31]_INST_0_i_8_n_0\
     );
 \alu_result[31]_INST_0_i_9\: unisim.vcomponents.LUT5
@@ -5677,7 +5665,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[3]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[4]_INST_0_i_7_n_0\,
@@ -5708,7 +5696,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[4]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[3]_INST_0_i_14_n_0\,
@@ -5735,7 +5723,7 @@ begin
       I0 => \alu_result[4]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[3]_INST_0_i_15_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(3)
     );
@@ -5824,7 +5812,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[4]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[5]_INST_0_i_7_n_0\,
@@ -5837,7 +5825,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[5]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[4]_INST_0_i_9_n_0\,
@@ -5864,7 +5852,7 @@ begin
       I0 => \alu_result[5]_INST_0_i_9_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[4]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(4)
     );
@@ -5953,7 +5941,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[5]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[6]_INST_0_i_7_n_0\,
@@ -5966,7 +5954,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[6]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[5]_INST_0_i_8_n_0\,
@@ -5993,7 +5981,7 @@ begin
       I0 => \alu_result[6]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[5]_INST_0_i_9_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(5)
     );
@@ -6099,7 +6087,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[6]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[7]_INST_0_i_8_n_0\,
@@ -6112,7 +6100,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[7]_INST_0_i_13_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[6]_INST_0_i_9_n_0\,
@@ -6139,7 +6127,7 @@ begin
       I0 => \alu_result[7]_INST_0_i_14_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[6]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(6)
     );
@@ -6289,7 +6277,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[7]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[8]_INST_0_i_7_n_0\,
@@ -6320,7 +6308,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[8]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[7]_INST_0_i_13_n_0\,
@@ -6347,7 +6335,7 @@ begin
       I0 => \alu_result[8]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[7]_INST_0_i_14_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(7)
     );
@@ -6459,7 +6447,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[8]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[9]_INST_0_i_7_n_0\,
@@ -6472,7 +6460,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[9]_INST_0_i_8_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[8]_INST_0_i_9_n_0\,
@@ -6499,7 +6487,7 @@ begin
       I0 => \alu_result[9]_INST_0_i_9_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[8]_INST_0_i_10_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(8)
     );
@@ -6609,7 +6597,7 @@ begin
       INIT => X"A8080000A808FFFF"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[9]_INST_0_i_7_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[10]_INST_0_i_7_n_0\,
@@ -6622,7 +6610,7 @@ begin
       INIT => X"A808FFFFA8080000"
     )
         port map (
-      I0 => \alu_result[31]_INST_0_i_14_n_0\,
+      I0 => \alu_result[31]_INST_0_i_13_n_0\,
       I1 => \alu_result[10]_INST_0_i_9_n_0\,
       I2 => \alu_in_b__65\(0),
       I3 => \alu_result[9]_INST_0_i_8_n_0\,
@@ -6649,7 +6637,7 @@ begin
       I0 => \alu_result[10]_INST_0_i_10_n_0\,
       I1 => \alu_in_b__65\(0),
       I2 => \alu_result[9]_INST_0_i_9_n_0\,
-      I3 => \alu_result[31]_INST_0_i_14_n_0\,
+      I3 => \alu_result[31]_INST_0_i_13_n_0\,
       I4 => \jalr_mux_o__95\(31),
       O => data7(9)
     );
@@ -6907,10 +6895,10 @@ begin
     );
 branch_ctrl_INST_0: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"40FF000040000000"
+      INIT => X"80FF000080000000"
     )
         port map (
-      I0 => branch_ctrl_INST_0_i_1_n_0,
+      I0 => alu_control(1),
       I1 => alu_control(2),
       I2 => alu_control(0),
       I3 => alu_control(4),
@@ -6922,166 +6910,119 @@ branch_ctrl_INST_0_i_1: unisim.vcomponents.MUXF7
      port map (
       I0 => branch_ctrl_INST_0_i_7_n_0,
       I1 => branch_ctrl_INST_0_i_8_n_0,
-      O => branch_ctrl_INST_0_i_1_n_0,
+      O => alu_control(1),
       S => aluop(2)
     );
-branch_ctrl_INST_0_i_10: unisim.vcomponents.LUT5
+branch_ctrl_INST_0_i_10: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"11150000"
-    )
-        port map (
-      I0 => funct3(2),
-      I1 => aluop(0),
-      I2 => funct3(1),
-      I3 => funct3(0),
-      I4 => aluop(2),
-      O => branch_ctrl_INST_0_i_10_n_0
-    );
-branch_ctrl_INST_0_i_11: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"C0CC4192"
-    )
-        port map (
-      I0 => instruction30,
-      I1 => funct3(0),
-      I2 => funct3(2),
-      I3 => funct3(1),
-      I4 => aluop(2),
-      O => branch_ctrl_INST_0_i_11_n_0
-    );
-branch_ctrl_INST_0_i_12: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"AAAAA08A"
+      INIT => X"551055B900000060"
     )
         port map (
       I0 => aluop(0),
-      I1 => funct3(2),
-      I2 => aluop(1),
-      I3 => funct3(1),
-      I4 => funct3(0),
-      O => branch_ctrl_INST_0_i_12_n_0
-    );
-branch_ctrl_INST_0_i_13: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFF7F777777"
-    )
-        port map (
-      I0 => instruction30,
-      I1 => aluop(0),
-      I2 => funct3(1),
-      I3 => funct3(0),
-      I4 => funct3(2),
-      I5 => aluop(1),
-      O => branch_ctrl_INST_0_i_13_n_0
-    );
-branch_ctrl_INST_0_i_14: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0100FF0000FFFF00"
-    )
-        port map (
-      I0 => funct3(1),
-      I1 => funct3(2),
+      I1 => funct3(1),
       I2 => funct3(0),
-      I3 => aluop(1),
-      I4 => aluop(0),
-      I5 => aluop(2),
-      O => branch_ctrl_INST_0_i_14_n_0
+      I3 => aluop(2),
+      I4 => instruction30,
+      I5 => funct3(2),
+      O => branch_ctrl_INST_0_i_10_n_0
     );
-branch_ctrl_INST_0_i_15: unisim.vcomponents.LUT6
+branch_ctrl_INST_0_i_11: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3030303330303830"
-    )
-        port map (
-      I0 => funct3(0),
-      I1 => aluop(0),
-      I2 => aluop(2),
-      I3 => instruction30,
-      I4 => aluop(1),
-      I5 => funct3(1),
-      O => branch_ctrl_INST_0_i_15_n_0
-    );
-branch_ctrl_INST_0_i_16: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"AEAF"
-    )
-        port map (
-      I0 => funct3(2),
-      I1 => aluop(1),
-      I2 => aluop(0),
-      I3 => funct3(1),
-      O => branch_ctrl_INST_0_i_16_n_0
-    );
-branch_ctrl_INST_0_i_17: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"A0CFAFC0"
-    )
-        port map (
-      I0 => \branch_ctrl0_inferred__2/i__carry__2_n_0\,
-      I1 => data3,
-      I2 => branch_ctrl_INST_0_i_1_n_0,
-      I3 => alu_control(0),
-      I4 => data4,
-      O => branch_ctrl_INST_0_i_17_n_0
-    );
-branch_ctrl_INST_0_i_18: unisim.vcomponents.CARRY4
-     port map (
-      CI => branch_ctrl_INST_0_i_20_n_0,
-      CO(3) => NLW_branch_ctrl_INST_0_i_18_CO_UNCONNECTED(3),
-      CO(2) => data1,
-      CO(1) => branch_ctrl_INST_0_i_18_n_2,
-      CO(0) => branch_ctrl_INST_0_i_18_n_3,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0111",
-      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_18_O_UNCONNECTED(3 downto 0),
-      S(3) => '0',
-      S(2) => branch_ctrl_INST_0_i_21_n_0,
-      S(1) => branch_ctrl_INST_0_i_22_n_0,
-      S(0) => branch_ctrl_INST_0_i_23_n_0
-    );
-branch_ctrl_INST_0_i_19: unisim.vcomponents.CARRY4
-     port map (
-      CI => branch_ctrl_INST_0_i_24_n_0,
-      CO(3) => NLW_branch_ctrl_INST_0_i_19_CO_UNCONNECTED(3),
-      CO(2) => data0,
-      CO(1) => branch_ctrl_INST_0_i_19_n_2,
-      CO(0) => branch_ctrl_INST_0_i_19_n_3,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_19_O_UNCONNECTED(3 downto 0),
-      S(3) => '0',
-      S(2) => branch_ctrl_INST_0_i_25_n_0,
-      S(1) => branch_ctrl_INST_0_i_26_n_0,
-      S(0) => branch_ctrl_INST_0_i_27_n_0
-    );
-branch_ctrl_INST_0_i_2: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFF080808FF08"
+      INIT => X"04048CEA01040114"
     )
         port map (
       I0 => aluop(2),
       I1 => funct3(2),
-      I2 => aluop(0),
-      I3 => branch_ctrl_INST_0_i_9_n_0,
-      I4 => aluop(1),
-      I5 => branch_ctrl_INST_0_i_10_n_0,
-      O => alu_control(2)
+      I2 => instruction30,
+      I3 => funct3(1),
+      I4 => aluop(0),
+      I5 => funct3(0),
+      O => branch_ctrl_INST_0_i_11_n_0
     );
-branch_ctrl_INST_0_i_20: unisim.vcomponents.CARRY4
+branch_ctrl_INST_0_i_12: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7777777399999999"
+    )
+        port map (
+      I0 => aluop(0),
+      I1 => aluop(1),
+      I2 => funct3(1),
+      I3 => funct3(0),
+      I4 => funct3(2),
+      I5 => aluop(2),
+      O => branch_ctrl_INST_0_i_12_n_0
+    );
+branch_ctrl_INST_0_i_13: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"3033303300803000"
+    )
+        port map (
+      I0 => funct3(0),
+      I1 => aluop(0),
+      I2 => funct3(2),
+      I3 => funct3(1),
+      I4 => instruction30,
+      I5 => aluop(2),
+      O => branch_ctrl_INST_0_i_13_n_0
+    );
+branch_ctrl_INST_0_i_14: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"74BB7488"
+    )
+        port map (
+      I0 => data4,
+      I1 => alu_control(1),
+      I2 => \branch_ctrl0_inferred__2/i__carry__2_n_0\,
+      I3 => alu_control(0),
+      I4 => data3,
+      O => branch_ctrl_INST_0_i_14_n_0
+    );
+branch_ctrl_INST_0_i_15: unisim.vcomponents.CARRY4
      port map (
-      CI => branch_ctrl_INST_0_i_28_n_0,
-      CO(3) => branch_ctrl_INST_0_i_20_n_0,
-      CO(2) => branch_ctrl_INST_0_i_20_n_1,
-      CO(1) => branch_ctrl_INST_0_i_20_n_2,
-      CO(0) => branch_ctrl_INST_0_i_20_n_3,
+      CI => branch_ctrl_INST_0_i_17_n_0,
+      CO(3) => NLW_branch_ctrl_INST_0_i_15_CO_UNCONNECTED(3),
+      CO(2) => data1,
+      CO(1) => branch_ctrl_INST_0_i_15_n_2,
+      CO(0) => branch_ctrl_INST_0_i_15_n_3,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0111",
+      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_15_O_UNCONNECTED(3 downto 0),
+      S(3) => '0',
+      S(2) => branch_ctrl_INST_0_i_18_n_0,
+      S(1) => branch_ctrl_INST_0_i_19_n_0,
+      S(0) => branch_ctrl_INST_0_i_20_n_0
+    );
+branch_ctrl_INST_0_i_16: unisim.vcomponents.CARRY4
+     port map (
+      CI => branch_ctrl_INST_0_i_21_n_0,
+      CO(3) => NLW_branch_ctrl_INST_0_i_16_CO_UNCONNECTED(3),
+      CO(2) => data0,
+      CO(1) => branch_ctrl_INST_0_i_16_n_2,
+      CO(0) => branch_ctrl_INST_0_i_16_n_3,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_16_O_UNCONNECTED(3 downto 0),
+      S(3) => '0',
+      S(2) => branch_ctrl_INST_0_i_22_n_0,
+      S(1) => branch_ctrl_INST_0_i_23_n_0,
+      S(0) => branch_ctrl_INST_0_i_24_n_0
+    );
+branch_ctrl_INST_0_i_17: unisim.vcomponents.CARRY4
+     port map (
+      CI => branch_ctrl_INST_0_i_25_n_0,
+      CO(3) => branch_ctrl_INST_0_i_17_n_0,
+      CO(2) => branch_ctrl_INST_0_i_17_n_1,
+      CO(1) => branch_ctrl_INST_0_i_17_n_2,
+      CO(0) => branch_ctrl_INST_0_i_17_n_3,
       CYINIT => '0',
       DI(3 downto 0) => B"1111",
-      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_20_O_UNCONNECTED(3 downto 0),
-      S(3) => branch_ctrl_INST_0_i_29_n_0,
-      S(2) => branch_ctrl_INST_0_i_30_n_0,
-      S(1) => branch_ctrl_INST_0_i_31_n_0,
-      S(0) => branch_ctrl_INST_0_i_32_n_0
+      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_17_O_UNCONNECTED(3 downto 0),
+      S(3) => branch_ctrl_INST_0_i_26_n_0,
+      S(2) => branch_ctrl_INST_0_i_27_n_0,
+      S(1) => branch_ctrl_INST_0_i_28_n_0,
+      S(0) => branch_ctrl_INST_0_i_29_n_0
     );
-branch_ctrl_INST_0_i_21: unisim.vcomponents.LUT4
+branch_ctrl_INST_0_i_18: unisim.vcomponents.LUT4
     generic map(
       INIT => X"9009"
     )
@@ -7090,9 +7031,9 @@ branch_ctrl_INST_0_i_21: unisim.vcomponents.LUT4
       I1 => \alu_in_b__65\(30),
       I2 => \jalr_mux_o__95\(31),
       I3 => \alu_in_b__65\(31),
-      O => branch_ctrl_INST_0_i_21_n_0
+      O => branch_ctrl_INST_0_i_18_n_0
     );
-branch_ctrl_INST_0_i_22: unisim.vcomponents.LUT6
+branch_ctrl_INST_0_i_19: unisim.vcomponents.LUT6
     generic map(
       INIT => X"9009000000009009"
     )
@@ -7103,6 +7044,55 @@ branch_ctrl_INST_0_i_22: unisim.vcomponents.LUT6
       I3 => jalr_mux_o(29),
       I4 => \alu_in_b__65\(28),
       I5 => jalr_mux_o(28),
+      O => branch_ctrl_INST_0_i_19_n_0
+    );
+branch_ctrl_INST_0_i_2: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => branch_ctrl_INST_0_i_9_n_0,
+      I1 => aluop(1),
+      I2 => branch_ctrl_INST_0_i_10_n_0,
+      O => alu_control(2)
+    );
+branch_ctrl_INST_0_i_20: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => jalr_mux_o(24),
+      I1 => \alu_in_b__65\(24),
+      I2 => \alu_in_b__65\(26),
+      I3 => jalr_mux_o(26),
+      I4 => \alu_in_b__65\(25),
+      I5 => jalr_mux_o(25),
+      O => branch_ctrl_INST_0_i_20_n_0
+    );
+branch_ctrl_INST_0_i_21: unisim.vcomponents.CARRY4
+     port map (
+      CI => branch_ctrl_INST_0_i_30_n_0,
+      CO(3) => branch_ctrl_INST_0_i_21_n_0,
+      CO(2) => branch_ctrl_INST_0_i_21_n_1,
+      CO(1) => branch_ctrl_INST_0_i_21_n_2,
+      CO(0) => branch_ctrl_INST_0_i_21_n_3,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_21_O_UNCONNECTED(3 downto 0),
+      S(3) => branch_ctrl_INST_0_i_31_n_0,
+      S(2) => branch_ctrl_INST_0_i_32_n_0,
+      S(1) => branch_ctrl_INST_0_i_33_n_0,
+      S(0) => branch_ctrl_INST_0_i_34_n_0
+    );
+branch_ctrl_INST_0_i_22: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => jalr_mux_o(30),
+      I1 => \alu_in_b__65\(30),
+      I2 => \jalr_mux_o__95\(31),
+      I3 => \alu_in_b__65\(31),
       O => branch_ctrl_INST_0_i_22_n_0
     );
 branch_ctrl_INST_0_i_23: unisim.vcomponents.LUT6
@@ -7110,51 +7100,53 @@ branch_ctrl_INST_0_i_23: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => jalr_mux_o(24),
-      I1 => \alu_in_b__65\(24),
-      I2 => \alu_in_b__65\(26),
-      I3 => jalr_mux_o(26),
-      I4 => \alu_in_b__65\(25),
-      I5 => jalr_mux_o(25),
-      O => branch_ctrl_INST_0_i_23_n_0
-    );
-branch_ctrl_INST_0_i_24: unisim.vcomponents.CARRY4
-     port map (
-      CI => branch_ctrl_INST_0_i_33_n_0,
-      CO(3) => branch_ctrl_INST_0_i_24_n_0,
-      CO(2) => branch_ctrl_INST_0_i_24_n_1,
-      CO(1) => branch_ctrl_INST_0_i_24_n_2,
-      CO(0) => branch_ctrl_INST_0_i_24_n_3,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_24_O_UNCONNECTED(3 downto 0),
-      S(3) => branch_ctrl_INST_0_i_34_n_0,
-      S(2) => branch_ctrl_INST_0_i_35_n_0,
-      S(1) => branch_ctrl_INST_0_i_36_n_0,
-      S(0) => branch_ctrl_INST_0_i_37_n_0
-    );
-branch_ctrl_INST_0_i_25: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => jalr_mux_o(30),
-      I1 => \alu_in_b__65\(30),
-      I2 => \jalr_mux_o__95\(31),
-      I3 => \alu_in_b__65\(31),
-      O => branch_ctrl_INST_0_i_25_n_0
-    );
-branch_ctrl_INST_0_i_26: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
       I0 => jalr_mux_o(27),
       I1 => \alu_in_b__65\(27),
       I2 => \alu_in_b__65\(29),
       I3 => jalr_mux_o(29),
       I4 => \alu_in_b__65\(28),
       I5 => jalr_mux_o(28),
+      O => branch_ctrl_INST_0_i_23_n_0
+    );
+branch_ctrl_INST_0_i_24: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => jalr_mux_o(24),
+      I1 => \alu_in_b__65\(24),
+      I2 => \alu_in_b__65\(26),
+      I3 => jalr_mux_o(26),
+      I4 => \alu_in_b__65\(25),
+      I5 => jalr_mux_o(25),
+      O => branch_ctrl_INST_0_i_24_n_0
+    );
+branch_ctrl_INST_0_i_25: unisim.vcomponents.CARRY4
+     port map (
+      CI => '0',
+      CO(3) => branch_ctrl_INST_0_i_25_n_0,
+      CO(2) => branch_ctrl_INST_0_i_25_n_1,
+      CO(1) => branch_ctrl_INST_0_i_25_n_2,
+      CO(0) => branch_ctrl_INST_0_i_25_n_3,
+      CYINIT => '0',
+      DI(3 downto 0) => B"1111",
+      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_25_O_UNCONNECTED(3 downto 0),
+      S(3) => branch_ctrl_INST_0_i_35_n_0,
+      S(2) => branch_ctrl_INST_0_i_36_n_0,
+      S(1) => branch_ctrl_INST_0_i_37_n_0,
+      S(0) => branch_ctrl_INST_0_i_38_n_0
+    );
+branch_ctrl_INST_0_i_26: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => jalr_mux_o(21),
+      I1 => \alu_in_b__65\(21),
+      I2 => \alu_in_b__65\(23),
+      I3 => jalr_mux_o(23),
+      I4 => \alu_in_b__65\(22),
+      I5 => jalr_mux_o(22),
       O => branch_ctrl_INST_0_i_26_n_0
     );
 branch_ctrl_INST_0_i_27: unisim.vcomponents.LUT6
@@ -7162,69 +7154,15 @@ branch_ctrl_INST_0_i_27: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => jalr_mux_o(24),
-      I1 => \alu_in_b__65\(24),
-      I2 => \alu_in_b__65\(26),
-      I3 => jalr_mux_o(26),
-      I4 => \alu_in_b__65\(25),
-      I5 => jalr_mux_o(25),
-      O => branch_ctrl_INST_0_i_27_n_0
-    );
-branch_ctrl_INST_0_i_28: unisim.vcomponents.CARRY4
-     port map (
-      CI => '0',
-      CO(3) => branch_ctrl_INST_0_i_28_n_0,
-      CO(2) => branch_ctrl_INST_0_i_28_n_1,
-      CO(1) => branch_ctrl_INST_0_i_28_n_2,
-      CO(0) => branch_ctrl_INST_0_i_28_n_3,
-      CYINIT => '0',
-      DI(3 downto 0) => B"1111",
-      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_28_O_UNCONNECTED(3 downto 0),
-      S(3) => branch_ctrl_INST_0_i_38_n_0,
-      S(2) => branch_ctrl_INST_0_i_39_n_0,
-      S(1) => branch_ctrl_INST_0_i_40_n_0,
-      S(0) => branch_ctrl_INST_0_i_41_n_0
-    );
-branch_ctrl_INST_0_i_29: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => jalr_mux_o(21),
-      I1 => \alu_in_b__65\(21),
-      I2 => \alu_in_b__65\(23),
-      I3 => jalr_mux_o(23),
-      I4 => \alu_in_b__65\(22),
-      I5 => jalr_mux_o(22),
-      O => branch_ctrl_INST_0_i_29_n_0
-    );
-branch_ctrl_INST_0_i_3: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"00000404F0F0FF00"
-    )
-        port map (
-      I0 => instruction30,
-      I1 => funct3(2),
-      I2 => aluop(2),
-      I3 => branch_ctrl_INST_0_i_11_n_0,
-      I4 => aluop(1),
-      I5 => branch_ctrl_INST_0_i_12_n_0,
-      O => alu_control(0)
-    );
-branch_ctrl_INST_0_i_30: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
       I0 => jalr_mux_o(18),
       I1 => \alu_in_b__65\(18),
       I2 => \alu_in_b__65\(20),
       I3 => jalr_mux_o(20),
       I4 => \alu_in_b__65\(19),
       I5 => jalr_mux_o(19),
-      O => branch_ctrl_INST_0_i_30_n_0
+      O => branch_ctrl_INST_0_i_27_n_0
     );
-branch_ctrl_INST_0_i_31: unisim.vcomponents.LUT6
+branch_ctrl_INST_0_i_28: unisim.vcomponents.LUT6
     generic map(
       INIT => X"9009000000009009"
     )
@@ -7235,6 +7173,57 @@ branch_ctrl_INST_0_i_31: unisim.vcomponents.LUT6
       I3 => jalr_mux_o(17),
       I4 => \alu_in_b__65\(16),
       I5 => jalr_mux_o(16),
+      O => branch_ctrl_INST_0_i_28_n_0
+    );
+branch_ctrl_INST_0_i_29: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => jalr_mux_o(12),
+      I1 => \alu_in_b__65\(12),
+      I2 => \alu_in_b__65\(14),
+      I3 => jalr_mux_o(14),
+      I4 => \alu_in_b__65\(13),
+      I5 => jalr_mux_o(13),
+      O => branch_ctrl_INST_0_i_29_n_0
+    );
+branch_ctrl_INST_0_i_3: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => branch_ctrl_INST_0_i_9_n_0,
+      I1 => aluop(1),
+      I2 => branch_ctrl_INST_0_i_11_n_0,
+      O => alu_control(0)
+    );
+branch_ctrl_INST_0_i_30: unisim.vcomponents.CARRY4
+     port map (
+      CI => '0',
+      CO(3) => branch_ctrl_INST_0_i_30_n_0,
+      CO(2) => branch_ctrl_INST_0_i_30_n_1,
+      CO(1) => branch_ctrl_INST_0_i_30_n_2,
+      CO(0) => branch_ctrl_INST_0_i_30_n_3,
+      CYINIT => '1',
+      DI(3 downto 0) => B"0000",
+      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_30_O_UNCONNECTED(3 downto 0),
+      S(3) => branch_ctrl_INST_0_i_39_n_0,
+      S(2) => branch_ctrl_INST_0_i_40_n_0,
+      S(1) => branch_ctrl_INST_0_i_41_n_0,
+      S(0) => branch_ctrl_INST_0_i_42_n_0
+    );
+branch_ctrl_INST_0_i_31: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => jalr_mux_o(21),
+      I1 => \alu_in_b__65\(21),
+      I2 => \alu_in_b__65\(23),
+      I3 => jalr_mux_o(23),
+      I4 => \alu_in_b__65\(22),
+      I5 => jalr_mux_o(22),
       O => branch_ctrl_INST_0_i_31_n_0
     );
 branch_ctrl_INST_0_i_32: unisim.vcomponents.LUT6
@@ -7242,56 +7231,15 @@ branch_ctrl_INST_0_i_32: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => jalr_mux_o(12),
-      I1 => \alu_in_b__65\(12),
-      I2 => \alu_in_b__65\(14),
-      I3 => jalr_mux_o(14),
-      I4 => \alu_in_b__65\(13),
-      I5 => jalr_mux_o(13),
-      O => branch_ctrl_INST_0_i_32_n_0
-    );
-branch_ctrl_INST_0_i_33: unisim.vcomponents.CARRY4
-     port map (
-      CI => '0',
-      CO(3) => branch_ctrl_INST_0_i_33_n_0,
-      CO(2) => branch_ctrl_INST_0_i_33_n_1,
-      CO(1) => branch_ctrl_INST_0_i_33_n_2,
-      CO(0) => branch_ctrl_INST_0_i_33_n_3,
-      CYINIT => '1',
-      DI(3 downto 0) => B"0000",
-      O(3 downto 0) => NLW_branch_ctrl_INST_0_i_33_O_UNCONNECTED(3 downto 0),
-      S(3) => branch_ctrl_INST_0_i_42_n_0,
-      S(2) => branch_ctrl_INST_0_i_43_n_0,
-      S(1) => branch_ctrl_INST_0_i_44_n_0,
-      S(0) => branch_ctrl_INST_0_i_45_n_0
-    );
-branch_ctrl_INST_0_i_34: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => jalr_mux_o(21),
-      I1 => \alu_in_b__65\(21),
-      I2 => \alu_in_b__65\(23),
-      I3 => jalr_mux_o(23),
-      I4 => \alu_in_b__65\(22),
-      I5 => jalr_mux_o(22),
-      O => branch_ctrl_INST_0_i_34_n_0
-    );
-branch_ctrl_INST_0_i_35: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
       I0 => jalr_mux_o(18),
       I1 => \alu_in_b__65\(18),
       I2 => \alu_in_b__65\(20),
       I3 => jalr_mux_o(20),
       I4 => \alu_in_b__65\(19),
       I5 => jalr_mux_o(19),
-      O => branch_ctrl_INST_0_i_35_n_0
+      O => branch_ctrl_INST_0_i_32_n_0
     );
-branch_ctrl_INST_0_i_36: unisim.vcomponents.LUT6
+branch_ctrl_INST_0_i_33: unisim.vcomponents.LUT6
     generic map(
       INIT => X"9009000000009009"
     )
@@ -7302,9 +7250,9 @@ branch_ctrl_INST_0_i_36: unisim.vcomponents.LUT6
       I3 => jalr_mux_o(17),
       I4 => \alu_in_b__65\(16),
       I5 => jalr_mux_o(16),
-      O => branch_ctrl_INST_0_i_36_n_0
+      O => branch_ctrl_INST_0_i_33_n_0
     );
-branch_ctrl_INST_0_i_37: unisim.vcomponents.LUT6
+branch_ctrl_INST_0_i_34: unisim.vcomponents.LUT6
     generic map(
       INIT => X"9009000000009009"
     )
@@ -7315,6 +7263,45 @@ branch_ctrl_INST_0_i_37: unisim.vcomponents.LUT6
       I3 => jalr_mux_o(14),
       I4 => \alu_in_b__65\(13),
       I5 => jalr_mux_o(13),
+      O => branch_ctrl_INST_0_i_34_n_0
+    );
+branch_ctrl_INST_0_i_35: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => jalr_mux_o(9),
+      I1 => \alu_in_b__65\(9),
+      I2 => \alu_in_b__65\(11),
+      I3 => jalr_mux_o(11),
+      I4 => \alu_in_b__65\(10),
+      I5 => jalr_mux_o(10),
+      O => branch_ctrl_INST_0_i_35_n_0
+    );
+branch_ctrl_INST_0_i_36: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => jalr_mux_o(6),
+      I1 => \alu_in_b__65\(6),
+      I2 => \alu_in_b__65\(8),
+      I3 => jalr_mux_o(8),
+      I4 => \alu_in_b__65\(7),
+      I5 => jalr_mux_o(7),
+      O => branch_ctrl_INST_0_i_36_n_0
+    );
+branch_ctrl_INST_0_i_37: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => jalr_mux_o(3),
+      I1 => \alu_in_b__65\(3),
+      I2 => \alu_in_b__65\(5),
+      I3 => jalr_mux_o(5),
+      I4 => \alu_in_b__65\(4),
+      I5 => jalr_mux_o(4),
       O => branch_ctrl_INST_0_i_37_n_0
     );
 branch_ctrl_INST_0_i_38: unisim.vcomponents.LUT6
@@ -7322,12 +7309,12 @@ branch_ctrl_INST_0_i_38: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => jalr_mux_o(9),
-      I1 => \alu_in_b__65\(9),
-      I2 => \alu_in_b__65\(11),
-      I3 => jalr_mux_o(11),
-      I4 => \alu_in_b__65\(10),
-      I5 => jalr_mux_o(10),
+      I0 => jalr_mux_o(0),
+      I1 => \alu_in_b__65\(0),
+      I2 => \alu_in_b__65\(2),
+      I3 => jalr_mux_o(2),
+      I4 => \alu_in_b__65\(1),
+      I5 => jalr_mux_o(1),
       O => branch_ctrl_INST_0_i_38_n_0
     );
 branch_ctrl_INST_0_i_39: unisim.vcomponents.LUT6
@@ -7335,21 +7322,25 @@ branch_ctrl_INST_0_i_39: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => jalr_mux_o(6),
-      I1 => \alu_in_b__65\(6),
-      I2 => \alu_in_b__65\(8),
-      I3 => jalr_mux_o(8),
-      I4 => \alu_in_b__65\(7),
-      I5 => jalr_mux_o(7),
+      I0 => jalr_mux_o(9),
+      I1 => \alu_in_b__65\(9),
+      I2 => \alu_in_b__65\(11),
+      I3 => jalr_mux_o(11),
+      I4 => \alu_in_b__65\(10),
+      I5 => jalr_mux_o(10),
       O => branch_ctrl_INST_0_i_39_n_0
     );
-branch_ctrl_INST_0_i_4: unisim.vcomponents.LUT2
+branch_ctrl_INST_0_i_4: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8"
+      INIT => X"00000000AAEAFFFF"
     )
         port map (
-      I0 => branch_ctrl_INST_0_i_13_n_0,
-      I1 => branch_ctrl_INST_0_i_14_n_0,
+      I0 => aluop(1),
+      I1 => funct3(2),
+      I2 => funct3(0),
+      I3 => funct3(1),
+      I4 => instruction30,
+      I5 => branch_ctrl_INST_0_i_12_n_0,
       O => alu_control(4)
     );
 branch_ctrl_INST_0_i_40: unisim.vcomponents.LUT6
@@ -7357,12 +7348,12 @@ branch_ctrl_INST_0_i_40: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => jalr_mux_o(3),
-      I1 => \alu_in_b__65\(3),
-      I2 => \alu_in_b__65\(5),
-      I3 => jalr_mux_o(5),
-      I4 => \alu_in_b__65\(4),
-      I5 => jalr_mux_o(4),
+      I0 => jalr_mux_o(6),
+      I1 => \alu_in_b__65\(6),
+      I2 => \alu_in_b__65\(8),
+      I3 => jalr_mux_o(8),
+      I4 => \alu_in_b__65\(7),
+      I5 => jalr_mux_o(7),
       O => branch_ctrl_INST_0_i_40_n_0
     );
 branch_ctrl_INST_0_i_41: unisim.vcomponents.LUT6
@@ -7370,12 +7361,12 @@ branch_ctrl_INST_0_i_41: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => jalr_mux_o(0),
-      I1 => \alu_in_b__65\(0),
-      I2 => \alu_in_b__65\(2),
-      I3 => jalr_mux_o(2),
-      I4 => \alu_in_b__65\(1),
-      I5 => jalr_mux_o(1),
+      I0 => jalr_mux_o(3),
+      I1 => \alu_in_b__65\(3),
+      I2 => \alu_in_b__65\(5),
+      I3 => jalr_mux_o(5),
+      I4 => \alu_in_b__65\(4),
+      I5 => jalr_mux_o(4),
       O => branch_ctrl_INST_0_i_41_n_0
     );
 branch_ctrl_INST_0_i_42: unisim.vcomponents.LUT6
@@ -7383,74 +7374,32 @@ branch_ctrl_INST_0_i_42: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => jalr_mux_o(9),
-      I1 => \alu_in_b__65\(9),
-      I2 => \alu_in_b__65\(11),
-      I3 => jalr_mux_o(11),
-      I4 => \alu_in_b__65\(10),
-      I5 => jalr_mux_o(10),
-      O => branch_ctrl_INST_0_i_42_n_0
-    );
-branch_ctrl_INST_0_i_43: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => jalr_mux_o(6),
-      I1 => \alu_in_b__65\(6),
-      I2 => \alu_in_b__65\(8),
-      I3 => jalr_mux_o(8),
-      I4 => \alu_in_b__65\(7),
-      I5 => jalr_mux_o(7),
-      O => branch_ctrl_INST_0_i_43_n_0
-    );
-branch_ctrl_INST_0_i_44: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => jalr_mux_o(3),
-      I1 => \alu_in_b__65\(3),
-      I2 => \alu_in_b__65\(5),
-      I3 => jalr_mux_o(5),
-      I4 => \alu_in_b__65\(4),
-      I5 => jalr_mux_o(4),
-      O => branch_ctrl_INST_0_i_44_n_0
-    );
-branch_ctrl_INST_0_i_45: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
       I0 => jalr_mux_o(0),
       I1 => \alu_in_b__65\(0),
       I2 => \alu_in_b__65\(2),
       I3 => jalr_mux_o(2),
       I4 => \alu_in_b__65\(1),
       I5 => jalr_mux_o(1),
-      O => branch_ctrl_INST_0_i_45_n_0
+      O => branch_ctrl_INST_0_i_42_n_0
     );
-branch_ctrl_INST_0_i_5: unisim.vcomponents.LUT6
+branch_ctrl_INST_0_i_5: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"888B888888888888"
+      INIT => X"B8"
     )
         port map (
-      I0 => branch_ctrl_INST_0_i_15_n_0,
-      I1 => branch_ctrl_INST_0_i_16_n_0,
-      I2 => funct3(0),
-      I3 => funct3(1),
-      I4 => aluop(2),
-      I5 => aluop(1),
+      I0 => branch_ctrl_INST_0_i_9_n_0,
+      I1 => aluop(1),
+      I2 => branch_ctrl_INST_0_i_13_n_0,
       O => alu_control(3)
     );
 branch_ctrl_INST_0_i_6: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"A3A0A3A3A3A0A0A0"
+      INIT => X"B888B8B8B8888888"
     )
         port map (
-      I0 => branch_ctrl_INST_0_i_17_n_0,
-      I1 => branch_ctrl_INST_0_i_1_n_0,
-      I2 => alu_control(2),
+      I0 => branch_ctrl_INST_0_i_14_n_0,
+      I1 => alu_control(2),
+      I2 => alu_control(1),
       I3 => data1,
       I4 => alu_control(0),
       I5 => data0,
@@ -7458,7 +7407,7 @@ branch_ctrl_INST_0_i_6: unisim.vcomponents.LUT6
     );
 branch_ctrl_INST_0_i_7: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFBFFFEFAFBBBFB"
+      INIT => X"0004000105044404"
     )
         port map (
       I0 => aluop(1),
@@ -7471,27 +7420,26 @@ branch_ctrl_INST_0_i_7: unisim.vcomponents.LUT6
     );
 branch_ctrl_INST_0_i_8: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"CCCFCF8C"
+      INIT => X"AA41AB41"
     )
         port map (
-      I0 => funct3(0),
-      I1 => aluop(0),
-      I2 => aluop(1),
-      I3 => funct3(1),
-      I4 => funct3(2),
+      I0 => aluop(0),
+      I1 => funct3(1),
+      I2 => funct3(2),
+      I3 => aluop(1),
+      I4 => funct3(0),
       O => branch_ctrl_INST_0_i_8_n_0
     );
-branch_ctrl_INST_0_i_9: unisim.vcomponents.LUT6
+branch_ctrl_INST_0_i_9: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0500000404044500"
+      INIT => X"AAAA0002"
     )
         port map (
       I0 => aluop(2),
-      I1 => funct3(0),
-      I2 => instruction30,
+      I1 => funct3(1),
+      I2 => funct3(0),
       I3 => funct3(2),
       I4 => aluop(0),
-      I5 => funct3(1),
       O => branch_ctrl_INST_0_i_9_n_0
     );
 \forwB[0]_INST_0\: unisim.vcomponents.LUT5
@@ -10091,9 +10039,9 @@ entity RV32I_WSC_Execution_0_0_Execution is
     alusrc : in STD_LOGIC_VECTOR ( 1 downto 0 );
     pc_vs_rs1_con : in STD_LOGIC_VECTOR ( 1 downto 0 );
     program_counter : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    instruction30 : in STD_LOGIC;
-    funct3 : in STD_LOGIC_VECTOR ( 2 downto 0 );
     aluop : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    funct3 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    instruction30 : in STD_LOGIC;
     jalr_mux : in STD_LOGIC;
     ALU_backward : in STD_LOGIC_VECTOR ( 31 downto 0 );
     read_data1 : in STD_LOGIC_VECTOR ( 31 downto 0 );

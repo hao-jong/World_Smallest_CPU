@@ -6,40 +6,4 @@ Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.ALU
-Compiling module xil_defaultlib.alu_control
-Compiling module xil_defaultlib.Execution
-Compiling module xil_defaultlib.RV32I_WSC_Execution_0_0
-Compiling module xil_defaultlib.Fowarding_Unit
-Compiling module xil_defaultlib.RV32I_WSC_Fowarding_Unit_0_0
-Compiling module xil_defaultlib.Hazard_Processing
-Compiling module xil_defaultlib.RV32I_WSC_Hazard_Processing_0_1
-Compiling module xil_defaultlib.Register_File
-Compiling module xil_defaultlib.Controller
-Compiling module xil_defaultlib.Imm_Gen
-Compiling module xil_defaultlib.Instruction_Decode
-Compiling module xil_defaultlib.RV32I_WSC_Instruction_Decode_0_0
-Compiling module xil_defaultlib.Instruction_Memory
-Compiling module xil_defaultlib.Instruction_Fetch
-Compiling module xil_defaultlib.RV32I_WSC_Instruction_Fetch_0_0
-Compiling module xil_defaultlib.Data_Memory
-Compiling module xil_defaultlib.Memory
-Compiling module xil_defaultlib.RV32I_WSC_Memory_0_0
-Compiling module xil_defaultlib.Write_back
-Compiling module xil_defaultlib.RV32I_WSC_Write_back_0_0
-Compiling module xil_defaultlib.reg_EXMEM
-Compiling module xil_defaultlib.RV32I_WSC_reg_EXMEM_0_0
-Compiling module xil_defaultlib.reg_IDEX
-Compiling module xil_defaultlib.RV32I_WSC_reg_IDEX_0_0
-Compiling module xil_defaultlib.reg_IFID
-Compiling module xil_defaultlib.RV32I_WSC_reg_IFID_0_0
-Compiling module xil_defaultlib.reg_MEMWB
-Compiling module xil_defaultlib.RV32I_WSC_reg_MEMWB_0_1
-Compiling module xil_defaultlib.RV32I_WSC
-Compiling module xil_defaultlib.RV32I_WSC_wrapper
-Compiling module xil_defaultlib.WSC_tb
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot WSC_tb_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

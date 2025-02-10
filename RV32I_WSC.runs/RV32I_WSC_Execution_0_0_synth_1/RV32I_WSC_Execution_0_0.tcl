@@ -56,7 +56,6 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "RV32I_WSC_Execution_0_0_synth_1" START { ROLLUP_AUTO }
-set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/mref

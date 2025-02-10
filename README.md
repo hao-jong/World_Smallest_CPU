@@ -32,19 +32,33 @@
 |  |  |  |  |  |  |  |  |  |  |  |
 
 ## Overall Schematic 
-<img src="WSC_schematic_last_last.png">
+<img src="WSC_schematic.png">
 
 ## Verification Method
 ### 개별 명령어 입력
  1. ADD,SUB, .... 명령어를 intruction  memory에 넣은 후 VIvado Simulation을 통해 확인
-	 test001.txt : add sub 등 
-	 test002.txt : save load 등
-	 test003.txt : branch 등
-	 test004.txt : jal, jalr 등
+	 - test001.txt : add sub 등 
+	 - test002.txt : save load 등
+	 - test003.txt : branch 등
+	 - test004.txt : jal, jalr 등
 	 
 ### 정렬 알고리즘 수행
  2. bubble sort , merge sort를 수행하고 결과 확인
-	(On progress)
+	- sort.txt: 5 2 8 1 9 -> sort -> 1 2 5 8 9
+
+## How to verify
+
+- 미리 만들어둔 test_bench File로 직접 검증 가능.
+
+- Test001 ~ Test004 : Instruction_Memory.v 파일 내 readmemh의 txt를 Test00x.txt
+					  Data_Memory.v 파일 내의 readmemh의 txt를 default.txt로 변환
+					  
+- bubble_Sort : Instruction_Memory.v 파일 내 readmemh의 txt를 Sort.txt
+				Data_Memory.v 파일 내의 readmemh의 txt를 Sort_data.txt로 변환
+
+## Sorting Result
+<img src="Sort_result.png">
+
 ## Current Version
 ### V 1.00 (2024-11-14)
 	- 프로젝트 생성 
@@ -60,8 +74,8 @@
 	- conditional & unconditional jump 검증 예정
 ### V2.20 (2025-02-04)
 	- conditional & unconditional jump 검증 (Test003, Test004)
-### V2.30 (2025-02-06)
-	- branch prediction & harzard processing 검증 
+### V2.30 (2025-02-10)
+	- bubble sort testbench 작성 및 검증
 
 ## Tool
  1. ***AMD Vivado***
@@ -71,6 +85,8 @@
 
 > Sarah Harris, David Harris - Digital Design and Computer Architecture,  RISC-V Edition_ RISC-V Edition (2021, Morgan Kaufmann)
 
-> RISC-V Official Manual (https://riscv.org/specifications/ratified/)
+> RISC-V Official Manual : (https://riscv.org/specifications/ratified/)
+
+>Bubble sort assembly Code : (https://marz.utk.edu/my-courses/cosc230/book/example-risc-v-assembly-programs/#bubble_sort)
 
 

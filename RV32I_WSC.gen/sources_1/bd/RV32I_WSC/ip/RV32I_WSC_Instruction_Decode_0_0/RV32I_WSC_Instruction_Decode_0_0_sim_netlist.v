@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-// Date        : Tue Feb  4 20:35:34 2025
+// Date        : Mon Feb 10 10:04:29 2025
 // Host        : COMSYS01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/FPGA_project/RV32I_WSC/RV32I_WSC.gen/sources_1/bd/RV32I_WSC/ip/RV32I_WSC_Instruction_Decode_0_0/RV32I_WSC_Instruction_Decode_0_0_sim_netlist.v
@@ -67,6 +67,7 @@ module RV32I_WSC_Instruction_Decode_0_0
   wire branch;
   wire clk;
   wire [31:0]imm_gen;
+  wire \imm_gen[10]_INST_0_i_1_n_0 ;
   wire \imm_gen[30]_INST_0_i_1_n_0 ;
   wire \imm_gen[31]_INST_0_i_1_n_0 ;
   wire \imm_gen[31]_INST_0_i_2_n_0 ;
@@ -92,230 +93,238 @@ module RV32I_WSC_Instruction_Decode_0_0
   assign read_register2[4:0] = instruction[24:20];
   assign write_register_out[4:0] = instruction[11:7];
   LUT5 #(
-    .INIT(32'h30000808)) 
+    .INIT(32'h03800080)) 
     \imm_gen[0]_INST_0 
-       (.I0(instruction[20]),
-        .I1(\imm_gen[31]_INST_0_i_1_n_0 ),
+       (.I0(instruction[7]),
+        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
         .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I3(instruction[7]),
-        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(instruction[20]),
         .O(imm_gen[0]));
-  LUT4 #(
-    .INIT(16'hF400)) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \imm_gen[10]_INST_0 
-       (.I0(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I1(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I3(instruction[30]),
+       (.I0(\imm_gen[10]_INST_0_i_1_n_0 ),
+        .I1(instruction[30]),
         .O(imm_gen[10]));
   LUT6 #(
-    .INIT(64'hB0B0BC8C8080B080)) 
+    .INIT(64'h0000404400000007)) 
+    \imm_gen[10]_INST_0_i_1 
+       (.I0(instruction[4]),
+        .I1(instruction[5]),
+        .I2(instruction[2]),
+        .I3(instruction[3]),
+        .I4(inst_n_7),
+        .I5(instruction[6]),
+        .O(\imm_gen[10]_INST_0_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAFC3300AA300000)) 
     \imm_gen[11]_INST_0 
        (.I0(instruction[20]),
-        .I1(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I3(instruction[7]),
-        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
+        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
+        .I2(instruction[7]),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[31]_INST_0_i_2_n_0 ),
         .I5(instruction[31]),
         .O(imm_gen[11]));
   LUT5 #(
-    .INIT(32'hAFB0A080)) 
+    .INIT(32'hAAC0ACC0)) 
     \imm_gen[12]_INST_0 
        (.I0(instruction[12]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[12]));
   LUT5 #(
-    .INIT(32'hAFB0A080)) 
+    .INIT(32'hAAC0ACC0)) 
     \imm_gen[13]_INST_0 
        (.I0(instruction[13]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[13]));
   LUT5 #(
-    .INIT(32'hAFB0A080)) 
+    .INIT(32'hAAC0ACC0)) 
     \imm_gen[14]_INST_0 
        (.I0(instruction[14]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[14]));
   LUT5 #(
-    .INIT(32'hAFB0A080)) 
+    .INIT(32'hAAC0ACC0)) 
     \imm_gen[15]_INST_0 
        (.I0(instruction[15]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[15]));
   LUT5 #(
-    .INIT(32'hAFB0A080)) 
+    .INIT(32'hAAC0ACC0)) 
     \imm_gen[16]_INST_0 
        (.I0(instruction[16]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[16]));
   LUT5 #(
-    .INIT(32'hAFB0A080)) 
+    .INIT(32'hAAC0ACC0)) 
     \imm_gen[17]_INST_0 
        (.I0(instruction[17]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[17]));
   LUT5 #(
-    .INIT(32'hAFB0A080)) 
+    .INIT(32'hAAC0ACC0)) 
     \imm_gen[18]_INST_0 
        (.I0(instruction[18]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[18]));
   LUT5 #(
-    .INIT(32'hAFB0A080)) 
+    .INIT(32'hAAC0ACC0)) 
     \imm_gen[19]_INST_0 
        (.I0(instruction[19]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[19]));
   LUT5 #(
-    .INIT(32'hAF20A020)) 
+    .INIT(32'hAA22F000)) 
     \imm_gen[1]_INST_0 
        (.I0(instruction[21]),
         .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I2(instruction[8]),
         .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[8]),
+        .I4(\imm_gen[31]_INST_0_i_1_n_0 ),
         .O(imm_gen[1]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[20]_INST_0 
        (.I0(instruction[20]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[20]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[21]_INST_0 
        (.I0(instruction[21]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[21]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[22]_INST_0 
        (.I0(instruction[22]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[22]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[23]_INST_0 
        (.I0(instruction[23]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[23]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[24]_INST_0 
        (.I0(instruction[24]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[24]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[25]_INST_0 
        (.I0(instruction[25]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[25]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[26]_INST_0 
        (.I0(instruction[26]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[26]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[27]_INST_0 
        (.I0(instruction[27]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[27]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[28]_INST_0 
        (.I0(instruction[28]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[28]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[29]_INST_0 
        (.I0(instruction[29]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[29]));
   LUT5 #(
-    .INIT(32'hAF20A020)) 
+    .INIT(32'hAA22F000)) 
     \imm_gen[2]_INST_0 
        (.I0(instruction[22]),
         .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I2(instruction[9]),
         .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[9]),
+        .I4(\imm_gen[31]_INST_0_i_1_n_0 ),
         .O(imm_gen[2]));
   LUT5 #(
-    .INIT(32'hFFB00080)) 
+    .INIT(32'hCAC0CCC0)) 
     \imm_gen[30]_INST_0 
        (.I0(instruction[30]),
-        .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[31]),
+        .I1(instruction[31]),
+        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
+        .I3(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I4(\imm_gen[30]_INST_0_i_1_n_0 ),
         .O(imm_gen[30]));
   LUT6 #(
-    .INIT(64'hFFFFFFFB3BFFFFFB)) 
+    .INIT(64'hFFFFFFFFF7FFF7E6)) 
     \imm_gen[30]_INST_0_i_1 
-       (.I0(instruction[3]),
-        .I1(inst_n_7),
-        .I2(instruction[2]),
-        .I3(instruction[5]),
-        .I4(instruction[6]),
-        .I5(instruction[4]),
+       (.I0(instruction[5]),
+        .I1(instruction[6]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[3]),
+        .I5(inst_n_7),
         .O(\imm_gen[30]_INST_0_i_1_n_0 ));
   LUT3 #(
     .INIT(8'hE0)) 
@@ -325,88 +334,78 @@ module RV32I_WSC_Instruction_Decode_0_0
         .I2(instruction[31]),
         .O(imm_gen[31]));
   LUT6 #(
-    .INIT(64'h0202000288000002)) 
+    .INIT(64'h0000500000002023)) 
     \imm_gen[31]_INST_0_i_1 
-       (.I0(inst_n_7),
-        .I1(instruction[6]),
-        .I2(instruction[3]),
+       (.I0(instruction[4]),
+        .I1(instruction[3]),
+        .I2(instruction[2]),
         .I3(instruction[5]),
-        .I4(instruction[2]),
-        .I5(instruction[4]),
+        .I4(inst_n_7),
+        .I5(instruction[6]),
         .O(\imm_gen[31]_INST_0_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h2000002000000020)) 
+    .INIT(64'h0000000020030000)) 
     \imm_gen[31]_INST_0_i_2 
-       (.I0(inst_n_7),
-        .I1(instruction[4]),
-        .I2(instruction[5]),
-        .I3(instruction[3]),
-        .I4(instruction[2]),
-        .I5(instruction[6]),
+       (.I0(instruction[6]),
+        .I1(inst_n_7),
+        .I2(instruction[3]),
+        .I3(instruction[2]),
+        .I4(instruction[5]),
+        .I5(instruction[4]),
         .O(\imm_gen[31]_INST_0_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'hAF20A020)) 
+    .INIT(32'hAA22F000)) 
     \imm_gen[3]_INST_0 
        (.I0(instruction[23]),
         .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I2(instruction[10]),
         .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[10]),
+        .I4(\imm_gen[31]_INST_0_i_1_n_0 ),
         .O(imm_gen[3]));
   LUT5 #(
-    .INIT(32'hAF20A020)) 
+    .INIT(32'hAA22F000)) 
     \imm_gen[4]_INST_0 
        (.I0(instruction[24]),
         .I1(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_1_n_0 ),
+        .I2(instruction[11]),
         .I3(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I4(instruction[11]),
+        .I4(\imm_gen[31]_INST_0_i_1_n_0 ),
         .O(imm_gen[4]));
-  LUT4 #(
-    .INIT(16'hF400)) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \imm_gen[5]_INST_0 
-       (.I0(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I1(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I3(instruction[25]),
+       (.I0(\imm_gen[10]_INST_0_i_1_n_0 ),
+        .I1(instruction[25]),
         .O(imm_gen[5]));
-  LUT4 #(
-    .INIT(16'hF400)) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \imm_gen[6]_INST_0 
-       (.I0(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I1(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I3(instruction[26]),
+       (.I0(\imm_gen[10]_INST_0_i_1_n_0 ),
+        .I1(instruction[26]),
         .O(imm_gen[6]));
-  LUT4 #(
-    .INIT(16'hF400)) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \imm_gen[7]_INST_0 
-       (.I0(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I1(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I3(instruction[27]),
+       (.I0(\imm_gen[10]_INST_0_i_1_n_0 ),
+        .I1(instruction[27]),
         .O(imm_gen[7]));
-  LUT4 #(
-    .INIT(16'hF400)) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \imm_gen[8]_INST_0 
-       (.I0(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I1(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I3(instruction[28]),
+       (.I0(\imm_gen[10]_INST_0_i_1_n_0 ),
+        .I1(instruction[28]),
         .O(imm_gen[8]));
-  LUT4 #(
-    .INIT(16'hF400)) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \imm_gen[9]_INST_0 
-       (.I0(\imm_gen[30]_INST_0_i_1_n_0 ),
-        .I1(\imm_gen[31]_INST_0_i_1_n_0 ),
-        .I2(\imm_gen[31]_INST_0_i_2_n_0 ),
-        .I3(instruction[29]),
+       (.I0(\imm_gen[10]_INST_0_i_1_n_0 ),
+        .I1(instruction[29]),
         .O(imm_gen[9]));
   RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode inst
        (.aluop({branch,\^aluop }),
         .alusrc(alusrc),
         .instruction({instruction[24:15],instruction[6:0]}),
-        .instruction_1_sp_1(inst_n_7),
+        .instruction_0_sp_1(inst_n_7),
         .jalr_mux(jalr_mux),
         .memtoreg(memtoreg),
         .memwrite(memwrite),
@@ -427,7 +426,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
     memtoreg,
     regwrite_out,
     aluop,
-    instruction_1_sp_1,
+    instruction_0_sp_1,
     alusrc,
     pc_vs_rs1_con,
     instruction);
@@ -436,26 +435,23 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
   output memtoreg;
   output regwrite_out;
   output [2:0]aluop;
-  output instruction_1_sp_1;
+  output instruction_0_sp_1;
   output [1:0]alusrc;
   output [1:0]pc_vs_rs1_con;
   input [6:0]instruction;
 
   wire [2:0]aluop;
   wire \aluop_reg[0]_i_1_n_0 ;
-  wire \aluop_reg[0]_i_2_n_0 ;
   wire \aluop_reg[1]_i_1_n_0 ;
   wire \aluop_reg[2]_i_1_n_0 ;
-  wire \aluop_reg[2]_i_2_n_0 ;
   wire [1:0]alusrc;
   wire \alusrc_reg[0]_i_1_n_0 ;
   wire \alusrc_reg[1]_i_1_n_0 ;
   wire [6:0]instruction;
-  wire instruction_1_sn_1;
+  wire instruction_0_sn_1;
   wire jalr_mux;
   wire jalr_mux_reg_i_1_n_0;
   wire memread_reg_i_1_n_0;
-  wire memread_reg_i_2_n_0;
   wire memtoreg;
   wire memwrite;
   wire memwrite_reg_i_1_n_0;
@@ -466,7 +462,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
   wire regwrite_out;
   wire regwrite_reg_i_1_n_0;
 
-  assign instruction_1_sp_1 = instruction_1_sn_1;
+  assign instruction_0_sp_1 = instruction_0_sn_1;
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
   LDCE #(
@@ -478,22 +474,15 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(aluop[0]));
   LUT6 #(
-    .INIT(64'h0000200000200000)) 
+    .INIT(64'h0000004141000000)) 
     \aluop_reg[0]_i_1 
-       (.I0(instruction[1]),
-        .I1(\aluop_reg[0]_i_2_n_0 ),
-        .I2(instruction[0]),
+       (.I0(instruction_0_sn_1),
+        .I1(instruction[5]),
+        .I2(instruction[6]),
         .I3(instruction[3]),
-        .I4(instruction[4]),
-        .I5(instruction[2]),
+        .I4(instruction[2]),
+        .I5(instruction[4]),
         .O(\aluop_reg[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT2 #(
-    .INIT(4'h6)) 
-    \aluop_reg[0]_i_2 
-       (.I0(instruction[5]),
-        .I1(instruction[6]),
-        .O(\aluop_reg[0]_i_2_n_0 ));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
   LDCE #(
@@ -505,14 +494,14 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(aluop[1]));
   LUT6 #(
-    .INIT(64'h0288000202000002)) 
+    .INIT(64'h00000000202C0003)) 
     \aluop_reg[1]_i_1 
-       (.I0(instruction_1_sn_1),
-        .I1(instruction[6]),
-        .I2(instruction[3]),
-        .I3(instruction[4]),
+       (.I0(instruction[5]),
+        .I1(instruction[4]),
+        .I2(instruction[6]),
+        .I3(instruction[3]),
         .I4(instruction[2]),
-        .I5(instruction[5]),
+        .I5(instruction_0_sn_1),
         .O(\aluop_reg[1]_i_1_n_0 ));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
@@ -525,22 +514,15 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(aluop[2]));
   LUT6 #(
-    .INIT(64'h2000200000002000)) 
+    .INIT(64'h0051000000000000)) 
     \aluop_reg[2]_i_1 
-       (.I0(instruction[0]),
-        .I1(instruction[4]),
-        .I2(\aluop_reg[2]_i_2_n_0 ),
-        .I3(instruction[1]),
-        .I4(instruction[3]),
-        .I5(instruction[2]),
+       (.I0(instruction_0_sn_1),
+        .I1(instruction[3]),
+        .I2(instruction[2]),
+        .I3(instruction[4]),
+        .I4(instruction[5]),
+        .I5(instruction[6]),
         .O(\aluop_reg[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
-    \aluop_reg[2]_i_2 
-       (.I0(instruction[5]),
-        .I1(instruction[6]),
-        .O(\aluop_reg[2]_i_2_n_0 ));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
   LDCE #(
@@ -552,14 +534,14 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(alusrc[0]));
   LUT6 #(
-    .INIT(64'h080008000000A02A)) 
+    .INIT(64'h0004440100050001)) 
     \alusrc_reg[0]_i_1 
-       (.I0(instruction_1_sn_1),
-        .I1(instruction[5]),
-        .I2(instruction[4]),
-        .I3(instruction[2]),
-        .I4(instruction[3]),
-        .I5(instruction[6]),
+       (.I0(instruction_0_sn_1),
+        .I1(instruction[2]),
+        .I2(instruction[3]),
+        .I3(instruction[6]),
+        .I4(instruction[4]),
+        .I5(instruction[5]),
         .O(\alusrc_reg[0]_i_1_n_0 ));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
@@ -572,13 +554,13 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(alusrc[1]));
   LUT6 #(
-    .INIT(64'h2000000000000000)) 
+    .INIT(64'h4000000000000000)) 
     \alusrc_reg[1]_i_1 
-       (.I0(instruction[5]),
-        .I1(instruction[4]),
-        .I2(instruction[1]),
+       (.I0(instruction[4]),
+        .I1(instruction[5]),
+        .I2(instruction[6]),
         .I3(instruction[0]),
-        .I4(instruction[6]),
+        .I4(instruction[1]),
         .I5(instruction[2]),
         .O(\alusrc_reg[1]_i_1_n_0 ));
   (* XILINX_LEGACY_PRIM = "LD" *) 
@@ -592,14 +574,14 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(jalr_mux));
   LUT6 #(
-    .INIT(64'h1000000000000000)) 
+    .INIT(64'h0040000000000000)) 
     jalr_mux_reg_i_1
        (.I0(instruction[3]),
-        .I1(instruction[4]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[5]),
-        .I5(instruction[6]),
+        .I1(instruction[6]),
+        .I2(instruction[5]),
+        .I3(instruction[4]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(jalr_mux_reg_i_1_n_0));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
@@ -612,21 +594,15 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(memtoreg));
   LUT6 #(
-    .INIT(64'h0000000000001000)) 
+    .INIT(64'h0000000000000001)) 
     memread_reg_i_1
-       (.I0(instruction[5]),
-        .I1(instruction[6]),
-        .I2(instruction[0]),
-        .I3(instruction[1]),
+       (.I0(instruction_0_sn_1),
+        .I1(instruction[4]),
+        .I2(instruction[6]),
+        .I3(instruction[5]),
         .I4(instruction[2]),
-        .I5(memread_reg_i_2_n_0),
+        .I5(instruction[3]),
         .O(memread_reg_i_1_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
-    memread_reg_i_2
-       (.I0(instruction[4]),
-        .I1(instruction[3]),
-        .O(memread_reg_i_2_n_0));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
   LDCE #(
@@ -638,14 +614,14 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(memwrite));
   LUT6 #(
-    .INIT(64'h0000100000000000)) 
+    .INIT(64'h0000000000000004)) 
     memwrite_reg_i_1
-       (.I0(instruction[6]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[3]),
-        .I5(instruction[5]),
+       (.I0(instruction[4]),
+        .I1(instruction[5]),
+        .I2(instruction[2]),
+        .I3(instruction[3]),
+        .I4(instruction[6]),
+        .I5(instruction_0_sn_1),
         .O(memwrite_reg_i_1_n_0));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
@@ -658,14 +634,14 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(pc_vs_rs1_con[0]));
   LUT6 #(
-    .INIT(64'h0022200080002000)) 
+    .INIT(64'h0000204400005000)) 
     \pc_vs_rs1_con_reg[0]_i_1 
-       (.I0(instruction_1_sn_1),
-        .I1(instruction[3]),
+       (.I0(instruction[3]),
+        .I1(instruction[4]),
         .I2(instruction[5]),
         .I3(instruction[6]),
-        .I4(instruction[2]),
-        .I5(instruction[4]),
+        .I4(instruction_0_sn_1),
+        .I5(instruction[2]),
         .O(\pc_vs_rs1_con_reg[0]_i_1_n_0 ));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
@@ -678,31 +654,31 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(pc_vs_rs1_con[1]));
   LUT6 #(
-    .INIT(64'h1000000000000000)) 
+    .INIT(64'h0400000000000000)) 
     \pc_vs_rs1_con_reg[1]_i_1 
        (.I0(instruction[6]),
-        .I1(instruction[3]),
-        .I2(instruction[1]),
+        .I1(instruction[4]),
+        .I2(instruction[3]),
         .I3(instruction[0]),
-        .I4(instruction[4]),
+        .I4(instruction[1]),
         .I5(instruction[2]),
         .O(\pc_vs_rs1_con_reg[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFDFFFFFFFF7FFF)) 
+    .INIT(64'hFEFFFFFFFFFFFFF7)) 
     \pc_vs_rs1_con_reg[1]_i_2 
-       (.I0(instruction_1_sn_1),
-        .I1(instruction[6]),
-        .I2(instruction[5]),
-        .I3(instruction[4]),
-        .I4(instruction[3]),
-        .I5(instruction[2]),
+       (.I0(instruction[2]),
+        .I1(instruction[3]),
+        .I2(instruction_0_sn_1),
+        .I3(instruction[5]),
+        .I4(instruction[6]),
+        .I5(instruction[4]),
         .O(\pc_vs_rs1_con_reg[1]_i_2_n_0 ));
   LUT2 #(
-    .INIT(4'h8)) 
+    .INIT(4'h7)) 
     \pc_vs_rs1_con_reg[1]_i_3 
-       (.I0(instruction[1]),
-        .I1(instruction[0]),
-        .O(instruction_1_sn_1));
+       (.I0(instruction[0]),
+        .I1(instruction[1]),
+        .O(instruction_0_sn_1));
   (* XILINX_LEGACY_PRIM = "LD" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:GE GND:CLR" *) 
   LDCE #(
@@ -714,13 +690,13 @@ module RV32I_WSC_Instruction_Decode_0_0_Controller
         .GE(1'b1),
         .Q(regwrite_out));
   LUT6 #(
-    .INIT(64'h200020000000888A)) 
+    .INIT(64'h0000500000002223)) 
     regwrite_reg_i_1
-       (.I0(instruction_1_sn_1),
-        .I1(instruction[4]),
-        .I2(instruction[5]),
-        .I3(instruction[2]),
-        .I4(instruction[3]),
+       (.I0(instruction[4]),
+        .I1(instruction[3]),
+        .I2(instruction[2]),
+        .I3(instruction[5]),
+        .I4(instruction_0_sn_1),
         .I5(instruction[6]),
         .O(regwrite_reg_i_1_n_0));
 endmodule
@@ -732,7 +708,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode
     memtoreg,
     regwrite_out,
     aluop,
-    instruction_1_sp_1,
+    instruction_0_sp_1,
     read_data1,
     read_data2,
     alusrc,
@@ -747,7 +723,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode
   output memtoreg;
   output regwrite_out;
   output [2:0]aluop;
-  output instruction_1_sp_1;
+  output instruction_0_sp_1;
   output [31:0]read_data1;
   output [31:0]read_data2;
   output [1:0]alusrc;
@@ -761,7 +737,7 @@ module RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode
   wire [2:0]aluop;
   wire [1:0]alusrc;
   wire [16:0]instruction;
-  wire instruction_1_sn_1;
+  wire instruction_0_sn_1;
   wire jalr_mux;
   wire memtoreg;
   wire memwrite;
@@ -774,13 +750,13 @@ module RV32I_WSC_Instruction_Decode_0_0_Instruction_Decode
   wire [31:0]write_data_in;
   wire [4:0]write_register;
 
-  assign instruction_1_sp_1 = instruction_1_sn_1;
+  assign instruction_0_sp_1 = instruction_0_sn_1;
   assign read_data2_31_sn_1 = read_data2_31_sp_1;
   RV32I_WSC_Instruction_Decode_0_0_Controller Controller_0
        (.aluop(aluop),
         .alusrc(alusrc),
         .instruction(instruction[6:0]),
-        .instruction_1_sp_1(instruction_1_sn_1),
+        .instruction_0_sp_1(instruction_0_sn_1),
         .jalr_mux(jalr_mux),
         .memtoreg(memtoreg),
         .memwrite(memwrite),
@@ -843,641 +819,641 @@ module RV32I_WSC_Instruction_Decode_0_0_Register_File
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[0]_INST_0 
        (.I0(read_data10[0]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[0]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[10]_INST_0 
        (.I0(read_data10[10]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[10]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[11]_INST_0 
        (.I0(read_data10[11]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[11]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[12]_INST_0 
        (.I0(read_data10[12]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[12]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[13]_INST_0 
        (.I0(read_data10[13]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[13]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[14]_INST_0 
        (.I0(read_data10[14]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[14]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[15]_INST_0 
        (.I0(read_data10[15]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[15]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[16]_INST_0 
        (.I0(read_data10[16]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[16]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[17]_INST_0 
        (.I0(read_data10[17]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[17]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[18]_INST_0 
        (.I0(read_data10[18]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[18]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[19]_INST_0 
        (.I0(read_data10[19]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[19]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[1]_INST_0 
        (.I0(read_data10[1]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[1]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[20]_INST_0 
        (.I0(read_data10[20]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[20]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[21]_INST_0 
        (.I0(read_data10[21]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[21]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[22]_INST_0 
        (.I0(read_data10[22]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[22]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[23]_INST_0 
        (.I0(read_data10[23]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[23]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[24]_INST_0 
        (.I0(read_data10[24]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[24]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[25]_INST_0 
        (.I0(read_data10[25]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[25]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[26]_INST_0 
        (.I0(read_data10[26]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[26]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[27]_INST_0 
        (.I0(read_data10[27]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[27]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[28]_INST_0 
        (.I0(read_data10[28]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[28]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[29]_INST_0 
        (.I0(read_data10[29]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[29]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[2]_INST_0 
        (.I0(read_data10[2]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[2]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[30]_INST_0 
        (.I0(read_data10[30]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[30]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[31]_INST_0 
        (.I0(read_data10[31]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[31]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[3]_INST_0 
        (.I0(read_data10[3]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[3]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[4]_INST_0 
        (.I0(read_data10[4]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[4]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[5]_INST_0 
        (.I0(read_data10[5]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[5]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[6]_INST_0 
        (.I0(read_data10[6]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[6]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[7]_INST_0 
        (.I0(read_data10[7]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[7]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[8]_INST_0 
        (.I0(read_data10[8]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[8]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data1[9]_INST_0 
        (.I0(read_data10[9]),
-        .I1(instruction[2]),
-        .I2(instruction[1]),
-        .I3(instruction[0]),
-        .I4(instruction[4]),
-        .I5(instruction[3]),
+        .I1(instruction[3]),
+        .I2(instruction[4]),
+        .I3(instruction[2]),
+        .I4(instruction[1]),
+        .I5(instruction[0]),
         .O(read_data1[9]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[0]_INST_0 
        (.I0(read_data20[0]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[0]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[10]_INST_0 
        (.I0(read_data20[10]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[10]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[11]_INST_0 
        (.I0(read_data20[11]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[11]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[12]_INST_0 
        (.I0(read_data20[12]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[12]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[13]_INST_0 
        (.I0(read_data20[13]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[13]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[14]_INST_0 
        (.I0(read_data20[14]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[14]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[15]_INST_0 
        (.I0(read_data20[15]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[15]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[16]_INST_0 
        (.I0(read_data20[16]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[16]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[17]_INST_0 
        (.I0(read_data20[17]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[17]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[18]_INST_0 
        (.I0(read_data20[18]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[18]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[19]_INST_0 
        (.I0(read_data20[19]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[19]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[1]_INST_0 
        (.I0(read_data20[1]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[1]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[20]_INST_0 
        (.I0(read_data20[20]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[20]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[21]_INST_0 
        (.I0(read_data20[21]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[21]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[22]_INST_0 
        (.I0(read_data20[22]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[22]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[23]_INST_0 
        (.I0(read_data20[23]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[23]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[24]_INST_0 
        (.I0(read_data20[24]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[24]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[25]_INST_0 
        (.I0(read_data20[25]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[25]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[26]_INST_0 
        (.I0(read_data20[26]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[26]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[27]_INST_0 
        (.I0(read_data20[27]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[27]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[28]_INST_0 
        (.I0(read_data20[28]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[28]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[29]_INST_0 
        (.I0(read_data20[29]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[29]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[2]_INST_0 
        (.I0(read_data20[2]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[2]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[30]_INST_0 
        (.I0(read_data20[30]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[30]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[31]_INST_0 
        (.I0(read_data20[31]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[31]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[3]_INST_0 
        (.I0(read_data20[3]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[3]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[4]_INST_0 
        (.I0(read_data20[4]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[4]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[5]_INST_0 
        (.I0(read_data20[5]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[5]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[6]_INST_0 
        (.I0(read_data20[6]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[6]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[7]_INST_0 
        (.I0(read_data20[7]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[7]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[8]_INST_0 
        (.I0(read_data20[8]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[8]));
   LUT6 #(
     .INIT(64'hAAAAAAAAAAAAAAA8)) 
     \read_data2[9]_INST_0 
        (.I0(read_data20[9]),
-        .I1(instruction[7]),
-        .I2(instruction[6]),
-        .I3(instruction[5]),
-        .I4(instruction[9]),
-        .I5(instruction[8]),
+        .I1(instruction[8]),
+        .I2(instruction[9]),
+        .I3(instruction[7]),
+        .I4(instruction[6]),
+        .I5(instruction[5]),
         .O(read_data2[9]));
   (* METHODOLOGY_DRC_VIOS = "" *) 
   (* OPT_MODIFIED = "MLO" *) 

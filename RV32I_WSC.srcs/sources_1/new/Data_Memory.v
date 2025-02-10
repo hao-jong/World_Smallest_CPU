@@ -29,9 +29,19 @@ input memread,
 
 output reg [31:0] read_mem_data
     );
+    
+initial
+begin
+$readmemh("Sort_data.txt",data_memory);
+end   
+    
+    
 reg [31:0] data_memory [63:0];
 wire [5:0] data_memory_address;
-assign data_memory_address = address[7:2];
+wire [31:0] addr_m512;
+//memory address starts at 0x200(512)
+assign addr_m512 = address-0'h200;
+assign data_memory_address = addr_m512[7:2];
 always@(negedge clk)
     begin
         if (memread == 1)

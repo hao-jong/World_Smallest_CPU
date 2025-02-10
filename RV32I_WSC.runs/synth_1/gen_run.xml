@@ -169,14 +169,14 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_reg_IDEX_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_Memory_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_reg_IDEX_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_reg_MEMWB_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_Write_back_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_Instruction_Decode_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_Hazard_Processing_0_1"/>
-  <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_Write_back_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_Execution_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_Fowarding_Unit_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_Execution_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_reg_EXMEM_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_Instruction_Fetch_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="RV32I_WSC_reg_IFID_0_0"/>

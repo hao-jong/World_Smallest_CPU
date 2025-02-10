@@ -58,20 +58,20 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="160"/>
+    <Option Name="WTXSimLaunchSim" Val="169"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="86"/>
-    <Option Name="WTModelSimExportSim" Val="86"/>
-    <Option Name="WTQuestaExportSim" Val="86"/>
+    <Option Name="WTXSimExportSim" Val="89"/>
+    <Option Name="WTModelSimExportSim" Val="89"/>
+    <Option Name="WTQuestaExportSim" Val="89"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="86"/>
-    <Option Name="WTRivieraExportSim" Val="86"/>
-    <Option Name="WTActivehdlExportSim" Val="86"/>
+    <Option Name="WTVcsExportSim" Val="89"/>
+    <Option Name="WTRivieraExportSim" Val="89"/>
+    <Option Name="WTActivehdlExportSim" Val="89"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -341,6 +341,18 @@
           <Attr Name="ImportTime" Val="1738806435"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sim_1/imports/behav/default.txt">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PSIMDIR/sim_1/behav/default.txt"/>
+          <Attr Name="ImportTime" Val="1739148200"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sim_1/imports/behav/Sort_data.txt">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PSIMDIR/sim_1/behav/Sort_data.txt"/>
+          <Attr Name="ImportTime" Val="1739148222"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="WSC_tb"/>
@@ -520,9 +532,7 @@
     </Run>
     <Run Id="RV32I_WSC_Instruction_Fetch_0_0_synth_1" Type="Ft3:Synth" SrcSet="RV32I_WSC_Instruction_Fetch_0_0" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_Instruction_Fetch_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/RV32I_WSC_Instruction_Fetch_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_Instruction_Fetch_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_Instruction_Fetch_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -532,9 +542,7 @@
     </Run>
     <Run Id="RV32I_WSC_reg_IFID_0_0_synth_1" Type="Ft3:Synth" SrcSet="RV32I_WSC_reg_IFID_0_0" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_reg_IFID_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/RV32I_WSC_reg_IFID_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_IFID_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_IFID_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -544,9 +552,7 @@
     </Run>
     <Run Id="RV32I_WSC_reg_IDEX_0_0_synth_1" Type="Ft3:Synth" SrcSet="RV32I_WSC_reg_IDEX_0_0" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_reg_IDEX_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/RV32I_WSC_reg_IDEX_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_IDEX_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_IDEX_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -556,9 +562,7 @@
     </Run>
     <Run Id="RV32I_WSC_Hazard_Processing_0_1_synth_1" Type="Ft3:Synth" SrcSet="RV32I_WSC_Hazard_Processing_0_1" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_Hazard_Processing_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/RV32I_WSC_Hazard_Processing_0_1_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_Hazard_Processing_0_1_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_Hazard_Processing_0_1_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -568,9 +572,7 @@
     </Run>
     <Run Id="RV32I_WSC_reg_EXMEM_0_0_synth_1" Type="Ft3:Synth" SrcSet="RV32I_WSC_reg_EXMEM_0_0" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_reg_EXMEM_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/RV32I_WSC_reg_EXMEM_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_EXMEM_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_EXMEM_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -699,9 +701,7 @@
     </Run>
     <Run Id="RV32I_WSC_Instruction_Fetch_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_Instruction_Fetch_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="RV32I_WSC_Instruction_Fetch_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_Instruction_Fetch_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_Instruction_Fetch_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -718,9 +718,7 @@
     </Run>
     <Run Id="RV32I_WSC_reg_IFID_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_reg_IFID_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="RV32I_WSC_reg_IFID_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_IFID_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_IFID_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -737,9 +735,7 @@
     </Run>
     <Run Id="RV32I_WSC_reg_IDEX_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_reg_IDEX_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="RV32I_WSC_reg_IDEX_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_IDEX_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_IDEX_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -756,9 +752,7 @@
     </Run>
     <Run Id="RV32I_WSC_Hazard_Processing_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_Hazard_Processing_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="RV32I_WSC_Hazard_Processing_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_Hazard_Processing_0_1_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_Hazard_Processing_0_1_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -775,9 +769,7 @@
     </Run>
     <Run Id="RV32I_WSC_reg_EXMEM_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z007sclg400-1" ConstrsSet="RV32I_WSC_reg_EXMEM_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="RV32I_WSC_reg_EXMEM_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_EXMEM_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/RV32I_WSC_reg_EXMEM_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
