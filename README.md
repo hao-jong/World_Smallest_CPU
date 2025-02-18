@@ -83,7 +83,7 @@
  	
 ## Reference
 
-> Sarah Harris, David Harris - Digital Design and Computer Architecture,  RISC-V Edition_ RISC-V Edition (2021, Morgan Kaufmann)
+> David A. Patterson, John L. Hennessy - Computer Organization and Design_ The Hardware Software Interface [RISC-V Edition]
 
 > RISC-V Official Manual : (https://riscv.org/specifications/ratified/)
 
