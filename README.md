@@ -50,11 +50,9 @@
 
 - 미리 만들어둔 test_bench File로 직접 검증 가능.
 
-- Test001 ~ Test004 : Instruction_Memory.v 파일 내 readmemh의 txt를 Test00x.txt
-					  Data_Memory.v 파일 내의 readmemh의 txt를 default.txt로 변환
+- Test001 ~ Test004 : Instruction_Memory.v 파일 내 readmemh의 txt를 Test00x.txt 변환 그리고 Data_Memory.v 파일 내의 readmemh의 txt를 default.txt로 변환
 					  
-- bubble_Sort : Instruction_Memory.v 파일 내 readmemh의 txt를 Sort.txt
-				Data_Memory.v 파일 내의 readmemh의 txt를 Sort_data.txt로 변환
+- bubble_Sort : Instruction_Memory.v 파일 내 readmemh의 txt를 Sort.txt 변환 그리고 Data_Memory.v 파일 내의 readmemh의 txt를 Sort_data.txt로 변환
 
 ## Sorting Result
 <img src="Sort_result.png">
